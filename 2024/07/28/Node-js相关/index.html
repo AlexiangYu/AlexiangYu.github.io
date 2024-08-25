@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I love to share my thoughts and experiences about technology, programming, and life.">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Alexaing" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Node.js相关｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2024/07/28/Node-js相关/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Alexaing
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Node.js相关</h1>
+                    
+                    <span class="meta">
+                         作者 Alexiang
+                        <span>
+                          日期 2024-07-28
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Node.js相关
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>早期JS: 全局污染和依赖管理混乱</p>
+<h3 id="Commonjs标准"><a href="#Commonjs标准" class="headerlink" title="Commonjs标准"></a>Commonjs标准</h3><p>主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）</p>
+<ul>
+<li>每一个 <code>.js</code> 文件都是一个单独的模块</li>
+<li>核心变量: module、exports、require</li>
+<li>对代码用函数包装</li>
+<li>运行时同步加载</li>
+</ul>
+<h4 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h4><p>为<code>module.exports</code>赋值，可以只导出一个类或函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> <span class="title function_">sayName</span> () &#123;</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>传入形参exports，添加属性和方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">name</span> = <span class="string">`《Node.js实践》`</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">author</span> = <span class="string">&#x27;AlexYu&#x27;</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">say</span> = <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">666</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// exports是传入到当前模块内的一个对象，不能直接赋值</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>require 加载文件：dfs，缓存避免重复加载、循环引用</p>
+<p>顺序：当前目录node_modules -&gt; 上级目录的node_modules -&gt; index.js ，index.json ，index.node</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sayName = <span class="built_in">require</span>(<span class="string">&#x27;./hello.js&#x27;</span>)</span><br><span class="line"><span class="title function_">sayName</span>()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="ES6标准"><a href="#ES6标准" class="headerlink" title="ES6标准"></a>ES6标准</h3><ul>
+<li>静态模块化，提前在编译时加载</li>
+<li>命令 <code>export</code> 用于暴露接口， <code>import</code> 用于引入模块</li>
+<li>运行时异步加载</li>
+<li>代码中直接导入导出模块</li>
+</ul>
+<h4 id="命名导出-导入"><a href="#命名导出-导入" class="headerlink" title="命名导出&#x2F;导入"></a>命名导出&#x2F;导入</h4><ul>
+<li>import { } 内部的变量名称，要与 export { } 完全匹配</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">sayName</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Node.js实践&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; a, b &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayName, a, b &#125; <span class="keyword">from</span> <span class="string">&#x27;./hello.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">sayName</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a+<span class="number">1</span>, b);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="默认导出-导入"><a href="#默认导出-导入" class="headerlink" title="默认导出&#x2F;导入"></a>默认导出&#x2F;导入</h4><ul>
+<li>export default 导出模块的默认接口，import 导入时可以省略接口名称</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;New York&quot;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> obj <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)    <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn] &#125;</span></span><br><span class="line">obj.<span class="title function_">fn</span>()           <span class="comment">// Hello John</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="混合导出-导入"><a href="#混合导出-导入" class="headerlink" title="混合导出&#x2F;导入"></a>混合导出&#x2F;导入</h4><ul>
+<li>同时使用 export default 和 export 导入多个属性</li>
+<li>重命名导入</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> c = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="number">120</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;c, d&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;New York&quot;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> obj, &#123;c, d&#125; <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)    <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn] &#125;</span></span><br><span class="line">obj.<span class="title function_">fn</span>()           <span class="comment">// Hello John</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c, d)   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// as 重命名</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> O <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(O) <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn], c: 110, d: 120 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h4><p>语法：<code>import(module)</code></p>
+<ul>
+<li>运行时动态导入模块，避免打包体积过大</li>
+<li>返回 Promise 对象，可以使用 then() 方法获取模块的接口</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">module</span> === <span class="string">&#x27;object&#x27;</span> &amp;&amp; <span class="variable language_">module</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&#x27;./hello.js&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Accepting the updated module!&#x27;</span>);</span><br><span class="line">    <span class="comment">// 重新导入模块</span></span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./hello.js&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">module</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;The updated module:&#x27;</span>, <span class="variable language_">module</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2024/07/25/Vue用法/" data-toggle="tooltip" data-placement="top"
+                           title="Vue用法">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Commonjs%E6%A0%87%E5%87%86"><span class="toc-text">Commonjs标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA"><span class="toc-text">导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-text">导入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6%E6%A0%87%E5%87%86"><span class="toc-text">ES6标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">命名导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">默认导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">混合导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5"><span class="toc-text">动态导入</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alexaing 2024
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
