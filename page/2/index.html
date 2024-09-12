@@ -22,7 +22,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://example.com/archives/">
+    <link rel="canonical" href="http://example.com/page/2/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -50,7 +50,7 @@
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
-" data-ishome = "false" >
+" data-ishome = "true" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -123,6 +123,126 @@
 <!-- Main Content -->
 
 
+<style>
+
+    .custom-haojen-container .post-preview:nth-of-type(1),
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        text-align: center;
+        background-repeat: no-repeat;
+        border-radius: 3px;
+        background-size: cover;
+        padding: 0;
+        height: 300px;
+        display: table;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.16);
+    }
+
+    /*去掉诗歌的背景图片*/
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        background-image: none !important;
+        background-color: rgba(255, 248, 220, 0.5);
+    }
+
+    .custom-haojen-container .post-preview:nth-child(1) h2,
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta,
+    .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+        text-shadow: 0 0 40px rgba(0, 0, 0, 1);
+        letter-spacing: 1px;
+        color: #fff;
+        margin-top: 0;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta {
+        font-size: .9em;
+        font-weight: 300;
+        margin-top: 0;
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle {
+        letter-spacing: 6px;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: 400;
+        color: rgba(0, 0, 0, .75)
+    }
+
+    /*不显示摘要*/
+    .custom-haojen-container .post-preview:nth-child(1) .post-content-preview {
+        display: none
+    }
+
+    /*只第一个显示背景图片*/
+    .custom-haojen-container .post-preview:not(:nth-child(1)) {
+        background-image: none !important;
+    }
+
+    /*第一个分界线去掉*/
+    .custom-haojen-container hr:nth-of-type(1) {
+        display: none;
+    }
+
+    /*主题*/
+    .custom-haojen-container .post-preview:nth-of-type(1) > a {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    /*诗词标题*/
+    .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+        font-size: 35px;
+        font-family: STKaiti;
+        color: rgba(0, 0, 0, .8);
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta {
+        color: #0e2231;
+    }
+
+    @media (max-width: 768px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 240px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 28px !important;
+            margin-top: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-of-type(1) > a {
+            padding: 20px
+        }
+    }
+
+    /*手机屏幕*/
+    @media (max-width: 400px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 195px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 20px !important;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 16px;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) a {
+            padding: 30px 20px;
+        }
+    }
+</style>
+
 <!-- Page Header -->
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
     <div class="row">
@@ -151,270 +271,17 @@
 
 <div class="post-preview "
      style="background-image: url('')">
-    <a href="/2024/12/27/闲笔/">
+    <a href="/2024/05/12/hello-world/">
         <h2 class="post-title">
-            闲笔
+            Hello World
         </h2>
         <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-12-27
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-12
         </p>
         
         <div class="post-content-preview">
             <p>
-                现代主义幻觉：我将走进地狱，那里竟是我曾经的世界。过去的时光闪回，我仿佛回到了过去，一切历历在目，却发现我已经不在了。我不知道自己为什么会变成这样，但我知道，我不能再回到过去了。我不想再回到过去，我只想在这条路上继续前行。我甚至还能在别人的交谈中体会那时的生活，那时的快乐，那时的感动。我终究明白..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/09/12/TS与ES6/">
-        <h2 class="post-title">
-            TS与ES6+
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-09-12
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                运行JavaScript 的超集，面向对象、类型检测等
-123456789class Greeting &#123;    constructor(public message: string) &#123; &#125;    greet() &#123;        console.log..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/08/23/Web原生/">
-        <h2 class="post-title">
-            Web原生
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-08-23
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                Web Components从原生层面实现组件化
-
-HTML template（HTML 模板）：HTML 片段 标签 &lt;template&gt; 和 &lt;slot&gt; 加入自定义多次重用
-Custom element（自定义元素）：一组 JavaScript API，允许定义 c..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/08/21/React笔记/">
-        <h2 class="post-title">
-            React 笔记
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-08-21
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                在 React 中，一切皆为组件？
-JSX语法扩展：js代码中编写HTML模板。可以被编译成JavaScript函数。
-
-&#123; &#125; 表达式插值
-外层仅识别一对标签: 引入Fragment
-
-123456789101112131415function App() &#123;  ..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/07/28/Node-js相关/">
-        <h2 class="post-title">
-            Node.js相关
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-07-28
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                模块化早期JS: 全局污染和依赖管理混乱
-Commonjs标准主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）
-
-每一个 .js 文件都是一个单独的模块
-核心变量: module、exports、require
-对代码用函数包装
-运行时同..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/07/25/Vue用法/">
-        <h2 class="post-title">
-            Vue用法
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-07-25
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                组件通信父子组件通信
-父 -&gt; 子: props
-子 -&gt; 父: $emit
-
-123456789101112131415161718192021222324252627&lt;template&gt;	&lt;div id=&quot;app&quot;&gt;		APP组件		&..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/06/04/基础-网络相关/">
-        <h2 class="post-title">
-            基础-网络相关
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-06-04
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                HTTP1xx (Informational) 信息性状态码
-
-100 Continue: 客户端应该继续发送请求。
-101 Switching Protocols: 服务器已切换协议。
-
-2xx (Successful) 成功状态码
-
-200 OK: 请求已成功完成。
-201 Created:..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/30/JavaScript笔记/">
-        <h2 class="post-title">
-            JavaScript 笔记
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-30
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                简介一种脚本语言，可用于HTML和Web，更可广泛用于服务器等领域。
-组成：
-ECMAScript 核心语法
-Web APIs DOM（文档对象模型）+BOM
-书写位置
-内部JS：&lt;script&gt;写在&lt;body&gt;最后  1234567&lt;body&gt;  &lt;!..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/18/Python笔记/">
-        <h2 class="post-title">
-            Python笔记
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-18
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                基础解释器
-12s = &quot;hello, python&quot;print(s)
-
-数据类型
-int
-float
-string
-
-查看类型：type(8963) = int_type
-注解
-12a: int = 1b: Union[int, float] = 1.2
-
-联合类型注解：i..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/14/My-New-Post/">
-        <h2 class="post-title">
-            My New Post
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-14
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                This is my new postThis is the content of my new post.
-
+                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer i..
             </p>
         </div>
     </a>
@@ -430,10 +297,10 @@ string
 
 <ul class="pager">
     
-    
-    <li class="next">
-        <a href="/archives/page/2/">Older Posts &rarr;</a>
+    <li class="previous">
+        <a href="/">&larr; Newer Posts</a>
     </li>
+    
     
 </ul>
 
