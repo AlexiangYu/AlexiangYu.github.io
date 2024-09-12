@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        基础-网络相关｜undefined
+        
         
     </title>
 
-    <link rel="canonical" href="http://example.com/2024/06/04/基础-网络相关/">
+    <link rel="canonical" href="http://example.com/archives/2024/09/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -49,7 +49,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -122,173 +122,116 @@
 
 <!-- Main Content -->
 
-<!--only post-->
 
-
-<img class="wechat-title-img"
-     src="">
-
-
-<style>
-    
-    header.intro-header {
-        background-image: url('')
-    }
-
-    
-</style>
-
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>基础-网络相关</h1>
-                    
-                    <span class="meta">
-                         作者 Alexiang
-                        <span>
-                          日期 2024-06-04
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src=""/>
+                        <h5><a href="/about/">Alexiang</a></h5>
+                        <p></p>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     </div>
-    <div class="post-title-haojen">
-        <span>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/2024/09/04/基础-网络相关/">
+        <h2 class="post-title">
             基础-网络相关
-        </span>
-    </div>
-</header>
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-09-04
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                HTTP1xx (Informational) 信息性状态码
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p><strong>1xx (Informational) 信息性状态码</strong></p>
-<ul>
-<li><strong>100 Continue</strong>: 客户端应该继续发送请求。</li>
-<li><strong>101 Switching Protocols</strong>: 服务器已切换协议。</li>
-</ul>
-<p><strong>2xx (Successful) 成功状态码</strong></p>
-<ul>
-<li><strong>200 OK</strong>: 请求已成功完成。</li>
-<li><strong>201 Created</strong>: 新资源已创建。</li>
-<li><strong>202 Accepted</strong>: 请求已接受，但尚未处理。</li>
-<li><strong>204 No Content</strong>: 服务器成功处理了请求，但没有返回任何内容。</li>
-<li><strong>206 Partial Content</strong>: 服务器已成功处理了部分请求。</li>
-</ul>
-<p><strong>3xx (Redirection) 重定向状态码</strong></p>
-<ul>
-<li><strong>301 Moved Permanently</strong>: 资源已永久移动到新位置。</li>
-<li><strong>302 Found</strong>: 资源临时移动到新位置。</li>
-<li><strong>304 Not Modified</strong>: 资源未修改，可以使用缓存中的版本。</li>
-<li><strong>307 Temporary Redirect</strong>: 资源临时移动到新位置，使用 GET 或 HEAD 请求。</li>
-<li><strong>308 Permanent Redirect</strong>: 资源永久移动到新位置，可以使用 GET 或 HEAD 请求。</li>
-</ul>
-<p><strong>4xx (Client Error) 客户端错误状态码</strong></p>
-<ul>
-<li><strong>400 Bad Request</strong>: 请求有语法错误。</li>
-<li><strong>401 Unauthorized</strong>: 客户端未经授权。</li>
-<li><strong>403 Forbidden</strong>: 服务器拒绝访问资源。</li>
-<li><strong>404 Not Found</strong>: 服务器无法找到请求的资源。</li>
-<li><strong>405 Method Not Allowed</strong>: 请求方法不被允许。</li>
-<li><strong>408 Request Timeout</strong>: 请求超时。</li>
-<li><strong>409 Conflict</strong>: 请求无法完成，因为与现有资源冲突。</li>
-<li><strong>410 Gone</strong>: 资源已永久删除。</li>
-<li><strong>411 Length Required</strong>: 必须提供内容长度。</li>
-<li><strong>412 Precondition Failed</strong>: 请求条件不满足。</li>
-<li><strong>413 Request Entity Too Large</strong>: 请求体过大。</li>
-<li><strong>414 Request-URI Too Long</strong>: 请求 URI 过长。</li>
-<li><strong>415 Unsupported Media Type</strong>: 服务器不支持请求的媒体类型。</li>
-<li><strong>416 Requested Range Not Satisfiable</strong>: 请求的范围无法满足。</li>
-<li><strong>417 Expectation Failed</strong>: 服务器无法满足“Expect”报头的期望。</li>
-<li><strong>422 Unprocessable Entity</strong>: 请求无法处理。</li>
-<li><strong>429 Too Many Requests</strong>: 客户端请求过多。</li>
-</ul>
-<p><strong>5xx (Server Error) 服务器错误状态码</strong></p>
-<ul>
-<li><strong>500 Internal Server Error</strong>: 服务器遇到错误，无法完成请求。</li>
-<li><strong>501 Not Implemented</strong>: 服务器不支持请求功能。</li>
-<li><strong>502 Bad Gateway</strong>: 服务器作为网关或代理时，从上游服务器接收到无效的响应。</li>
-<li><strong>503 Service Unavailable</strong>: 服务器暂时无法处理请求。</li>
-<li><strong>504 Gateway Timeout</strong>: 服务器作为网关或代理时，从上游服务器等待响应超时。</li>
-<li><strong>505 HTTP Version Not Supported</strong>: 服务器不支持请求的 HTTP 版本。</li>
-</ul>
-<p><strong>示例：</strong></p>
-<ul>
-<li>网站无法找到你请求的页面， <strong>404 Not Found</strong> 错误。</li>
-<li>需要登录的网站，但没有登录 <strong>401 Unauthorized</strong> 错误。</li>
-<li>上传一个文件，但文件太大 <strong>413 Request Entity Too Large</strong> 错误。</li>
+100 Continue: 客户端应该继续发送请求。
+101 Switching Protocols: 服务器已切换协议。
+
+2xx (Successful) 成功状态码
+
+200 OK: 请求已成功完成。
+201 Created:..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    
 </ul>
 
-                <hr>
-                
 
-                <ul class="pager">
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
                     
-                    <li class="previous">
-                        <a href="/2024/07/25/Vue用法/" data-toggle="tooltip" data-placement="top"
-                           title="Vue用法">&larr; Previous Post</a>
-                    </li>
+                    <h5><a href="/about/">Alexiang</a></h5>
                     
-                    
-                    <li class="next">
-                        <a href="/2024/05/30/JavaScript笔记/" data-toggle="tooltip" data-placement="top"
-                           title="JavaScript 笔记">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        
 
-                
+                        
 
-                
+                        
 
+                        
 
-                <!--加入新的评论系统-->
-                
-
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a></li></ol>
+                        
+                    </ul>
                 </div>
-            </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+
+            
+
         </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
-
     </div>
-</article>
-
-
-
-
-
-
+</div>
 
 <!-- Footer -->
 <!-- Footer -->

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-09-07T14:28:58.956Z</updated>
+  <updated>2024-09-12T07:56:57.789Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基础-网络相关</title>
+    <link href="http://example.com/2024/09/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/"/>
+    <id>http://example.com/2024/09/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/</id>
+    <published>2024-09-04T10:31:01.000Z</published>
+    <updated>2024-09-12T07:56:57.789Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p><strong>1xx (Informational) 信息性状态码</strong></p><ul><li><strong>100 Continue</strong>: 客户端应该继续发送请求。</li><li><strong>101 Switching Protocols</strong>: 服务器已切换协议。</li></ul><p><strong>2xx (Successful) 成功状态码</strong></p><ul><li><strong>200 OK</strong>: 请求已成功完成。</li><li><strong>201 Created</strong>: 新资源已创建。</li><li><strong>202 Accepted</strong>: 请求已接受，但尚未处理。</li><li><strong>204 No Content</strong>: 服务器成功处理了请求，但没有返回任何内容。</li><li><strong>206 Partial Content</strong>: 服务器已成功处理了部分请求。</li></ul><p><strong>3xx (Redirection) 重定向状态码</strong></p><ul><li><strong>301 Moved Permanently</strong>: 资源已永久移动到新位置。</li><li><strong>302 Found</strong>: 资源临时移动到新位置。</li><li><strong>304 Not Modified</strong>: 资源未修改，可以使用缓存中的版本。</li><li><strong>307 Temporary Redirect</strong>: 资源临时移动到新位置，使用 GET 或 HEAD 请求。</li><li><strong>308 Permanent Redirect</strong>: 资源永久移动到新位置，可以使用 GET 或 HEAD 请求。</li></ul><p><strong>4xx (Client Error) 客户端错误状态码</strong></p><ul><li><strong>400 Bad Request</strong>: 请求有语法错误。</li><li><strong>401 Unauthorized</strong>: 客户端未经授权。</li><li><strong>403 Forbidden</strong>: 服务器拒绝访问资源。</li><li><strong>404 Not Found</strong>: 服务器无法找到请求的资源。</li><li><strong>405 Method Not Allowed</strong>: 请求方法不被允许。</li><li><strong>408 Request Timeout</strong>: 请求超时。</li><li><strong>409 Conflict</strong>: 请求无法完成，因为与现有资源冲突。</li><li><strong>410 Gone</strong>: 资源已永久删除。</li><li><strong>411 Length Required</strong>: 必须提供内容长度。</li><li><strong>412 Precondition Failed</strong>: 请求条件不满足。</li><li><strong>413 Request Entity Too Large</strong>: 请求体过大。</li><li><strong>414 Request-URI Too Long</strong>: 请求 URI 过长。</li><li><strong>415 Unsupported Media Type</strong>: 服务器不支持请求的媒体类型。</li><li><strong>416 Requested Range Not Satisfiable</strong>: 请求的范围无法满足。</li><li><strong>417 Expectation Failed</strong>: 服务器无法满足“Expect”报头的期望。</li><li><strong>422 Unprocessable Entity</strong>: 请求无法处理。</li><li><strong>429 Too Many Requests</strong>: 客户端请求过多。</li></ul><p><strong>5xx (Server Error) 服务器错误状态码</strong></p><ul><li><strong>500 Internal Server Error</strong>: 服务器遇到错误，无法完成请求。</li><li><strong>501 Not Implemented</strong>: 服务器不支持请求功能。</li><li><strong>502 Bad Gateway</strong>: 服务器作为网关或代理时，从上游服务器接收到无效的响应。</li><li><strong>503 Service Unavailable</strong>: 服务器暂时无法处理请求。</li><li><strong>504 Gateway Timeout</strong>: 服务器作为网关或代理时，从上游服务器等待响应超时。</li><li><strong>505 HTTP Version Not Supported</strong>: 服务器不支持请求的 HTTP 版本。</li></ul><p><strong>示例：</strong></p><ul><li>网站无法找到你请求的页面， <strong>404 Not Found</strong> 错误。</li><li>需要登录的网站，但没有登录 <strong>401 Unauthorized</strong> 错误。</li><li>上传一个文件，但文件太大 <strong>413 Request Entity Too Large</strong> 错误。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerlink&quot; title=&quot;HTTP&quot;&gt;&lt;/a&gt;HTTP&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1xx (Informational) 信息性状态码&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;stro</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>闲笔</title>
@@ -113,28 +135,6 @@
       
       
     <summary type="html">&lt;h3 id=&quot;组件通信&quot;&gt;&lt;a href=&quot;#组件通信&quot; class=&quot;headerlink&quot; title=&quot;组件通信&quot;&gt;&lt;/a&gt;组件通信&lt;/h3&gt;&lt;h4 id=&quot;父子组件通信&quot;&gt;&lt;a href=&quot;#父子组件通信&quot; class=&quot;headerlink&quot; title=&quot;父子组件通</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>基础-网络相关</title>
-    <link href="http://example.com/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/"/>
-    <id>http://example.com/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/</id>
-    <published>2024-06-04T10:31:01.000Z</published>
-    <updated>2024-08-27T17:58:49.804Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p><strong>1xx (Informational) 信息性状态码</strong></p><ul><li><strong>100 Continue</strong>: 客户端应该继续发送请求。</li><li><strong>101 Switching Protocols</strong>: 服务器已切换协议。</li></ul><p><strong>2xx (Successful) 成功状态码</strong></p><ul><li><strong>200 OK</strong>: 请求已成功完成。</li><li><strong>201 Created</strong>: 新资源已创建。</li><li><strong>202 Accepted</strong>: 请求已接受，但尚未处理。</li><li><strong>204 No Content</strong>: 服务器成功处理了请求，但没有返回任何内容。</li><li><strong>206 Partial Content</strong>: 服务器已成功处理了部分请求。</li></ul><p><strong>3xx (Redirection) 重定向状态码</strong></p><ul><li><strong>301 Moved Permanently</strong>: 资源已永久移动到新位置。</li><li><strong>302 Found</strong>: 资源临时移动到新位置。</li><li><strong>304 Not Modified</strong>: 资源未修改，可以使用缓存中的版本。</li><li><strong>307 Temporary Redirect</strong>: 资源临时移动到新位置，使用 GET 或 HEAD 请求。</li><li><strong>308 Permanent Redirect</strong>: 资源永久移动到新位置，可以使用 GET 或 HEAD 请求。</li></ul><p><strong>4xx (Client Error) 客户端错误状态码</strong></p><ul><li><strong>400 Bad Request</strong>: 请求有语法错误。</li><li><strong>401 Unauthorized</strong>: 客户端未经授权。</li><li><strong>403 Forbidden</strong>: 服务器拒绝访问资源。</li><li><strong>404 Not Found</strong>: 服务器无法找到请求的资源。</li><li><strong>405 Method Not Allowed</strong>: 请求方法不被允许。</li><li><strong>408 Request Timeout</strong>: 请求超时。</li><li><strong>409 Conflict</strong>: 请求无法完成，因为与现有资源冲突。</li><li><strong>410 Gone</strong>: 资源已永久删除。</li><li><strong>411 Length Required</strong>: 必须提供内容长度。</li><li><strong>412 Precondition Failed</strong>: 请求条件不满足。</li><li><strong>413 Request Entity Too Large</strong>: 请求体过大。</li><li><strong>414 Request-URI Too Long</strong>: 请求 URI 过长。</li><li><strong>415 Unsupported Media Type</strong>: 服务器不支持请求的媒体类型。</li><li><strong>416 Requested Range Not Satisfiable</strong>: 请求的范围无法满足。</li><li><strong>417 Expectation Failed</strong>: 服务器无法满足“Expect”报头的期望。</li><li><strong>422 Unprocessable Entity</strong>: 请求无法处理。</li><li><strong>429 Too Many Requests</strong>: 客户端请求过多。</li></ul><p><strong>5xx (Server Error) 服务器错误状态码</strong></p><ul><li><strong>500 Internal Server Error</strong>: 服务器遇到错误，无法完成请求。</li><li><strong>501 Not Implemented</strong>: 服务器不支持请求功能。</li><li><strong>502 Bad Gateway</strong>: 服务器作为网关或代理时，从上游服务器接收到无效的响应。</li><li><strong>503 Service Unavailable</strong>: 服务器暂时无法处理请求。</li><li><strong>504 Gateway Timeout</strong>: 服务器作为网关或代理时，从上游服务器等待响应超时。</li><li><strong>505 HTTP Version Not Supported</strong>: 服务器不支持请求的 HTTP 版本。</li></ul><p><strong>示例：</strong></p><ul><li>网站无法找到你请求的页面， <strong>404 Not Found</strong> 错误。</li><li>需要登录的网站，但没有登录 <strong>401 Unauthorized</strong> 错误。</li><li>上传一个文件，但文件太大 <strong>413 Request Entity Too Large</strong> 错误。</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerlink&quot; title=&quot;HTTP&quot;&gt;&lt;/a&gt;HTTP&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1xx (Informational) 信息性状态码&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;stro</summary>
       
     
     
