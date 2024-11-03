@@ -1,177 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="I love to share my thoughts and experiences about technology, programming, and life.">
-    <meta name="keyword" content="">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
-    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
-    <link rel="alternate" type="application/atom+xml" title="Alexaing" href="/atom.xml">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
-    <title>
-        
-        Node.js相关｜undefined
-        
-    </title>
+  <meta charset="utf-8">
+  
+  
+  <title>Node.js相关 | Alexiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="模块化早期JS: 全局污染和依赖管理混乱 Commonjs标准主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）  每一个 .js 文件都是一个单独的模块 核心变量: module、exports、require 对代码用函数包装 运行时同步加载  导出为module.exports赋值，可以只导出一个类或函数 1234let name &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js相关">
+<meta property="og:url" content="http://example.com/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Alexiang">
+<meta property="og:description" content="模块化早期JS: 全局污染和依赖管理混乱 Commonjs标准主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）  每一个 .js 文件都是一个单独的模块 核心变量: module、exports、require 对代码用函数包装 运行时同步加载  导出为module.exports赋值，可以只导出一个类或函数 1234let name &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-28T12:33:26.000Z">
+<meta property="article:modified_time" content="2024-09-05T15:14:22.808Z">
+<meta property="article:author" content="Alexiang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Alexiang" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="canonical" href="http://example.com/2024/07/28/Node-js相关/">
-
-    <!-- Bootstrap Core CSS -->
+  
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/blog-style.css">
-
-
-    <!-- Pygments Github CSS -->
-    
-<link rel="stylesheet" href="/css/syntax.css">
-
+  
+  
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<style>
-
-    header.intro-header {
-        background-image: url('')
-    }
-</style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
-" data-ishome = "false" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated pulse" href="/">
-                <span class="brand-logo">
-                    Alexaing
-                </span>
-                's Blog
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-					
-                    
-					
-					
-                </ul>
-            </div>
-        </div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alexiang</a>
+      </h1>
+      
     </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-//    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-<!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img"
-     src="">
-
-
-<style>
-    
-    header.intro-header {
-        background-image: url('')
-    }
-
-    
-</style>
-
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>Node.js相关</h1>
-                    
-                    <span class="meta">
-                         作者 Alexiang
-                        <span>
-                          日期 2024-07-28
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
     </div>
-    <div class="post-title-haojen">
-        <span>
-            Node.js相关
-        </span>
-    </div>
+  </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>早期JS: 全局污染和依赖管理混乱</p>
+      <div class="outer">
+        <section id="main"><article id="post-Node-js相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" class="article-date">
+  <time class="dt-published" datetime="2024-07-28T12:33:26.000Z" itemprop="datePublished">2024-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Node.js相关
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>早期JS: 全局污染和依赖管理混乱</p>
 <h3 id="Commonjs标准"><a href="#Commonjs标准" class="headerlink" title="Commonjs标准"></a>Commonjs标准</h3><p>主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）</p>
 <ul>
 <li>每一个 <code>.js</code> 文件都是一个单独的模块</li>
@@ -236,174 +158,134 @@
 <p>Thunk middleware自动将返回的函数包裹在 dispatch 函数中，这样就可以在 action 处理函数中执行异步操作。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetchUser</span>(<span class="params">id</span>) &#123;</span><br><span class="line">  <span class="comment">// 返回的这个异步函数是一个 Thunk, 或者叫 ThunkAction</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> (&#123; dispatch &#125;) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 额外的异步API调用</span></span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> api.<span class="title function_">getUser</span>(id);</span><br><span class="line">    <span class="comment">// 此时才真正dispatch action</span></span><br><span class="line">    <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;UPDATE_USER&#x27;</span>, <span class="attr">payload</span>: user &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2024/08/21/React笔记/" data-toggle="tooltip" data-placement="top"
-                           title="React 笔记">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2024/07/25/Vue用法/" data-toggle="tooltip" data-placement="top"
-                           title="Vue用法">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-
-
-                <!--加入新的评论系统-->
-                
-
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Commonjs%E6%A0%87%E5%87%86"><span class="toc-text">Commonjs标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA"><span class="toc-text">导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-text">导入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6%E6%A0%87%E5%87%86"><span class="toc-text">ES6标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">命名导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">默认导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E5%AF%BC%E5%87%BA-%E5%AF%BC%E5%85%A5"><span class="toc-text">混合导出&#x2F;导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5"><span class="toc-text">动态导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thunk-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">Thunk 是什么</span></a></li></ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
-
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" data-id="cm30vkbgu0006acvz8aob2d46" data-title="Node.js相关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/21/React%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React 笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/25/Vue%E7%94%A8%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue用法</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
+</section>
+        
+          <aside id="sidebar">
+  
+    
 
+  
+    
 
-
-
-
-<!-- Footer -->
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <br>
-                <ul class="list-inline text-center">
-                
-                
-                
-
-                
-
-                
-
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Alexaing 2024
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
-                </p>
-
-            </div>
-        </div>
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/11/%E7%9F%A5%E8%AF%86%E5%BA%93%E9%A1%B9%E7%9B%AE/">知识库项目</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/12/TS%E4%B8%8EES6/">TS与ES6+</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/23/Web%E5%8E%9F%E7%94%9F/">Web原生</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/21/React%E7%AC%94%E8%AE%B0/">React 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/">Node.js相关</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Alexiang<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
-<!-- jQuery -->
-
-<script src="/js/jquery.min.js"></script>
-
-
-<!-- Bootstrap Core JavaScript -->
-
-<script src="/js/bootstrap.min.js"></script>
-
-
-<!-- Custom Theme JavaScript -->
-
-<script src="/js/blog.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://example.com/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
+<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
-<!-- Google Analytics -->
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
-<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
 
 
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-  _st('install','','2.0.0');
-</script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!--wechat title img-->
-<img class="wechat-title-img" src="">
+  </div>
 </body>
-
 </html>
