@@ -212,6 +212,18 @@
 <li><a target="_blank" rel="noopener" href="https://www.webcomponents.org/">webcore: Custom Elements</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/column/7140105636720836622">Web Components 从入门到 「放弃」</a></li>
 </ul>
+<h2 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h2><p>WebAssembly（wasm）是一种低级虚拟机指令集，它是一种可移植、体积小、加载快、安全的二进制指令集，可以用来运行在现代 web 浏览器和其他环境中。</p>
+<p>主要用于浏览器内的客户端应用提升性能</p>
+<p>由以下三个部分组成：</p>
+<ul>
+<li>二进制指令集：WebAssembly 定义了一种基于堆栈的指令集，类似于汇编语言。</li>
+<li>编译器：将高级编程语言编译成 WebAssembly 代码。</li>
+<li>运行时：负责解释和执行 WebAssembly 代码。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wasmCode = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;example.wasm&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">arrayBuffer</span>());</span><br><span class="line"><span class="keyword">const</span> wasmModule = <span class="keyword">await</span> <span class="title class_">WebAssembly</span>.<span class="title function_">compile</span>(wasmCode);</span><br><span class="line"><span class="keyword">const</span> wasmInstance = <span class="keyword">await</span> <span class="title class_">WebAssembly</span>.<span class="title function_">instantiate</span>(wasmModule);</span><br><span class="line"><span class="keyword">const</span> result = wasmInstance.<span class="property">exports</span>.<span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+
+
 
                 <hr>
                 
@@ -245,7 +257,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-Components"><span class="toc-text">Web Components</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-text">组件通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%83%E7%B4%A0"><span class="toc-text">实现自定义元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-Components"><span class="toc-text">Web Components</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-text">组件通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%83%E7%B4%A0"><span class="toc-text">实现自定义元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebAssembly"><span class="toc-text">WebAssembly</span></a></li></ol>
                 </div>
             </div>
         </div>

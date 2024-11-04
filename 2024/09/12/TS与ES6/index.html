@@ -349,6 +349,12 @@
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">IPerson</span> = &#123;    <span class="comment">// 定义类型别名</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">sayHi</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>抽象类和接口的区别</strong></p>
+<ul>
+<li>继承：一个类只能继承一个抽象类，可以实现多个接口。</li>
+<li>抽象类可以包含一些具体的方法（有实现），可以有构造函数和成员变量。接口（Interface）仅定义结构，不能包含任何实现。接口的所有属性和方法默认为抽象的，不能有构造函数。</li>
+<li>接口不能使用访问修饰符，所有属性和方法默认是 public</li>
+</ul>
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>不仅是class, 还作为一种类型存在</p>
 <ul>
 <li><code>public</code> 默认，外部可访问</li>
