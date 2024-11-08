@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I love to share my thoughts and experiences about technology, programming and life.">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Alexiang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        理解与使用CSS｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2024/11/08/理解与使用CSS/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Alexiang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>理解与使用CSS</h1>
+                    
+                    <span class="meta">
+                         作者 Alexiang
+                        <span>
+                          日期 2024-11-08
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            理解与使用CSS
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>Cascading Style Sheet，层叠样式表: 渲染外观</p>
+<p>W3C标准: <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/">https://www.w3.org/Style/CSS/</a></p>
+<h3 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h3><ul>
+<li><p><strong>内嵌式</strong>: style标签中, 位置在<code>&lt;head&gt;</code>内</p>
+<p>当前页面 小案例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>外联式</strong>: 单独.css文件中</p>
+<p>作用多个页面 较大项目</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>行内式</strong>: 在标签的属性里</p>
+<p>仅一个标签：配合js使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;color: blue; font-size: 20px;&quot;</span>&gt;</span>div content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>属性名: 属性值;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    * &#123; </span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.red</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-id">#one</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font</span>: <span class="number">2em</span> sans-serif;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>p 标签选择器<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span>div 类选择器<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;one&quot;</span>&gt;</span>div 标签选择器<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>标签选择器：<code>p &#123; &#125;</code> 选择<strong>所有此类标签</strong>, 无论多少层嵌套</li>
+<li>类选择器：<code>.red &#123; &#125;</code> 类名可重复 多个类名用空格隔开</li>
+<li>id选择器：<code>#one &#123; &#125;</code> 唯一对应id，仅选中一个标签</li>
+<li>属性选择器：<code>E[att] &#123; &#125;</code> 具有 att 特性的 E 元素<ul>
+<li><code>E[att=val] &#123; &#125;</code> att 值为 val 的元素</li>
+<li><code>E[att~=val]</code> , <code>E[att|=&quot;val&quot;]</code>, <code>E[att^=&quot;val&quot;]</code>, <code>E[att$=&quot;val&quot;]</code>, <code>E[att*=&quot;val&quot;]</code></li>
+</ul>
+</li>
+<li>通配符：<code>* &#123; &#125;</code> 选择所有元素</li>
+<li>后代选择器：<code>pn child &#123; &#125;</code> 对于<strong>所有后代</strong> 空格隔开<ul>
+<li>子代：<code>pn&gt;son &#123; &#125;</code> 仅选儿子</li>
+</ul>
+</li>
+<li>兄弟选择器：<code>E~F &#123; &#125;</code> E 之后的所有 F 兄弟元素<ul>
+<li>相邻：<code>E+F &#123; &#125;</code> E 之后的第一个 F 元素，如果 F 元素不是 E 元素的后一个兄弟元素，则选择不成功。</li>
+</ul>
+</li>
+<li>并集：<code>.red, .two &#123; &#125;</code> 逗号隔开</li>
+<li>交集：<code>p.red &#123; &#125;</code> 无空格分隔</li>
+</ul>
+<p>伪类: <code>:hover</code> 鼠标悬浮状态</p>
+<p>简写：<strong>emmet语法</strong></p>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><ol>
+<li>样式表来源<ul>
+<li>浏览器默认 &lt; 用户样式 &lt; 作者样式（主要的） &lt; 作者样式 <code>!important</code> &lt; 浏览器默认 <code>!important</code> &lt; 浏览器默认 <code>!important</code></li>
+</ul>
+</li>
+<li>选择器优先级<ul>
+<li>内联 &gt; id &gt; class &#x3D; attribute &#x3D; pseudo-class &gt; type &#x3D; pseudo-element</li>
+</ul>
+</li>
+<li>源码位置<ul>
+<li>最后声明的生效</li>
+<li>与 <code>class=&quot;red green&quot;</code> 引用顺序无关</li>
+</ul>
+</li>
+</ol>
+<p>少用 <code>id</code> 与 <code>!important</code></p>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><ul>
+<li>内容区：内容 + 内边距 + 边框 + 外边距</li>
+</ul>
+<blockquote>
+<p>只有 margintop 和 marginbottom 可以为负值，其他的都不能为负值。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  三角形  */</span></span><br><span class="line"><span class="selector-class">.triangle-bottom</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">50px</span> solid red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*  固定比例矩形  */</span></span><br><span class="line"><span class="selector-class">.ratio-box</span>&#123;</span><br><span class="line">    <span class="comment">/* 新特性写法 */</span></span><br><span class="line">    <span class="comment">/* aspect-ratio: 4 / 3;</span></span><br><span class="line"><span class="comment">    background-color: greenyellow; */</span></span><br><span class="line">    </span><br><span class="line">    <span class="attribute">background-color</span>: cadetblue;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/* 是父元素宽度的75% */</span></span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">75%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 渐变边框 */</span></span><br><span class="line"><span class="selector-class">.awesome-border</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">8px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">background-clip</span>: padding-box,border-box;</span><br><span class="line">    <span class="attribute">background-origin</span>: padding-box,border-box;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(to right,<span class="number">#fff</span>,<span class="number">#fff</span>),<span class="built_in">linear-gradient</span>(<span class="number">135deg</span>,<span class="number">#e941ab</span>,<span class="number">#a557ef</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li><code>box-sizing: border-box;</code> 宽度计算包含边框宽度</li>
+<li><code>box-sizing: content-box;</code> 宽度计算不包含边框宽度</li>
+</ul>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h4 id="常规流"><a href="#常规流" class="headerlink" title="常规流"></a>常规流</h4><p>默认情况下，浏览器会从上到下、从左到右地排列块级元素和行内元素。</p>
+<p>相邻的块级元素之间会自动产生垂直间距（margin），这称为“外边距合并（margin collapsing）”。</p>
+<ul>
+<li>块级元素：独占一行，宽度默认100%，高度默认由内容撑开。<ul>
+<li>包括 <code>&lt;div&gt;</code>、<code>&lt;h1&gt;</code>、<code>&lt;p&gt;</code>、<code>&lt;ul&gt;</code></li>
+<li><code>display: block;</code></li>
+<li>环境：BFC（Block Formatting Context）</li>
+</ul>
+</li>
+<li>行内元素：水平排列，高度默认由内容撑开<ul>
+<li>包括 <code>&lt;span&gt;</code>、<code>&lt;a&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;input&gt;</code></li>
+<li><code>display: inline;</code></li>
+<li>环境：IFC（Inline Formatting Context）</li>
+</ul>
+</li>
+</ul>
+<p>外边距塌陷：两个相邻&#x2F;嵌套&#x2F;空的块级元素的外边距相遇时，它们的外边距会合并取其中较大的一个值，而不是叠加。通过添加 <code>Padding</code> 或 <code>Border</code> 解决，或设置父元素为BFC。</p>
+<p>内联格式中 line-height 和 height 设置为相同的高度实现对齐</p>
+<ul>
+<li>flex <code>display: flex</code></li>
+<li>grid 二维网格</li>
+</ul>
+<p>层叠上下文：staking context</p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>transform</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2024/11/06/代码杂谈/" data-toggle="tooltip" data-placement="top"
+                           title="代码杂谈">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-text">引入方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">盒模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%B5%81"><span class="toc-text">常规流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-text">动画</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alexiang 2024
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
