@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="I love to share my thoughts and experiences about technology, programming and life.">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Alexiang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        使用LangChain构建LLMs应用｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2024/11/09/使用LangChain构建LLMs应用/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Alexiang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>使用LangChain构建LLMs应用</h1>
+                    
+                    <span class="meta">
+                         作者 Alexiang
+                        <span>
+                          日期 2024-11-09
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            使用LangChain构建LLMs应用
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本质上就是对各种大模型提供的API的套壳，是为了方便我们使用这些API，搭建起来的一些框架、模块和接口。</p>
+<blockquote>
+<p>LangChain是一个基于大语言模型（LLMs）用于构建端到端语言模型应用的框架，它可以让开发者使用语言模型来实现各种复杂的任务，例如文本到图像的生成、文档问答、聊天机器人等。LangChain提供了一系列工具、套件和接口，可以简化创建由LLMs和聊天模型提供支持的应用程序的过程。</p>
+</blockquote>
+<p>LangChain Agent（代理）实例：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---- Part 0 导入所需要的类</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> BlipProcessor, BlipForConditionalGeneration</span><br><span class="line"><span class="keyword">from</span> langchain.tools <span class="keyword">import</span> BaseTool</span><br><span class="line"><span class="keyword">from</span> langchain_openai <span class="keyword">import</span> ChatOpenAI</span><br><span class="line"><span class="keyword">from</span> langchain.agents <span class="keyword">import</span> initialize_agent, AgentType</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- Part I 初始化图像字幕生成模型</span></span><br><span class="line"><span class="comment"># 指定要使用的工具模型（HuggingFace中的image-caption模型）</span></span><br><span class="line">hf_model = <span class="string">&quot;Salesforce/blip-image-captioning-large&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;正在初始化图像字幕生成模型...&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化处理器和工具模型</span></span><br><span class="line"><span class="comment"># 预处理器将准备图像供模型使用</span></span><br><span class="line">processor = BlipProcessor.from_pretrained(hf_model)</span><br><span class="line"><span class="comment"># 然后我们初始化工具模型本身</span></span><br><span class="line">model = BlipForConditionalGeneration.from_pretrained(hf_model)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化图像字幕生成模型成功&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- Part II 定义图像字幕生成工具类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImageCapTool</span>(<span class="title class_ inherited__">BaseTool</span>):</span><br><span class="line">    name = <span class="string">&quot;Image captioner&quot;</span></span><br><span class="line">    description = <span class="string">&quot;使用该工具可以生成图片的文字描述，需要传入图片的URL.&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_run</span>(<span class="params">self, url: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="comment"># 下载图像并将其转换为PIL对象</span></span><br><span class="line">        image = Image.<span class="built_in">open</span>(requests.get(url, stream=<span class="literal">True</span>).raw).convert(<span class="string">&quot;RGB&quot;</span>)</span><br><span class="line">        <span class="comment"># 预处理图像</span></span><br><span class="line">        inputs = processor(image, return_tensors=<span class="string">&quot;pt&quot;</span>)</span><br><span class="line">        <span class="comment"># 生成字幕</span></span><br><span class="line">        out = model.generate(**inputs, max_new_tokens=<span class="number">200</span>)</span><br><span class="line">        <span class="comment"># 获取字幕</span></span><br><span class="line">        caption = processor.decode(out[<span class="number">0</span>], skip_special_tokens=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> caption</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_arun</span>(<span class="params">self, query: <span class="built_in">str</span></span>):</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">&quot;This tool does not support async&quot;</span>)</span><br><span class="line"></span><br><span class="line">agent = initialize_agent(</span><br><span class="line">    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,</span><br><span class="line">    tools=[ImageCapTool()],</span><br><span class="line">    llm=ChatOpenAI( model=os.environ.get(<span class="string">&quot;LLM_MODEL_4K_FUNCTION_CALL&quot;</span>), temperature=<span class="number">0</span>),</span><br><span class="line">    verbose=<span class="literal">True</span>,</span><br><span class="line">    handle_parsing_errors=<span class="literal">True</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">img_url = <span class="string">&quot;https://youimg1.c-ctrip.com/target/100v1d000001ej8qh6217.jpg&quot;</span></span><br><span class="line">agent.run(<span class="built_in">input</span>=<span class="string">f&quot;<span class="subst">&#123;img_url&#125;</span>\n请创作合适的中文推广文案&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>API 文档：<a target="_blank" rel="noopener" href="https://python.langchain.com/docs/get_started">https://python.langchain.com/docs/get_started</a></p>
+<h4 id="OpenAI-API"><a href="#OpenAI-API" class="headerlink" title="OpenAI API"></a>OpenAI API</h4><ul>
+<li>Text模型：<code>prompt</code> 与 <code>max_tokens</code> 参数控制生成的文本长度。</li>
+<li>Chat模型：消息角色：<ul>
+<li><code>system</code>：系统消息主要用于设定对话的背景或上下文。这可以帮助模型理解它在对话中的角色和任务。系统消息通常在对话开始时给出。</li>
+<li><code>user</code>：用户消息是从用户或人类角色发出的。它们通常包含了用户想要模型回答或完成的请求。</li>
+<li><code>assistant</code>：助手消息是模型的回复。发送多轮对话中新的对话请求时，可以通过助手消息提供先前对话的上下文。在对话的最后一条消息应始终为用户消息。</li>
+</ul>
+</li>
+</ul>
+<p>响应对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;chatcmpl-2nZI6v1cW9E3Jg4w2Xtoql0M3XHfH&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;object&#x27;</span>: <span class="string">&#x27;chat.completion&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;created&#x27;</span>: <span class="number">1677649420</span>,</span><br><span class="line"> <span class="string">&#x27;model&#x27;</span>: <span class="string">&#x27;gpt-4&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;usage&#x27;</span>: &#123;<span class="string">&#x27;prompt_tokens&#x27;</span>: <span class="number">56</span>, <span class="string">&#x27;completion_tokens&#x27;</span>: <span class="number">31</span>, <span class="string">&#x27;total_tokens&#x27;</span>: <span class="number">87</span>&#125;,</span><br><span class="line"> <span class="string">&#x27;choices&#x27;</span>: [</span><br><span class="line">   &#123;</span><br><span class="line">    <span class="string">&#x27;message&#x27;</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;role&#x27;</span>: <span class="string">&#x27;assistant&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;content&#x27;</span>: <span class="string">&#x27;你的花店可以叫做&quot;花香四溢&quot;。&#x27;</span></span><br><span class="line">     &#125;,</span><br><span class="line">    <span class="string">&#x27;finish_reason&#x27;</span>: <span class="string">&#x27;stop&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;index&#x27;</span>: <span class="number">0</span></span><br><span class="line">   &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>text</code>：生成的文本。</li>
+<li><code>finish_reason</code>：模型停止生成的原因，可能的值包括 stop（遇到了停止标记）、length（达到了最大长度）或 temperature（根据设定的温度参数决定停止）。</li>
+<li><code>created</code>：生成响应的时间戳。</li>
+</ul>
+<p>使用OpenAI API</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line"><span class="comment"># os.environ[&quot;OPENAI_API_KEY&quot;] = &#x27;你的OpenAI API Key&#x27;</span></span><br><span class="line"><span class="comment"># os.environ[&quot;OPENAI_BASE_URL&quot;] = &#x27;OpenAI 的 API URL&#x27;</span></span><br><span class="line"></span><br><span class="line">client = OpenAI()</span><br><span class="line"></span><br><span class="line"><span class="comment"># text = client.invoke(&quot;请给我写一句情人节红玫瑰的中文宣传语&quot;)</span></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=os.environ.get(<span class="string">&quot;LLM_MODELEND&quot;</span>),</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a creative AI.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;请给我的花店起个名&quot;</span>&#125;,</span><br><span class="line">    ],</span><br><span class="line">    temperature=<span class="number">0.8</span>,</span><br><span class="line">    max_tokens=<span class="number">600</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></figure>
+
+<p>通过 LangChain 调用</p>
+<p>我们只需要定义一次模板，更简洁。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> langchain_openai <span class="keyword">import</span> ChatOpenAI</span><br><span class="line"><span class="keyword">from</span> langchain.schema <span class="keyword">import</span> HumanMessage, SystemMessage</span><br><span class="line"></span><br><span class="line"><span class="comment"># os.environ[&quot;OPENAI_API_KEY&quot;] = &#x27;你的OpenAI API Key&#x27;</span></span><br><span class="line"><span class="comment"># os.environ[&quot;OPENAI_BASE_URL&quot;] = &#x27;OpenAI 的 API URL&#x27;</span></span><br><span class="line"></span><br><span class="line">chat = ChatOpenAI(model=os.environ.get(<span class="string">&quot;LLM_MODELEND&quot;</span>), temperature=<span class="number">0.8</span>, max_tokens=<span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">messages = [</span><br><span class="line">    SystemMessage(content=<span class="string">&quot;你是一个很棒的智能助手&quot;</span>),</span><br><span class="line">    HumanMessage(content=<span class="string">&quot;请给我的猫起个名&quot;</span>),</span><br><span class="line">]</span><br><span class="line">response = chat(messages)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="项目框架"><a href="#项目框架" class="headerlink" title="项目框架"></a>项目框架</h2><p>数据源 - 大模型应用 - 用例</p>
+<p>数据处理管道（Pipeline）</p>
+<ol>
+<li>Loading：文档加载器把 Documents 加载为以LangChain能够读取的形式。</li>
+<li>Splitting：文本分割器把 Documents 切分为指定大小的分割，我把它们称为“文档块”或者“文档片”。</li>
+<li>Storage：将上一步中分割好的“文档块”以“嵌入”（Embedding）的形式存储到向量数据库（Vector DB）中，形成一个个的“嵌入片”。</li>
+<li>Retrieval：应用程序从存储中检索分割后的文档（例如通过比较余弦相似度，找到与输入问题类似的嵌入片）。</li>
+<li>Output：把问题和相似的嵌入片传递给语言模型（LLM），使用包含问题和检索到的分割的提示生成答案。</li>
+</ol>
+<p>我们使用了 <code>OpenAIEmbeddings</code> 来生成嵌入，然后使用 <code>Qdrant</code> 这个向量数据库来存储嵌入</p>
+<blockquote>
+<p>词嵌入（Word Embedding）是自然语言处理和机器学习中的一个概念，它将文字或词语转换为一系列数字，通常是一个向量。</p>
+</blockquote>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2024/11/08/理解与使用CSS/" data-toggle="tooltip" data-placement="top"
+                           title="理解与使用CSS">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenAI-API"><span class="toc-text">OpenAI API</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6"><span class="toc-text">项目框架</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alexiang 2024
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
