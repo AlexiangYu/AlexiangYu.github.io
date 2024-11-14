@@ -262,14 +262,168 @@
 </li>
 </ul>
 <p>外边距塌陷：两个相邻&#x2F;嵌套&#x2F;空的块级元素的外边距相遇时，它们的外边距会合并取其中较大的一个值，而不是叠加。通过添加 <code>Padding</code> 或 <code>Border</code> 解决，或设置父元素为BFC。</p>
-<p>内联格式中 line-height 和 height 设置为相同的高度实现对齐</p>
+<p>内联格式中 <code>line-height</code> 和 height 设置为相同的高度实现对齐</p>
+<p>各种内联元素对比：</p>
 <ul>
-<li>flex <code>display: flex</code></li>
-<li>grid 二维网格</li>
+<li><code>inline</code>: <code>&lt;span&gt;</code> 的默认样式，不接受宽度和高度（由内容决定），不换行。</li>
+<li><code>inline-block</code>: 可以设置宽高（默认由内容撑开），不换行。可以与 inline 元素在同一行排列，控制其上下边距。</li>
+<li><code>block</code>: 有换行，默认宽度100%，高度默认由内容撑开。</li>
 </ul>
-<p>层叠上下文：staking context</p>
-<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>transform</p>
-<p>CSS模块化</p>
+<p>行内元素对齐方式：</p>
+<ul>
+<li><code>text-align: baseline;</code>: 基线</li>
+<li><code>text-align: middle;</code>: 居中</li>
+</ul>
+<h4 id="Flexbox-弹性盒子"><a href="#Flexbox-弹性盒子" class="headerlink" title="Flexbox 弹性盒子"></a>Flexbox 弹性盒子</h4><p>一维布局：灵活的响应式设计。</p>
+<ul>
+<li>容器：<code>display: flex;</code></li>
+<li>子元素：<code>display: flex;</code> 或 <code>display: inline-flex;</code></li>
+</ul>
+<h4 id="grid-二维网格"><a href="#grid-二维网格" class="headerlink" title="grid 二维网格"></a>grid 二维网格</h4><p>基于布局，适合复杂的较大页面。</p>
+<p><code>display: grid</code>; 或 <code>display: inline-grid;</code></p>
+<ul>
+<li>创建网格：<code>grid-template-columns: 1fr 1fr;</code></li>
+<li>子元素：<code>grid-column: 1 / 3;</code></li>
+</ul>
+<p>网格线：</p>
+<ul>
+<li><code>grid-column-start</code></li>
+<li><code>grid-column-end</code></li>
+<li><code>grid-row-start</code></li>
+<li><code>grid-row-end</code></li>
+<li><code>grid-column</code></li>
+<li><code>grid-row</code></li>
+<li><code>grid-area</code></li>
+</ul>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p><code>position</code> 属性</p>
+<ul>
+<li><code>static</code> 默认值，元素出现在正常的流中。</li>
+<li><code>relative</code> 相对定位，相对于元素本身进行定位。</li>
+<li><code>absolute</code> 绝对定位，相对于最近的已定位祖先元素。</li>
+<li><code>fixed</code> 固定定位，相对于浏览器窗口进行定位， 不受滚动影响。</li>
+<li><code>sticky</code> 粘性定位，相对于最近的已定位祖先元素，当元素进入视口时，固定在顶部或底部。</li>
+</ul>
+<h4 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h4><p>staking context：将元素沿着垂直屏幕的虚构的 Z 轴排开。</p>
+<ul>
+<li>可包含在其他层叠上下文中。</li>
+<li>独立于兄弟元素，只考虑子元素。</li>
+<li>子元素的z-index无法超越父元素的z-index显示顺序。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout/Introduction_to_formatting_contexts">渲染过程</a></p>
+<p>形成条件：</p>
+<ul>
+<li>文档根元素 <code>&lt;html&gt;</code>。</li>
+<li><code>position: relative;</code> 或 <code>position: absolute;</code> 的元素, z-index 值不为默认值。</li>
+<li><code>position: fixed;</code>, <code>position: sticky;</code> 的元素。</li>
+<li><code>flex</code>, <code>grid</code></li>
+<li><code>opacity</code> 值小于 1 的元素。</li>
+<li>具有 <code>transform</code>, <code>filter</code>, <code>backdrop-filter</code>, <code>perspective</code>, <code>clip-path</code>, <code>mask</code>, <code>isolation</code> 属性的元素。</li>
+</ul>
+<p>同一个层叠上下文内，元素间也有顺序:<br><img src="/cfea9c5cd49944f89ff52845563233f1~tplv-k3u1fbpfcp-zoom-in-crop-mark_1512_0_0_0.webp" alt="alt text"></p>
+<blockquote>
+<p>使用 CSS 变量或预处理语言的变量来管理 z-index 的值。将预设间隔设置为 10 或 100，以便后续便于插入。</p>
+</blockquote>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>计算布局 -&gt; 绘制 -&gt; 合成</p>
+<p>触发 reflow 的情况：</p>
+<ol>
+<li>修改 DOM 元素</li>
+<li>更改样式</li>
+<li>调整浏览器窗口大小</li>
+</ol>
+<p>需要 CPU 负责重新计算元素的大小、位置和布局。应该尽量不触发。</p>
+<p><strong>合成层（Composition Layers）</strong></p>
+<p>由GPU处理，将多个图层合成一个独立的图层中：减少绘制次数，提升渲染效率。</p>
+<p>使用 transform、opacity 等属性时，变化只需要由GPU重绘合成层中单独的图层，在后台运行。</p>
+<p><a target="_blank" rel="noopener" href="https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/">关于GPU硬件加速渲染详解</a></p>
+<h4 id="transform-变形"><a href="#transform-变形" class="headerlink" title="transform 变形"></a>transform 变形</h4><p>2d</p>
+<p>3D变形</p>
+<p>在线试一试： <a target="_blank" rel="noopener" href="https://codepen.io/yao-mo/pen/YzjYLeO">codepen.io&#x2F;yao-mo&#x2F;pen&#x2F;…</a></p>
+<h4 id="transition-过渡"><a href="#transition-过渡" class="headerlink" title="transition 过渡"></a>transition 过渡</h4><p><code>property</code> 过渡属性 + <code>duration</code> 过渡时间 + <code>timing-function</code> 过渡函数 + <code>delay</code> 延迟时间</p>
+<p>三种过渡函数：</p>
+<ul>
+<li><code>linear</code> 线性</li>
+<li>贝塞尔曲线<ul>
+<li><code>ease</code> 缓动 </li>
+<li><code>ease-in-out</code></li>
+<li><code>cubic-bezier(n,n,n,n)</code> 自定义</li>
+</ul>
+</li>
+<li><code>steps(n, start|end)</code> 分段函数阶跃</li>
+</ul>
+<h4 id="animation-动画"><a href="#animation-动画" class="headerlink" title="animation 动画"></a>animation 动画</h4><p>animation 属性参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation">developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;…</a></p>
+<p>关键帧</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名称 &#123;</span><br><span class="line">    <span class="selector-tag">from</span> &#123;</span><br><span class="line">        <span class="comment">/* 开始状态 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="comment">/* 结束状态 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>animation-name</code>: 关键帧名称</li>
+<li><code>animation-duration</code>: 持续时间</li>
+<li><code>animation-timing-function</code>: 节奏</li>
+<li><code>animation-delay</code>: 延迟开始时间</li>
+<li><code>animation-iteration-count</code>: 重复次数</li>
+<li><code>animation-direction</code>: 反向&#x2F;交替</li>
+<li><code>animation-fill-mode</code>: 执行前后样式</li>
+<li><code>animation-play-state</code>: 运行状态</li>
+</ul>
+<h2 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h2><p>原则：</p>
+<ul>
+<li>优先选用流式布局，如百分比、<code>flex</code>、 <code>grid</code>等</li>
+<li>使用响应式图片，匹配尺寸，节省带宽</li>
+<li>使用媒体查询为不同的设备类型做适配</li>
+<li>给移动端设备设置简单、统一的视口</li>
+<li>使用相对长度，<code>em</code>、<code>rem</code>、<code>vw</code> 做为长度度量</li>
+</ul>
+<h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><p>根据不同的设备特性（如屏幕大小、分辨率、方向等）应用不同的样式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">    <span class="comment">/* 针对屏幕宽度大于768px的设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">767px</span>) &#123;</span><br><span class="line">    <span class="comment">/* 针对屏幕宽度小于768px的设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1023px</span>) &#123;</span><br><span class="line">    <span class="comment">/* 针对屏幕宽度介于768px和1023px之间的设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1024px</span>) &#123;</span><br><span class="line">    <span class="comment">/* 针对屏幕宽度大于1024px的设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-device-width</span>: <span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-device-width</span>: <span class="number">1024px</span>) <span class="keyword">and</span> (<span class="attribute">orientation</span>: portrait) &#123;</span><br><span class="line">    <span class="comment">/* 针对竖屏设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-device-width</span>: <span class="number">768px</span>) <span class="keyword">and</span> (<span class="attribute">max-device-width</span>: <span class="number">1024px</span>) <span class="keyword">and</span> (<span class="attribute">orientation</span>: landscape) &#123;</span><br><span class="line">    <span class="comment">/* 针对横屏设备 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遵循cascading层叠覆盖原则，尽量将一般样式放在前面，特定样式放在后面。</p>
+<h4 id="像素与尺寸设计"><a href="#像素与尺寸设计" class="headerlink" title="像素与尺寸设计"></a>像素与尺寸设计</h4><p>确保阅读体验是相对一致</p>
+<ul>
+<li>视觉尺寸：1px &#x3D; 1&#x2F;96英寸</li>
+<li>CSS像素：1px &#x3D; 0.75pt</li>
+<li>设备像素比：DPR &#x3D; 设备像素&#x2F;CSS像素</li>
+</ul>
+<p>移动端设备viewport的适配:</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></p>
+<ul>
+<li><code>em</code> 表示相对于使用它的元素的字体大小。</li>
+<li><code>rem</code> 为相对于根元素（<code>&lt;html&gt;</code>）的字体大小。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1em = 16px */</span></span><br><span class="line"><span class="selector-tag">html</span> &#123;  </span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="comment">/* 根元素字体大小 */</span>  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="selector-class">.element</span> &#123;  </span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2rem</span>; <span class="comment">/* 该元素的字体大小为 32px (16px * 2) */</span>  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="selector-class">.child</span> &#123;  </span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2rem</span>; <span class="comment">/* 该元素的字体大小仍然为 32px */</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paragraph</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1em</span>; <span class="comment">/* 1em = 16px */</span></span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">0.5em</span>; <span class="comment">/* 0.5em = 8px */</span></span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5em</span>; <span class="comment">/* 24px */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置rem为视口宽度的10%，等比缩放。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">setRem</span>(<span class="params">ratio</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> rem = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span> / ratio;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="property">fontSize</span> = rem + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>vw</code> 视窗宽度的百分比，视窗宽度为视口宽度的100%。<code>vh</code> 视窗高度的百分比。</li>
+</ul>
+<h2 id="CSS-工程化"><a href="#CSS-工程化" class="headerlink" title="CSS 工程化"></a>CSS 工程化</h2><p>语言增强-CSS预处理器</p>
+<ul>
+<li>自定义变量</li>
+<li>嵌套选择器、作用域</li>
+<li>循环、条件语句、定义函数</li>
+<li>mixins、继承</li>
+</ul>
+<h4 id="CSS-模块化"><a href="#CSS-模块化" class="headerlink" title="CSS 模块化"></a>CSS 模块化</h4><p>BEM命名法 <code>block__element--modifier</code>：</p>
+<ul>
+<li>Element：模块的组成部分，如header__title、container__item等</li>
+<li>Block：模块的名称，如header、container等</li>
+<li>Modifier：模块的状态或属性，如header–fixed、container–center等</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 组件 */</span></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 子组件 */</span></span><br><span class="line"><span class="selector-class">.header__title</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修饰符 */</span></span><br><span class="line"><span class="selector-class">.header--fixed</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>CSS in JS: 将应用的CSS样式写在JavaScript文件里面，利用js动态生成css。</p>
+<p>unique classname</p>
+<p>styled component 机制：第二个 classname 作为唯一类名（hash 值），写入 class.</p>
+<ul>
+<li>首屏渲染、无多余css阻塞</li>
+</ul>
+<h4 id="原子化-CSS"><a href="#原子化-CSS" class="headerlink" title="原子化 CSS"></a>原子化 CSS</h4><ul>
+<li>工具库优先</li>
+<li>组合使用</li>
+<li>简单的类名</li>
+</ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p>AST抽象语法树格式化网址：<a target="_blank" rel="noopener" href="https://astexplorer.net/">astexplorer.net&#x2F;</a></p>
 
                 <hr>
                 
@@ -303,7 +457,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-text">引入方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">盒模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%B5%81"><span class="toc-text">常规流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-text">动画</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-text">引入方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">盒模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%B5%81"><span class="toc-text">常规流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flexbox-%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90"><span class="toc-text">Flexbox 弹性盒子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grid-%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC"><span class="toc-text">grid 二维网格</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-text">定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%82%E5%8F%A0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-text">层叠上下文</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-text">动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#transform-%E5%8F%98%E5%BD%A2"><span class="toc-text">transform 变形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#transition-%E8%BF%87%E6%B8%A1"><span class="toc-text">transition 过渡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#animation-%E5%8A%A8%E7%94%BB"><span class="toc-text">animation 动画</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="toc-text">响应式设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="toc-text">媒体查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%83%8F%E7%B4%A0%E4%B8%8E%E5%B0%BA%E5%AF%B8%E8%AE%BE%E8%AE%A1"><span class="toc-text">像素与尺寸设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-text">CSS 工程化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">CSS 模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E5%8C%96-CSS"><span class="toc-text">原子化 CSS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="toc-text">参考资源</span></a>
                 </div>
             </div>
         </div>
