@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        知识库项目｜undefined
+        CRDT协同方案分析｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://example.com/2024/10/11/知识库项目/">
+    <link rel="canonical" href="http://example.com/2024/10/11/CRDT协同方案分析/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -143,7 +143,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>知识库项目</h1>
+                    <h1>CRDT协同方案分析</h1>
                     
                     <span class="meta">
                          作者 Alexiang
@@ -160,7 +160,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            知识库项目
+            CRDT协同方案分析
         </span>
     </div>
 </header>
@@ -171,7 +171,32 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="协同编辑"><a href="#协同编辑" class="headerlink" title="协同编辑"></a>协同编辑</h2><ul>
+                <p>convergent or commutative replicated data type：用于在分布式系统中实现一致性数据结构。</p>
+<ul>
+<li>无锁并发控制，后端解决冲突</li>
+<li>支持离线编辑</li>
+<li>无需中心化服务器，P2P 即可实现多端协同</li>
+<li>达成最终强一致性，但不保证实时一致</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://pages.lip6.fr/Marc.Shapiro/papers/RR-7687.pdf">CRDT定义、证明 2011</a></p>
+<p><a target="_blank" rel="noopener" href="https://inria.hal.science/inria-00555588/document">CRDT的原理与实现</a></p>
+<ul>
+<li><p>CRDT 通过数据结构来保证最终一致性</p>
+<ul>
+<li>Operation-based</li>
+<li>State-based</li>
+</ul>
+</li>
+<li><p>OT 的基本策略则是协商，动态调整</p>
+</li>
+<li><p>op1 &#x3D; moveRow(0, 1)</p>
+</li>
+<li><p>op2 &#x3D; updateCell(0, 0, ‘xxxx’)</p>
+</li>
+<li><p>op2’ &#x3D; updateCell(0, 1, ‘xxxx’) &#x3D; transform(op1, op2)</p>
+</li>
+</ul>
+<h2 id="协同编辑"><a href="#协同编辑" class="headerlink" title="协同编辑"></a>协同编辑</h2><ul>
 <li>状态&#x2F;操作</li>
 </ul>
 <p>op: insert, delete, update</p>

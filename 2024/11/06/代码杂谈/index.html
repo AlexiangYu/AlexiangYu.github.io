@@ -171,8 +171,7 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>指令 -&gt; 机器语言</p>
-<h2 id="编程范式"><a href="#编程范式" class="headerlink" title="编程范式"></a>编程范式</h2><ul>
+                <h2 id="编程范式"><a href="#编程范式" class="headerlink" title="编程范式"></a>编程范式</h2><ul>
 <li>命令式编程：语句为基本单位，执行指令的步骤。<ul>
 <li>面向过程：自顶向下、过程结构化。以函数、过程、模块为基本特征。</li>
 <li>面向对象：便于修改和扩展，以类、继承、多态、依赖注入为基本特征。（五大原则）</li>
@@ -196,17 +195,82 @@
 
 
 
-<h2 id="编译与解释"><a href="#编译与解释" class="headerlink" title="编译与解释"></a>编译与解释</h2><p><code>x+y</code> -&gt; 词法分析(lexer) -&gt; Token: <code>[x, +, y]</code> -&gt; 语法分析(parser) -&gt; AST: <code>[+, [x, y]]</code> -&gt; 语义分析(semantic analysis) -&gt; <code>[+, [Num(2), Num(3)]]</code> -&gt; 解释&#x2F;代码生成 -&gt; <code>Num(5)</code> -&gt; 运行</p>
+<h2 id="编译与解释"><a href="#编译与解释" class="headerlink" title="编译与解释"></a>编译与解释</h2><p>指令 -&gt; 机器语言</p>
+<p><code>x+y</code> -&gt; 词法分析(lexer) -&gt; Token: <code>[x, +, y]</code> -&gt; 语法分析(parser) -&gt; AST: <code>[+, [x, y]]</code> -&gt; 语义分析(semantic analysis) -&gt; <code>[+, [Num(2), Num(3)]]</code> -&gt; 解释&#x2F;代码生成 -&gt; <code>Num(5)</code> -&gt; 运行</p>
 <ul>
 <li>Parser_LL(1)：左递归下降解析器</li>
 <li>Parser_LR(1)：线性规约解析器</li>
 <li>Parser_LALR：预测分析表法</li>
 </ul>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>明暗模式切换：less 变量，设定全局属性</p>
+<h2 id="前端设计"><a href="#前端设计" class="headerlink" title="前端设计"></a>前端设计</h2><p>明暗模式切换：less 变量，设定全局属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (newTheme === <span class="string">&#x27;dark&#x27;</span>) </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">setAttribute</span>(<span class="string">&#x27;arco-theme&#x27;</span>, <span class="string">&#x27;dark&#x27;</span>);</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeAttribute</span>(<span class="string">&#x27;arco-theme&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 
 <p><code>ConfigProvider</code> 组件：全局默认配置，包括主题、国际语言、尺寸等。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>匹配字符串模式的工具，可以用来查找、替换、验证和拆分文本。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&quot;pytpyppyyyppy&quot;</span></span><br><span class="line">res = re.findall(<span class="string">&quot;py&quot;</span>, s)</span><br><span class="line"><span class="built_in">print</span>(res, <span class="built_in">len</span>(res))         <span class="comment"># [&#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;] 4</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(<span class="string">&quot;py&quot;</span>, s))     <span class="comment"># &lt;re.Match object; span=(0, 2), match=&#x27;py&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line">r = <span class="string">&#x27;^[0-9a-zA-Z]&#123;6,10&#125;$&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;12345666&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(re.findall(r, s))      <span class="comment"># [&#x27;123456&#x27;]</span></span><br><span class="line"></span><br><span class="line">r_mail = <span class="string">r&#x27;(^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$)&#x27;</span>    <span class="comment"># 匹配邮箱</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;xxx@sb.com&#x27;</span>))     <span class="comment"># &lt;re.Match object; span=(0, 10), match=&#x27;xxx@sb.com&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;abc@com&#x27;</span>))        <span class="comment"># None</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>元字符</strong></p>
+<p>单字符：</p>
+<ul>
+<li><code>.</code>：匹配任何单个字符，除了 <code>\n</code>。</li>
+<li><code>[]</code>：括号中的任何单个字符。例如，<code>[abc]</code> 匹配 <code>a</code>、<code>b</code> 或 <code>c</code>。</li>
+<li><code>^</code>：脱字号，表示其以外的字符。例如，<code>[^abc]</code> 匹配除了 <code>a</code>、<code>b</code> 和 <code>c</code> 以外的任何字符。</li>
+<li><code>\d</code>：任意数字，等价于 <code>[0-9]</code>。</li>
+<li><code>\D</code>：任意非数字字符，等价于 <code>[^0-9]</code>。</li>
+<li><code>\s</code>：任意空白字符，等价于 <code>[\t\n\r\f\v]</code>。</li>
+<li><code>\S</code>：任意非空白字符，等价于 <code>[^\t\n\r\f\v]</code>。</li>
+<li><code>\w</code>：任意字母、数字或下划线，等价于 <code>[a-zA-Z0-9_]</code>。</li>
+<li><code>\W</code>：任意非字母、数字或下划线字符，等价于 <code>[^a-zA-Z0-9_]</code>。</li>
+</ul>
+<p>边界匹配：</p>
+<ul>
+<li><code>\b</code>：单词边界，<code>\w</code> 和 <code>\W</code> 之间的位置。</li>
+<li><code>\B</code>：非单词边界。</li>
+<li><code>^</code>：行首。</li>
+<li><code>$</code>：行尾。</li>
+</ul>
+<p>分组匹配：</p>
+<ul>
+<li><code>|</code>：或。</li>
+<li><code>(...)</code>：捕获组。</li>
+<li><code>(?:...)</code>：非捕获组。</li>
+<li><code>(?P&lt;name&gt;...)</code>：命名组。</li>
+<li><code>(?#...)</code>：注释。</li>
+<li><code>(?=...)</code>：肯定预测先行断言。</li>
+<li><code>(?!...)</code>：否定预测先行断言。</li>
+<li><code>(?&lt;=...)</code>：正向肯定回顾预测。</li>
+<li><code>(?&lt;!...)</code>：正向否定回顾预测。</li>
+<li><code>(?imx)</code>：设置匹配模式，<code>i</code> 忽略大小写，<code>m</code> 多行模式，<code>x</code> 忽略空白。</li>
+<li><code>(?-imx)</code>：取消匹配模式。</li>
+<li><code>(?#...)</code>：注释。</li>
+</ul>
+<p>数量匹配：</p>
+<ul>
+<li><code>*</code>：匹配零个或多个。</li>
+<li><code>+</code>：一个或多个。</li>
+<li><code>?</code>：零个或一个。</li>
+<li><code>&#123;m&#125;</code>：出现m次。</li>
+<li><code>&#123;m,&#125;</code>：至少出现m次。</li>
+<li><code>&#123;m,n&#125;</code>：m到n个。</li>
+<li><code>&#123;m,n&#125;?</code>：m到n个，非贪婪模式。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.findall(<span class="string">r&#x27;g[a-z]+d&#x27;</span>, <span class="built_in">str</span>))     <span class="comment"># [&#x27;gadxxgodwwgeed&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(re.findall(<span class="string">r&#x27;g[a-z]+?d&#x27;</span>, <span class="built_in">str</span>))    <span class="comment"># [&#x27;gad&#x27;, &#x27;god&#x27;, &#x27;geed&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>非贪婪匹配：<code>[a-z]+?</code>，限定符后面加上问号 <code>?</code>，表示匹配尽可能少的字符。</p>
+<p>修饰符：</p>
+<ul>
+<li><code>re.I</code>：忽略大小写。</li>
+<li><code>re.M</code>：多行模式。</li>
+<li><code>re.S</code>：匹配任意字符，包括换行符。</li>
+<li><code>re.X</code>：使用更加精细的语法。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配数字</span></span><br><span class="line">pattern = <span class="string">r&#x27;\d+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;123 456 789&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;123&#x27;, &#x27;456&#x27;, &#x27;789&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配中文</span></span><br><span class="line">pattern = <span class="string">r&#x27;[\u4e00-\u9fa5]+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;你好，世界！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;你好&#x27;, &#x27;世界&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配邮箱</span></span><br><span class="line">pattern = <span class="string">r&#x27;\w+@\w+\.\w+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;abc@123.com def@456.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;abc@123.com&#x27;, &#x27;def@456.com&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配日期</span></span><br><span class="line">pattern = <span class="string">r&#x27;\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;2021-10-10 2022-01-01&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;2021-10-10&#x27;, &#x27;2022-01-01&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
                 <hr>
                 
@@ -220,8 +284,8 @@
                     
                     
                     <li class="next">
-                        <a href="/2024/10/11/知识库项目/" data-toggle="tooltip" data-placement="top"
-                           title="知识库项目">Next Post &rarr;</a>
+                        <a href="/2024/10/11/CRDT协同方案分析/" data-toggle="tooltip" data-placement="top"
+                           title="CRDT协同方案分析">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -240,7 +304,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F"><span class="toc-text">编程范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E5%AD%90%EF%BC%88Functor%EF%BC%89"><span class="toc-text">函子（Functor）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="toc-text">编译与解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F"><span class="toc-text">编程范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E5%AD%90%EF%BC%88Functor%EF%BC%89"><span class="toc-text">函子（Functor）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="toc-text">编译与解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1"><span class="toc-text">前端设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
