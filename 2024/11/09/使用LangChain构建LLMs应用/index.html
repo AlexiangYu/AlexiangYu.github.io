@@ -171,7 +171,19 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="LangChain功能总结"><a href="#LangChain功能总结" class="headerlink" title="LangChain功能总结"></a>LangChain功能总结</h2><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本质上就是对各种大模型提供的API的套壳，是为了方便我们使用这些API，搭建起来的一些框架、模块和接口。</p>
+                <h2 id="LangChain功能总结"><a href="#LangChain功能总结" class="headerlink" title="LangChain功能总结"></a>LangChain功能总结</h2><ol>
+<li>Model I&#x2F;O </li>
+<li>RAG</li>
+<li>Agent</li>
+<li>Chain (LCEL)</li>
+<li>Memory</li>
+<li>Callbacks</li>
+</ol>
+<p><strong>使用 LCEL</strong></p>
+<p>构造链 LangChain Expression Language 声明式表达方式，轻松组合多个步骤</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chain = prompt | model | output_parser</span><br><span class="line">result = chain.invoke(&#123;<span class="string">&quot;flower&quot;</span>: <span class="string">&quot;玫瑰&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本质上就是对各种大模型提供的API的套壳，是为了方便我们使用这些API，搭建起来的一些框架、模块和接口。</p>
 <blockquote>
 <p>LangChain是一个基于大语言模型（LLMs）用于构建端到端语言模型应用的框架，它可以让开发者使用语言模型来实现各种复杂的任务，例如文本到图像的生成、文档问答、聊天机器人等。LangChain提供了一系列工具、套件和接口，可以简化创建由LLMs和聊天模型提供支持的应用程序的过程。</p>
 </blockquote>
@@ -425,6 +437,7 @@
 </blockquote>
 <p><img src="/07cbca8cfff33ffa231830eff145556c.webp" alt="alt text"></p>
 <p>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face</p>
+<p>使其能够根据用户请求自动生成计划，并使用外部模型，从而整合多模态感知能力，并处理多个复杂的AI任务。此外，这种流程还允许HuggingGPT持续从任务特定的专家模型中吸收能力，从而实现可增长和可扩展的AI能力。</p>
 <h2 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.10439v2">开放式表格与文本问题回答</a>，Chen, W., Chang, M.-W., Schlinger, E., Wang, W., &amp; Cohen, W. W. (2021). Open Question Answering over Tables and Text. ICLR 2021.</li>
 <li>Open AI的GPT-3模型：<a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf">大模型是少样本学习者</a>, Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., … &amp; Agarwal, S. (2020). Language models are few-shot learners. arXiv preprint arXiv:2005.14165.</li>
@@ -436,7 +449,7 @@
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.09014">ART：大型语言模型的自动多步推理和工具使用</a>，Paranjape, B., Lundberg, S., Singh, S., Hajishirzi, H., Zettlemoyer, L., &amp; Ribeiro, M. T. (2023). ART: Automatic multi-step reasoning and tool-use for large language models. arXiv preprint arXiv:2303.09014.</li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.04091">“计划与解决”提示：通过大型语言模型改进Zero-Shot链式思考推理</a> Wang, L., Xu, W., Lan, Y., Hu, Z., Lan, Y., Lee, R. K.-W., &amp; Lim, E.-P. (2023). Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models. arXiv preprint arXiv:2305.04091.</li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2205.11916">Large Language Models are Zero-Shot Reasoners</a></li>
-<li>论文 <a href="https://link.juejin.cn/?target=https://arxiv.org/pdf/2303.17580.pdf" title="https://arxiv.org/pdf/2303.17580.pdf">HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face</a> <a href="https://link.juejin.cn/?target=https://huggingface.co/spaces/microsoft/HuggingGPT" title="https://huggingface.co/spaces/microsoft/HuggingGPT">官网</a></li>
+<li>论文 <a href="https://link.juejin.cn/?target=https://arxiv.org/pdf/2303.17580.pdf" title="https://arxiv.org/pdf/2303.17580.pdf">HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face</a></li>
 </ul>
 
                 <hr>
