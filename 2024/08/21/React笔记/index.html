@@ -191,13 +191,15 @@
 <h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><p>class类名控制：<code>className</code> 需导入</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import &#x27;./foo.css&#x27;;</span></span><br><span class="line">&lt;span className=<span class="string">&quot;foo&quot;</span>&gt;<span class="title class_">This</span> is a span&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 
-
+<p>支持 CSS Modules 语法：<code>import styles from &#39;./foo.module.css&#39;;</code></p>
+<p>CSS in JS：<code>style=&#123;&#123; backgroundColor: 'red' &#125;&#125;</code></p>
 <h4 id="获取DOM节点"><a href="#获取DOM节点" class="headerlink" title="获取DOM节点"></a>获取DOM节点</h4><ul>
 <li><code>useRef()</code>：获取ref的引用</li>
 <li><code>ref</code> 属性：组件实例的 DOM 节点</li>
 <li><code>inputRef.current</code>：在js中DOM节点的引用</li>
 </ul>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputRef = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    inputRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>Focus<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
 
 <h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>hook函数：<code>useState()</code></p>
@@ -294,6 +296,7 @@
 <li><code>useImperativeHandle()</code>：自定义暴露钩子</li>
 <li><code>useLayoutEffect()</code>：布局钩子</li>
 </ul>
+<p>仅保存，不需要重渲染的数据可用 <code>useRef()</code></p>
 <h4 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h4><p>副作用钩子，仅在特定条件下执行：</p>
 <ol>
 <li>接收一个函数，创建副作用操作，函数中可以有异步操作（发送AJAX请求，更改DOM等），可以返回一个清除副作用的函数。</li>
