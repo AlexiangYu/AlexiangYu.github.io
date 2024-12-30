@@ -417,7 +417,23 @@
 <p>在进行索引时，API 会对每个文档进行哈希处理，确保每个文档都有一个唯一的标识。这个哈希值不仅仅基于文档的内容，还考虑了文档的元数据。确保了即使文档经历了多次转换或处理，也能够精确地跟踪它的状态和来源，确保文档数据被正确管理和索引。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://python.langchain.com/docs/how_to/indexing/">LangChain中 Indexing 的说明</a></p>
-<h3 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h3><h2 id="Agent-框架"><a href="#Agent-框架" class="headerlink" title="Agent 框架"></a>Agent 框架</h2><p>让ChatGPT自己生成这些引导文本</p>
+<h3 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h3><p>检索：</p>
+<ul>
+<li>MRR (Mean Reciprocal Rank)：平均倒数排名，是衡量检索结果质量的指标。相关结果首次出现的位置</li>
+<li>Hit rate：检索到的文档中，正确答案的比例。</li>
+<li>NDCG (Normalized Discounted Cumulative Gain)：归一化折扣累积增益，是衡量检索结果质量的指标。</li>
+</ul>
+<p>生成：</p>
+<ul>
+<li>BLEU (Bilingual Evaluation Understudy)：双语评估，是衡量生成结果质量的指标。</li>
+<li>ROUGE (Recall-Oriented Understanding Evaluation)：重叠式理解评估，是衡量生成结果质量的指标。<ul>
+<li>Rouge-L: L 表示最大匹配长度，衡量生成结果与参考答案的相似度。</li>
+<li>Rouge-1: 单词匹配度。</li>
+<li>Rouge-2: 短语匹配度。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Agent-框架"><a href="#Agent-框架" class="headerlink" title="Agent 框架"></a>Agent 框架</h2><p>让ChatGPT自己生成这些引导文本</p>
 <h4 id="模拟代理"><a href="#模拟代理" class="headerlink" title="模拟代理"></a>模拟代理</h4><p><strong>CAMEL 交流式代理</strong></p>
 <p>交流式代理 + 角色扮演 + 启示式提示 <code>inception prompting</code></p>
 <p>明确的交互规范，如一次只能给出一个指令，解决方案必须具有详细的解释。使用 “Solution: ” 开始输出解决方案，等等。有助于保持对话的清晰性和高效性。</p>
