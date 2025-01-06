@@ -1,609 +1,1346 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="I love to share my thoughts and experiences about technology, programming and life.">
-    <meta name="keyword" content="">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
-    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
-    <link rel="alternate" type="application/atom+xml" title="Alexiang" href="/atom.xml">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
-    <title>
-        
-        
-        
-    </title>
+  <meta charset="utf-8">
+  
+  
+  <title>Alexiang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="I love to share my thoughts and experiences about technology, programming and life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alexiang&#39;s Blog">
+<meta property="og:url" content="https://alexiangyu.github.io/page/2/index.html">
+<meta property="og:site_name" content="Alexiang&#39;s Blog">
+<meta property="og:description" content="I love to share my thoughts and experiences about technology, programming and life.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Alexiang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Alexiang's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="canonical" href="http://example.com/page/2/">
-
-    <!-- Bootstrap Core CSS -->
+  
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
 
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/blog-style.css">
-
-
-    <!-- Pygments Github CSS -->
-    
-<link rel="stylesheet" href="/css/syntax.css">
-
-<meta name="generator" content="Hexo 7.2.0"></head>
-
-<style>
-
-    header.intro-header {
-        background-image: url('')
-    }
-</style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
-" data-ishome = "true" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated pulse" href="/">
-                <span class="brand-logo">
-                    Alexiang
-                </span>
-                's Blog
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-					
-                    
-                        
-							
-                        <li>
-                            <a href="/categories/">categories</a>
-                        </li>
-							
-						
-                    
-					
-					
-                </ul>
-            </div>
-        </div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alexiang&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A little bit of everything</a>
+        </h2>
+      
     </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-//    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-<!-- Main Content -->
-
-
-<style>
-
-    .custom-haojen-container .post-preview:nth-of-type(1),
-    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
-        text-align: center;
-        background-repeat: no-repeat;
-        border-radius: 3px;
-        background-size: cover;
-        padding: 0;
-        height: 300px;
-        display: table;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.16);
-    }
-
-    /*去掉诗歌的背景图片*/
-    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
-        background-image: none !important;
-        background-color: rgba(255, 248, 220, 0.5);
-    }
-
-    .custom-haojen-container .post-preview:nth-child(1) h2,
-    .custom-haojen-container .post-preview:nth-child(1) .post-meta,
-    .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
-        text-shadow: 0 0 40px rgba(0, 0, 0, 1);
-        letter-spacing: 1px;
-        color: #fff;
-        margin-top: 0;
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-
-    .custom-haojen-container .post-preview:nth-child(1) .post-meta {
-        font-size: .9em;
-        font-weight: 300;
-        margin-top: 0;
-    }
-
-    .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle {
-        letter-spacing: 6px;
-        font-size: 18px;
-        font-family: unset;
-        font-weight: 400;
-        color: rgba(0, 0, 0, .75)
-    }
-
-    /*不显示摘要*/
-    .custom-haojen-container .post-preview:nth-child(1) .post-content-preview {
-        display: none
-    }
-
-    /*只第一个显示背景图片*/
-    .custom-haojen-container .post-preview:not(:nth-child(1)) {
-        background-image: none !important;
-    }
-
-    /*第一个分界线去掉*/
-    .custom-haojen-container hr:nth-of-type(1) {
-        display: none;
-    }
-
-    /*主题*/
-    .custom-haojen-container .post-preview:nth-of-type(1) > a {
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    /*诗词标题*/
-    .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
-        font-size: 35px;
-        font-family: STKaiti;
-        color: rgba(0, 0, 0, .8);
-    }
-
-    .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta {
-        color: #0e2231;
-    }
-
-    @media (max-width: 768px) {
-        .custom-haojen-container .post-preview:nth-child(1) {
-            height: 240px;
-        }
-
-        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
-            font-size: 28px !important;
-            margin-top: 0;
-        }
-
-        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
-            font-size: 18px;
-            font-weight: 400;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        .custom-haojen-container .post-preview:nth-of-type(1) > a {
-            padding: 20px
-        }
-    }
-
-    /*手机屏幕*/
-    @media (max-width: 400px) {
-        .custom-haojen-container .post-preview:nth-child(1) {
-            height: 195px;
-        }
-
-        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
-            font-size: 20px !important;
-        }
-
-        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
-            font-size: 16px;
-        }
-
-        .custom-haojen-container .post-preview:nth-child(1) a {
-            padding: 30px 20px;
-        }
-    }
-</style>
-
-<!-- Page Header -->
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    <div class="row">
-        <header class="intro-header">
-            <div class="container">
-                <div class="site-heading text-center">
-                    <div class="about-me">
-                        <!--移动端头部显示-->
-                        <img src=""/>
-                        <h5><a href="/about/">Alexiang</a></h5>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </header>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://alexiangyu.github.io"></form>
+      </div>
     </div>
-</div>
-<!-- Main Content -->
-<div class="container custom-haojen-container">
-    <!-- Post Container -->
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-            <!-- Main Content -->
+  </div>
+</header>
 
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/06/04/基础-网络相关/">
-        <h2 class="post-title">
-            基础-网络相关
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-06-04
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                HTTP1xx (Informational) 信息性状态码
-
-100 Continue: 客户端应该继续发送请求。
-101 Switching Protocols: 服务器已切换协议。
-
-2xx (Successful) 成功状态码
-
-200 OK: 请求已成功完成。
-201 Created:..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/30/JavaScript笔记/">
-        <h2 class="post-title">
-            JavaScript 笔记
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-30
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                简介一种脚本语言，可用于HTML和Web，更可广泛用于服务器等领域。
-组成：
-ECMAScript 核心语法
-Web APIs DOM（文档对象模型）+BOM
-书写位置
-内部JS：&lt;script&gt;写在&lt;body&gt;最后  1234567&lt;body&gt;  &lt;!..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/18/Python笔记/">
-        <h2 class="post-title">
-            Python笔记
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-18
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                基础解释器
-12s = &quot;hello, python&quot;print(s)
-
-数据类型
-int
-float
-string
-
-查看类型：type(8963) = int_type
-round(x, n) 方法返回浮点数x保留n位小数的四舍五入值
-注解
-12a: int = 1b: ..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/14/My-New-Post/">
-        <h2 class="post-title">
-            My New Post
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-14
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                This is my new postThis is the content of my new post.
-
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2024/05/12/hello-world/">
-        <h2 class="post-title">
-            Hello World
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-12
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer i..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('')">
-    <a href="/2014/12/27/闲笔/">
-        <h2 class="post-title">
-            闲笔
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2014-12-27
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                删
-
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-
-<!-- 翻页 pager -->
-
-<ul class="pager">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-基础-网络相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" class="article-date">
+  <time class="dt-published" datetime="2024-06-04T10:31:01.000Z" itemprop="datePublished">2024-06-04</time>
+</a>
     
-    <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
-    </li>
+  </div>
+  <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/">基础-网络相关</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p><strong>1xx (Informational) 信息性状态码</strong></p>
+<ul>
+<li><strong>100 Continue</strong>: 客户端应该继续发送请求。</li>
+<li><strong>101 Switching Protocols</strong>: 服务器已切换协议。</li>
+</ul>
+<p><strong>2xx (Successful) 成功状态码</strong></p>
+<ul>
+<li><strong>200 OK</strong>: 请求已成功完成。</li>
+<li><strong>201 Created</strong>: 新资源已创建。</li>
+<li><strong>202 Accepted</strong>: 请求已接受，但尚未处理。</li>
+<li><strong>204 No Content</strong>: 服务器成功处理了请求，但没有返回任何内容。</li>
+<li><strong>206 Partial Content</strong>: 服务器已成功处理了部分请求。</li>
+</ul>
+<p><strong>3xx (Redirection) 重定向状态码</strong></p>
+<ul>
+<li><strong>301 Moved Permanently</strong>: 资源已永久移动到新位置。</li>
+<li><strong>302 Found</strong>: 资源临时移动到新位置。</li>
+<li><strong>304 Not Modified</strong>: 资源未修改，可以使用缓存中的版本。</li>
+<li><strong>307 Temporary Redirect</strong>: 资源临时移动到新位置，使用 GET 或 HEAD 请求。</li>
+<li><strong>308 Permanent Redirect</strong>: 资源永久移动到新位置，可以使用 GET 或 HEAD 请求。</li>
+</ul>
+<p><strong>4xx (Client Error) 客户端错误状态码</strong></p>
+<ul>
+<li><strong>400 Bad Request</strong>: 请求有语法错误。</li>
+<li><strong>401 Unauthorized</strong>: 客户端未经授权。</li>
+<li><strong>403 Forbidden</strong>: 服务器拒绝访问资源。</li>
+<li><strong>404 Not Found</strong>: 服务器无法找到请求的资源。</li>
+<li><strong>405 Method Not Allowed</strong>: 请求方法不被允许。</li>
+<li><strong>408 Request Timeout</strong>: 请求超时。</li>
+<li><strong>409 Conflict</strong>: 请求无法完成，因为与现有资源冲突。</li>
+<li><strong>410 Gone</strong>: 资源已永久删除。</li>
+<li><strong>411 Length Required</strong>: 必须提供内容长度。</li>
+<li><strong>412 Precondition Failed</strong>: 请求条件不满足。</li>
+<li><strong>413 Request Entity Too Large</strong>: 请求体过大。</li>
+<li><strong>414 Request-URI Too Long</strong>: 请求 URI 过长。</li>
+<li><strong>415 Unsupported Media Type</strong>: 服务器不支持请求的媒体类型。</li>
+<li><strong>416 Requested Range Not Satisfiable</strong>: 请求的范围无法满足。</li>
+<li><strong>417 Expectation Failed</strong>: 服务器无法满足“Expect”报头的期望。</li>
+<li><strong>422 Unprocessable Entity</strong>: 请求无法处理。</li>
+<li><strong>429 Too Many Requests</strong>: 客户端请求过多。</li>
+</ul>
+<p><strong>5xx (Server Error) 服务器错误状态码</strong></p>
+<ul>
+<li><strong>500 Internal Server Error</strong>: 服务器遇到错误，无法完成请求。</li>
+<li><strong>501 Not Implemented</strong>: 服务器不支持请求功能。</li>
+<li><strong>502 Bad Gateway</strong>: 服务器作为网关或代理时，从上游服务器接收到无效的响应。</li>
+<li><strong>503 Service Unavailable</strong>: 服务器暂时无法处理请求。</li>
+<li><strong>504 Gateway Timeout</strong>: 服务器作为网关或代理时，从上游服务器等待响应超时。</li>
+<li><strong>505 HTTP Version Not Supported</strong>: 服务器不支持请求的 HTTP 版本。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<ul>
+<li>网站无法找到你请求的页面， <strong>404 Not Found</strong> 错误。</li>
+<li>需要登录的网站，但没有登录 <strong>401 Unauthorized</strong> 错误。</li>
+<li>上传一个文件，但文件太大 <strong>413 Request Entity Too Large</strong> 错误。</li>
+</ul>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h4 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h4><p>一次请求&#x2F;响应完成后，一方主动关闭连接，客户端再次请求时，需要重新建立连接。</p>
+<p>长连接：建立一次连接后，保持连接状态，可以发送多个请求，直到客户端主动关闭连接。多个HTTP请求可以复用同一个TCP连接</p>
+<p>多用于操作频繁，点对点的通讯，而且连接数不能太多情况。对于服务端来说，长连接会耗费服务端的资源，如果有几十万，上百万的连接，服务端的压力会非常大，甚至会崩溃。所以对于并发量大，请求频率低的，建议使用短连接。</p>
+<p>数据库、远程服务调用、消息队列、等场景适合使用长连接。</p>
+<p>实现：<strong>心跳机制</strong> 服务器 KeepAlive 功能</p>
+<p>存在队头堵塞？</p>
+<h4 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h4><p>将多个 HTTP 请求整批提交的技术，</p>
+<h4 id="QUIC"><a href="#QUIC" class="headerlink" title="QUIC"></a>QUIC</h4><p>Google 开发的的传输层协议，基于UDP（用户数据报协议），并集成了TLS（传输层安全协议），从而实现较低的延迟和快速的数据传输。</p>
+<p>建立连接只需一次往返延迟（RTT）允许在一个连接中同时传输多个数据流，消除了队头阻塞的影响。适合移动设备</p>
+<h4 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP&#x2F;2"></a>HTTP&#x2F;2</h4><p>HTTP&#x2F;2 采用二进制格式，支持多路复用，头部压缩，服务器推送等特性，可以更有效地利用网络资源，提高传输速度。</p>
+<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>WebSocket 是 HTML5 开始提供的一种协议，它实现了浏览器与服务器的全双工通信，允许服务端主动向客户端推送数据。</p>
+<p>WebSocket 协议的优点：</p>
+<ul>
+<li>建立连接更快，延迟更低</li>
+<li>通信双方可以主动发送消息，而无需等待对方回应</li>
+<li>支持双向通信，实时性更好</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>兼容性问题，部分浏览器不支持</li>
+<li>安全性问题，WebSocket 容易受到中间人攻击</li>
+<li>协议复杂，实现起来比较复杂</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><p>HTTPS（Hypertext Transfer Protocol Secure）是 HTTP 的安全版本，使用 SSL&#x2F;TLS 加密传输数据，可以防止数据被窃听、篡改、伪造。</p>
+<p>PKI (Public Key Infrastructure)，身份验证。</p>
+<p>到 CA（Certificate Authority）申请证书，证书里面包含公钥和域名信息，验证网站真实性。</p>
+<h4 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h4><ul>
+<li>对称加密：加密和解密使用同一个密钥，如 AES、DES、3DES</li>
+<li>非对称加密：加密和解密使用不同的密钥，如 RSA、ECC</li>
+<li>哈希算法：对数据进行摘要计算，防止数据被篡改，如 MD5、SHA-1、SHA-256</li>
+<li>数字签名：对数据进行签名，防止数据被伪造，如 RSA 签名、ECDSA 签名</li>
+</ul>
+<h4 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h4><p>证书包含公钥、域名信息、有效期、颁发机构等信息，用于验证网站真实性。</p>
+<ul>
+<li>自签名证书：自己制作证书，不受 CA 认证，适用于测试环境</li>
+<li>第三方证书：购买证书，由 CA 认证，适用于生产环境</li>
 </ul>
 
-
-        </div>
-        <!-- Sidebar Container -->
-        <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-
-            <!-- About Me -->
-            <section class="visible-md visible-lg" style="padding: 0 18px">
-                <div class="short-about">
-                    <!--侧边栏头像-->
-                    
-                    <h5><a href="/about/">Alexiang</a></h5>
-                    
-                    <hr>
-                    <!-- SNS Link 社交 -->
-                    <ul class="list-inline">
-                        
-                        
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Featured Tags  标签 -->
-            
-
-            
-
-        </div>
+      
     </div>
-</div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" data-id="cm5l95ln3000k0kvzfi1z6mp4" data-title="基础-网络相关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
 
-<!-- Footer -->
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <br>
-                <ul class="list-inline text-center">
-                
-                
-                
 
-                
 
-                
+  
+    <article id="post-JavaScript笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/05/30/JavaScript%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-05-30T09:22:51.000Z" itemprop="datePublished">2024-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </div>
 
-                
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/05/30/JavaScript%E7%AC%94%E8%AE%B0/">JavaScript 笔记</a>
+    </h1>
+  
 
-                
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>一种脚本语言，可用于HTML和Web，更可广泛用于服务器等领域。</p>
+<p>组成：</p>
+<p><strong>ECMAScript</strong> 核心语法</p>
+<p><strong>Web APIs</strong> DOM（文档对象模型）+BOM</p>
+<h3 id="书写位置"><a href="#书写位置" class="headerlink" title="书写位置"></a>书写位置</h3><ul>
+<li>内部JS：<code>&lt;script&gt;</code>写在<code>&lt;body&gt;</code>最后  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- body content here --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">alert</span>(<span class="string">&quot;Hello, JS!&quot;</span>)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>外部JS：单独引入<code>.js</code>文件  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- body content here --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>内联JS：标签内部  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;Hello World!&#x27;)&quot;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="输入-输出"><a href="#输入-输出" class="headerlink" title="输入&#x2F;输出"></a>输入&#x2F;输出</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;写入文档&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;打印日志&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(<span class="string">&quot;弹出提示框&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">prompt</span>(<span class="string">&quot;输入框&quot;</span>, <span class="string">&quot;默认值&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;p&gt;你输入的内容是：&quot;</span> + a + <span class="string">&quot;&lt;/p&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>; </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">`&lt;p&gt;我的年龄是<span class="subst">$&#123;age&#125;</span>岁&lt;/p&gt;`</span>);   <span class="comment">//模板字符串</span></span><br></pre></td></tr></table></figure>
 
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Alexiang 2025
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
-                </p>
+<h3 id="let，var，-const区别"><a href="#let，var，-const区别" class="headerlink" title="let，var， const区别"></a>let，var， const区别</h3><ol>
+<li>作用域：</li>
+</ol>
+<ul>
+<li>var：函数作用域，在声明它的函数内部有效。</li>
+<li>let：块级作用域，即在声明它的<code>&#123; &#125;</code>块（如 if 语句块、for 循环块等）内有效。</li>
+</ul>
+<ol start="2">
+<li>变量提升：</li>
+</ol>
+<ul>
+<li>var：会发生变量提升，即在变量声明之前就可以访问到变量（但值为 undefined）</li>
+<li>let：没有变量提升，在声明之前访问会报错。</li>
+</ul>
+<p>var可重复声明</p>
+<p>常量const：必须赋值，不可修改</p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(arr[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-            </div>
-        </div>
+<ul>
+<li><strong>添加</strong><ol>
+<li>push(el1, el2)：添加元素到尾部，返回<strong>新的长度</strong></li>
+<li>unshift(el)：添加到头部</li>
+</ol>
+</li>
+<li><strong>删除</strong><ol>
+<li>pop()：删除最后一个元素，返回<strong>该元素</strong></li>
+<li>shift()：删除第一个元素</li>
+<li>splice(start, count&#x3D;1, …, (el1)…)：指定开始位置，移除个数，替换元素</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span> ,<span class="string">&#x27;Alex&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Charlie&#x27;</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">push</span>(<span class="string">&#x27;Dave&#x27;</span>, <span class="string">&#x27;Eve&#x27;</span>))    <span class="comment">// 7</span></span><br><span class="line">arr.<span class="title function_">unshift</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [0, 1, 2, &#x27;Alex&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;, &#x27;Dave&#x27;, &#x27;Eve&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">shift</span>())   <span class="comment">// remove the first element</span></span><br><span class="line">arr.<span class="title function_">splice</span>(<span class="number">2</span>, <span class="number">1</span>, <span class="string">&#x27;Jane&#x27;</span>)    <span class="comment">// replace &#x27;Alex&#x27; with &#x27;Jane&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr)    <span class="comment">// [0, 1, &#x27;Jane&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;, &#x27;Dave&#x27;, &#x27;Eve&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>map(func)</code>：映射，返回新数组</li>
+<li><code>filter(func)</code>：过滤，返回新数组</li>
+<li><code>reduce((prev, curr) =&gt; &#123;... &#125;, initial)</code>：聚合，返回单个值</li>
+<li><code>sort(func)</code>：排序，返回新数组</li>
+<li><code>reverse()</code>：反转，返回新数组</li>
+<li><code>slice(start, end)</code>：切片，返回新数组</li>
+<li><code>concat(arr1, arr2,...)</code>：合并，返回新数组</li>
+<li><code>join</code>：连结成字符串</li>
+</ul>
+<p>展开运算符： 数组变成多个参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">max</span>(...arr)); <span class="comment">// Output: 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">2</span>);   <span class="comment">// [3, 4, 5] 返回true的元素才会被保留</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, curr</span>) =&gt;</span> acc + curr, <span class="number">0</span>)); <span class="comment">// Output: 15</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>遍历</strong></p>
+<ul>
+<li><code>forEach(func)</code>：遍历数组，不返回新数组</li>
+<li><code>for...of</code>：遍历数组，返回新数组</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">value, index, arr</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>解构</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [un, deux, trois, quatre, cinq] = arr;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(un, deux, trois, quatre, cinq); <span class="comment">// Output: 1 2 3 4 5</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>弱数据类型：在程序运行时才确定</p>
+<ul>
+<li><strong>基本数据类型：</strong> 存储的值本身<ol>
+<li>Number</li>
+<li>String  <code>.trim()</code> 去掉前后空格</li>
+<li>Boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>Symbol</li>
+</ol>
+</li>
+<li><strong>引用数据类型：</strong> 可变<ol>
+<li>Object</li>
+<li>Array</li>
+<li>Function</li>
+<li>Date</li>
+<li>RegExp 正则表达式</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="comment">// Object</span></span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> colors = [<span class="string">&quot;red&quot;</span>, <span class="string">&quot;green&quot;</span>, <span class="string">&quot;blue&quot;</span>]; <span class="comment">// Array</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params"></span>) &#123; <span class="comment">// Function</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">// Date</span></span><br><span class="line"><span class="keyword">let</span> regex = <span class="regexp">/hello/i</span>; <span class="comment">// RegExp</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>类型判断</strong></p>
+<p>typeof 运算符&#x2F;函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">true</span>);  <span class="comment">// boolean</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">undefined</span>);  <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">null</span>);   <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>关于null与undefined</strong></p>
+<p>null是已赋值空类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span>+<span class="number">1</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>+<span class="number">1</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span>+<span class="literal">null</span>) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>类型转换</strong></p>
+<ol>
+<li>隐式转换: 运算，拼接</li>
+<li><strong>显示转换</strong>：手动</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">let</span> ans1 = <span class="title class_">Number</span>(str) + <span class="number">1</span> <span class="comment">// 124</span></span><br><span class="line"><span class="keyword">let</span> ans2 = +str + <span class="number">1</span> <span class="comment">// 124 隐式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> age = +<span class="title function_">prompt</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>); <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>parseInt()：只保留整数</li>
+<li>parseFloat()：保留小数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(<span class="string">&quot;89.65px&quot;</span>))    <span class="comment">// 89</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&quot;12.98px&quot;</span>))  <span class="comment">// 12.98</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><ul>
+<li><code>==</code> 值相等</li>
+<li><code>===</code> 值、类型都相等</li>
+<li><code>!==</code> 不全等</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span> === <span class="number">2</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span> == <span class="string">&quot;2&quot;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span> === <span class="string">&quot;2&quot;</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> === <span class="literal">undefined</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> === <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> === <span class="number">0</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> == <span class="title class_">NaN</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="literal">false</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === <span class="literal">false</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&quot;</span> == <span class="literal">false</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&quot;</span> === <span class="literal">false</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> == <span class="literal">true</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> === <span class="literal">true</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> == <span class="string">&quot;true&quot;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> === <span class="string">&quot;true&quot;</span>) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="string">&quot;&quot;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === <span class="string">&quot;&quot;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>建议用 <code>===</code> 判断</p>
+<p>NaN不等于任何值</p>
+<p><strong>三元运算符</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num1 = <span class="number">10</span>, num2 = <span class="number">20</span>;</span><br><span class="line">num1&gt;num2 ? <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;num1&#125;</span>大于<span class="subst">$&#123;num2&#125;</span>`</span>) : <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;num1&#125;</span>不大于<span class="subst">$&#123;num2&#125;</span>`</span>);     <span class="comment">// 10不大于20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">prompt</span>(<span class="string">&quot;Enter a:&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>( a&lt;<span class="number">10</span> ?  <span class="number">0</span>+a : a)    <span class="comment">//if a is less than 10, add 0 before it</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><p>表示唯一（即使它们具有相同的描述）且不可变的值。它可以用作对象属性的键（key），从而避免属性名称的冲突。</p>
+<blockquote>
+<p>通过 <code>Symbol()</code> 函数创建新的 <code>Symbol</code> 值，传入的字符串参数是该 <code>Symbol</code> 的描述，主要用于调试时的说明，并不会影响其唯一性。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySymbol = <span class="title class_">Symbol</span>(<span class="string">&#x27;hidden&#x27;</span>);  </span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="string">&#x27;description&#x27;</span>) === <span class="title class_">Symbol</span>(<span class="string">&#x27;description&#x27;</span>)); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;  </span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Alice&#x27;</span>,  </span><br><span class="line">    [mySymbol]: <span class="string">&#x27;secret value&#x27;</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>); <span class="comment">// 输出: Alice  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj[mySymbol]); <span class="comment">// 输出: secret value  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj)); <span class="comment">// 输出: [&quot;name&quot;]  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj)); <span class="comment">// 输出: [&quot;name&quot;]  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(obj)); <span class="comment">// 输出: [&quot;name&quot;, Symbol(hidden)]</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>隐私性： <code>Symbol</code> 属性不会出现在常规的对象枚举中。仅可通过 <code>Object.getOwnPropertySymbols()</code> 方法获取。</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>声明：<code>function f(param = default) &#123; return val &#125;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addTwo</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="title function_">addTwo</span>(<span class="number">2</span>, <span class="number">3</span>)); <span class="comment">// Output: 5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>this</code> 指向调用它的对象，严格模式下无调用者：undefined</p>
+<p><strong>回调函数</strong>：作为参数被传递的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">call</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;call&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setInterval</span>(call, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Hello&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">2000</span>);   <span class="comment">// 仅一次性执行</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p><code>let fn = function(param) &#123; body &#125;</code></p>
+<p><strong>立即执行</strong></p>
+<p><code>(function()&#123; &#125;)()</code> 或 <code>(function()&#123; &#125;())</code></p>
+<p>需要分号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params">x, y</span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(x + y) &#125;(<span class="number">2</span>, <span class="number">7</span>)); <span class="comment">// Output: 9</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p><code>let fn = (param) =&gt; &#123; body &#125;</code></p>
+<p>仅有一个参数&#x2F;语句，可省略括号&#x2F;return</p>
+<p>无this：指向父级作用域（全局window）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; x+<span class="number">2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">1</span>))  <span class="comment">// Output: 3</span></span><br></pre></td></tr></table></figure>
+
+<p>用于返回对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = uname =&gt; (&#123; <span class="attr">name</span>: uname, <span class="attr">age</span>: <span class="number">25</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> obj = <span class="title function_">fn</span>(<span class="string">&quot;John&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);    <span class="comment">// Output: &#123; name: &quot;John&quot;, age: 25 &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h4><p>用<code>...args</code>表示，放在最后…不写就是arguments</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, curr</span>) =&gt;</span> acc + curr, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)) <span class="comment">// Output: 9</span></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>参数解构</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x, y) <span class="comment">// Output: 1 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;name, age&#125; = &#123;<span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>, <span class="attr">age</span>: <span class="number">25</span>&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age) <span class="comment">// Output: Alex 25</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="动态指向函数"><a href="#动态指向函数" class="headerlink" title="动态指向函数"></a>动态指向函数</h3><p>手动指定函数中的 this</p>
+<ul>
+<li>call() 与 apply() 类似，但第一个参数为调用者对象 <code>func.call(thisArg, args...)</code></li>
+<li>apply() 形参为数组 <code>func.apply(thisArg, [argsArray])</code></li>
+<li>bind() 返回一个新的函数，可以指定参数 <code>const boundFunc = func.bind(thisArg, args...)</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greeting</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, &quot;</span> + <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person1 = &#123; <span class="attr">name</span>: <span class="string">&quot;Alice&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> person2 = &#123; <span class="attr">name</span>: <span class="string">&quot;Bob&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(greeting.<span class="title function_">call</span>(person1)); <span class="comment">// 输出: Hello, Alice</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(greeting.<span class="title function_">call</span>(person2)); <span class="comment">// 输出: Hello, Bob</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="property">max</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, arr), <span class="title class_">Math</span>.<span class="title function_">min</span>(...arr)); <span class="comment">// Output: 5 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greetPerson = greeting.<span class="title function_">bind</span>(person1); <span class="comment">// 绑定 person1 的 this 到 greeting 函数上</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">greetPerson</span>()); <span class="comment">// Output: Hello, Alice</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><ul>
+<li><code>throw</code> 手动抛出异常，终止程序执行；要配合ERROR对象使用</li>
+<li><code>try...catch</code> 捕获异常（由浏览器或其他代码抛出）拦截但不中断程序</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">divide</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (b === <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Cannot divide by zero&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> a / b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">divide</span>(<span class="number">2</span>, <span class="number">0</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(error.<span class="property">message</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span> &#123;    <span class="comment">// 无论是否有异常都会执行</span></span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;Finally block&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>debugger</code> 断点调试，在浏览器中运行</li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>无序的数据集合</p>
+<ul>
+<li><strong>属性</strong>：属性名+值 成对出现 用<code>,</code>分隔</li>
+<li><strong>方法</strong>：函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stu = &#123;</span><br><span class="line">  <span class="attr">u_name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">25</span>,</span><br><span class="line">  <span class="attr">greet</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, my name is &quot;</span> + <span class="variable language_">this</span>.<span class="property">u_name</span> + <span class="string">&quot; and I am &quot;</span> + <span class="variable language_">this</span>.<span class="property">age</span> + <span class="string">&quot; years old.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">stu.<span class="title function_">greet</span>(); <span class="comment">// Output: Hello, my name is John and I am 25 years old.</span></span><br><span class="line"></span><br><span class="line">stu.<span class="property">address</span> = <span class="string">&quot;123 Main St&quot;</span>;</span><br><span class="line"><span class="keyword">delete</span> stu.<span class="property">age</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(stu); <span class="comment">// Output: &#123;name: &quot;John&quot;, address: &quot;123 Main St&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>增加新属性&#x2F;修改属性：<code>obj.attr = val</code></li>
+<li>删除：<code>delete obj.attr</code></li>
+</ol>
+<p>查询可用 <code>obj[&#39;attr&#39;]</code> 属性名为字符串 attr为变量时</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="string">&#x27;o-name&#x27;</span>: <span class="string">&#x27;Object 1&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj[<span class="string">&#x27;o-name&#x27;</span>]); <span class="comment">// Output: Object 1</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>创建多个对象，相同属性 <strong>没有Class…</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name = <span class="string">&quot;John&quot;</span>, age</span>) &#123;      <span class="comment">// Constructor function：Capitalize first letter of each word </span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">    <span class="title class_">Person</span>.<span class="property">numberOfPeople</span>++;        <span class="comment">// count number of instances created</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property">numberOfPeople</span> = <span class="number">0</span>;       <span class="comment">// Static property: Number of instances created</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">reportNumberOfPeople</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Total number of people: <span class="subst">$&#123;Person.numberOfPeople&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="literal">undefined</span>, <span class="number">30</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">name</span>); <span class="comment">// Output: John</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">reportNumberOfPeople</span>(); <span class="comment">// Output: Total number of people: 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>静态成员&#x2F;方法</strong></p>
+<p>写在构造函数外面，所有实例共享</p>
+<p>常用静态方法：</p>
+<ul>
+<li><code>Object.assign(target, ...sources)</code>：将所有可枚举的自有属性从一个或多个源对象复制到目标对象。</li>
+<li><code>Object.keys(obj)</code>：返回一个包含对象自身可枚举属性名称的数组。</li>
+<li><code>Object.values(obj)</code>：返回一个包含对象自身可枚举属性值的数组。</li>
+<li><code>Object.entries(obj)</code>：返回一个包含对象自身可枚举属性 [key, value] 对的数组。</li>
+<li><code>Object.freeze(obj)</code>：冻结对象，禁止修改其现有属性或添加新属性。</li>
+<li><code>Object.seal(obj)</code>：密封对象，禁止添加新属性，但允许运营商修改现有属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj2 = <span class="keyword">new</span> <span class="title class_">Object</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;Mary&quot;</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj2)); <span class="comment">// Output: [&quot;name&quot;, &quot;age&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">values</span>(obj2)); <span class="comment">// Output: [&quot;Mary&quot;, 25]</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(obj2, &#123; <span class="attr">gender</span>: <span class="string">&#x27;female&#x27;</span> &#125;);   <span class="comment">// Copy all properties from one object to obj2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2); <span class="comment">// Output: &#123; name: &#x27;Mary&#x27;, age: 25, gender: &#x27;female&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h4><p>构造函数的属性 指向实例：<br>所有实例共享，所有实例都可以访问</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Sta</span>(<span class="params">a, b</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = a;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">b</span> = b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Sta</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sum</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;     <span class="comment">// prototype defines method for all instances</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span> + <span class="variable language_">this</span>.<span class="property">b</span> + <span class="number">3</span>;      <span class="comment">// this refers to the instance 实例对象</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> yzx = <span class="keyword">new</span> <span class="title class_">Sta</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(yzx.<span class="title function_">sum</span>()); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>constructor属性：</strong> 反过来指向构造函数</p>
+<p><strong>原型链:</strong> 基于构造函数原型的继承链；调用方法时，逐级再往上找</p>
+<ul>
+<li><p><code>yzx.__proto__ === Sta.prototype</code></p>
+</li>
+<li><p><code>Sta.prototype.constructor === Sta</code></p>
+</li>
+<li><p><code>Sta.prototype.__proto__ === Object.prototype</code></p>
+</li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>通过原型继承的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">eyes</span> = <span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ears</span> = <span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">mouth</span> = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Woman</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// Woman.prototype inherits from Person.prototype</span></span><br><span class="line"><span class="title class_">Woman</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"><span class="title class_">Woman</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Woman</span>;</span><br><span class="line"><span class="title class_">Woman</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">baby</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Have a baby&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> w = <span class="keyword">new</span> <span class="title class_">Woman</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(w); <span class="comment">// Woman &#123;eyes: 2, ears: 2, mouth: 1&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(w.<span class="property">__proto__</span>); <span class="comment">// Person &#123;constructor: ƒ&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>instanceof</code> 运算符：检测对象是否在某个构造函数的原型链上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(yzx <span class="keyword">instanceof</span> <span class="title class_">Sta</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Sta</span>.<span class="property"><span class="keyword">prototype</span></span> <span class="keyword">instanceof</span> <span class="title class_">Object</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p><code>for (let key in obj)</code> 语法 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> stu) &#123;  <span class="comment">// Iterate over the object&#x27;s properties</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key + <span class="string">&quot;: &quot;</span> + stu[key]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// name: John</span></span><br><span class="line"><span class="comment">// age: 25</span></span><br><span class="line"><span class="comment">// address: 123 Main St </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h4><p>同名变量赋值 <code>旧变量名：新变量名</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;<span class="attr">name</span>: user, age&#125; = &#123;<span class="attr">name</span>: <span class="string">&quot;John&quot;</span>, <span class="attr">age</span>: <span class="number">25</span>&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user, age); <span class="comment">// Output: John 25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h4><ul>
+<li>浅拷贝：仅复制一层，不包含后代元素</li>
+<li>深拷贝：复制所有后代元素</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">copy</span>(<span class="params">obj</span>) &#123;            <span class="comment">// 递归实现</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span> || obj === <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> res = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(obj)? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj)</span><br><span class="line">        <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(key))</span><br><span class="line">            res[key] = <span class="title function_">copy</span>(obj[key]);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            res.<span class="property">key</span> = obj[key];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = _.<span class="title function_">cloneDeep</span>(obj1);    <span class="comment">// lodash.js库实现</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj3 = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj1));   <span class="comment">// JSON 实现深拷贝</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h4><blockquote>
+<p>反射是在程序运行中获取和动态操作自身内容的一项技术。</p>
+</blockquote>
+<p>用于操作对象属性和行为，提供与Object相同的方法，但其方法是静态的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(obj, newObj); <span class="comment">// obj: &#123;a: 1, b: 2, c: 3, d: 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(obj))   <span class="comment">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Reflect</span>.<span class="title function_">get</span>(obj, <span class="string">&#x27;a&#x27;</span>))  <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj, <span class="string">&#x27;e&#x27;</span>, <span class="number">5</span>)    <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Reflect</span>.<span class="title function_">has</span>(obj, <span class="string">&#x27;a&#x27;</span>))  <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">deleteProperty</span>(obj, <span class="string">&#x27;a&#x27;</span>); <span class="comment">// obj: &#123;b: 2, c: 3, d: 4, e: 5&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>ownKeys()</code> 方法：返回对象的所有属性名（包括不可枚举的 <code>Symbol</code> 属性）</p>
+<h4 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h4><p>创建对象代理的机制。允许你定义一个对象作为原始对象的代理，以拦截和定制基本操作（例如属性访问、赋值、枚举等）。</p>
+<blockquote>
+<p>通过Proxy，可以在原有对象上添加额外的功能，比如验证、日志记录、属性访问拦截、计算值等。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = &#123;  </span><br><span class="line">  <span class="attr">message</span>: <span class="string">&#x27;Hello, world!&#x27;</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = &#123;  </span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params">target, propKey, receiver</span>) &#123;  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Getting property: <span class="subst">$&#123;propKey&#125;</span>`</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(target, propKey, receiver); <span class="comment">// 调用原始对象的属性  </span></span><br><span class="line">  &#125;,  </span><br><span class="line">  <span class="attr">set</span>: <span class="keyword">function</span>(<span class="params">target, propKey, value</span>) &#123;  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Setting property: <span class="subst">$&#123;propKey&#125;</span> to <span class="subst">$&#123;value&#125;</span>`</span>);  </span><br><span class="line">    target[propKey] = value; <span class="comment">// 设置原始对象的属性  </span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 表示设置成功  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(target, handler);  </span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">message</span>); <span class="comment">// 输出: Getting property: message \n Hello, world!  </span></span><br><span class="line">proxy.<span class="property">message</span> = <span class="string">&#x27;Hello, Proxy!&#x27;</span>; <span class="comment">// 输出: Setting property: message to Hello, Proxy!  </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">message</span>); <span class="comment">// 输出: Getting property: message \n Hello, Proxy!</span></span><br></pre></td></tr></table></figure>
+
+<p>常用的拦截器：</p>
+<ul>
+<li><code>get</code>: 拦截对象属性的读取操作。</li>
+<li><code>set</code>: 拦截对象属性的写入操作。</li>
+<li><code>has</code>: 拦截 in 运算符的操作。</li>
+<li><code>deleteProperty</code>: 拦截删除属性的操作。</li>
+<li><code>apply</code>: 拦截函数调用。</li>
+<li><code>construct</code>: 拦截构造函数调用。</li>
+<li><code>ownKeys</code>: 拦截获取对象自身属性的操作。</li>
+<li><code>getOwnPropertyDescriptor</code>: 拦截获取对象属性描述符的操作。</li>
+<li><code>defineProperty</code>: 拦截设置对象属性描述符的操作。</li>
+</ul>
+<p><strong>日期对象</strong></p>
+<p>获取 <code>let date = new Date()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2021-01-01 12:00:00 AM UTC +00:00&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleDateString</span>()); <span class="comment">// &quot;1/1/2021&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>时间戳：毫秒，since 1970-01-01</p>
+<h2 id="WebAPIs"><a href="#WebAPIs" class="headerlink" title="WebAPIs"></a>WebAPIs</h2><p>用<code>const</code>声明变量（对象）</p>
+<ol>
+<li>DOM树：树结构表达 HTML 文档<ul>
+<li>根节点为document对象</li>
+</ul>
+</li>
+<li>DOM对象：包含所有属性、事件等</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(div)</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取DOM元素"><a href="#获取DOM元素" class="headerlink" title="获取DOM元素"></a>获取DOM元素</h3><p>返回匹配指定CSS选择器的第一个元素：<code>querySelector(&#39;nav&#39;)</code></p>
+<p>返回伪数组，可以遍历；<code>document.querySelectorAll()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nav = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;nav&#x27;</span>)  <span class="comment">// get element by id</span></span><br><span class="line"><span class="keyword">const</span> n2 = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&#x27;#&#x27;</span>)  <span class="comment">// get all elements by class name</span></span><br><span class="line"><span class="keyword">const</span> n3 = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;n&#x27;</span>)  <span class="comment">// get all elements by tag name</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改内容"><a href="#修改内容" class="headerlink" title="修改内容"></a>修改内容</h4><ul>
+<li><code>innerHTML</code>：会解析HTML标签</li>
+<li><code>innerText</code>：仅文本字符串</li>
+<li><code>className</code>：更改CSS类</li>
+<li><code>classLis</code>：<strong>追加&#x2F;删</strong>CSS类</li>
+</ul>
+<p>H5自定义属性 <code>data-xxx</code> DOM 中dateset对象</p>
+<pre><code>&lt;p id=&quot;nav&quot; data-id=&quot;77&quot;&gt;Navigation&lt;/p&gt;
+
+const nav = document.getElementById(&#39;nav&#39;)
+console.log(nav.dataset.id)   // 77 get data-id attribute value
+</code></pre>
+<h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3><p>添加方法 <code>addEventListener(event, func)</code></p>
+<p>另一种写法 <code>.onclick</code> 无捕获</p>
+<p><strong>事件类型</strong></p>
+<ol>
+<li>鼠标<ul>
+<li><code>click</code> 点击</li>
+<li><code>mouseenter</code> 经过</li>
+<li><code>mouseleave</code> 离开</li>
+<li><code>mouseover</code> 和 <code>mouseout</code> 有冒泡效果（不推荐）</li>
+</ul>
+</li>
+<li>焦点<ul>
+<li><code>focus</code> 获得</li>
+<li><code>blur</code> 失去</li>
+</ul>
+</li>
+<li>键盘<ul>
+<li><code>keydown</code> 按下</li>
+<li><code>keyup</code> 弹起</li>
+</ul>
+</li>
+<li>文本<ul>
+<li><code>text</code> 文本输入</li>
+</ul>
+</li>
+</ol>
+<p><strong>事件对象</strong>：事件触发的信息，func第一个参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">b3.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e)   <span class="comment">// event object</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">input.<span class="title function_">addEventListener</span>(<span class="string">&#x27;keyup&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(e.<span class="property">key</span> === <span class="string">&#x27;Enter&#x27;</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Enter&#x27;</span>)    <span class="comment">//按回车</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>属性</p>
+<ul>
+<li>type: 事件类型</li>
+<li>key: 按下的键</li>
+</ul>
+<p><strong>环境对象</strong>：this 变量 指向调用它的元素&#x2F;对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b3.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)    <span class="comment">// button element &lt;button id=&quot;b3&quot;&gt;Click me&lt;/button&gt;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h4><p>阶段：捕获+<strong>冒泡</strong>（默认）</p>
+<p>捕获顺序：Document -&gt; Super_box -&gt; Sub-content 从外到内</p>
+<p>不加 <code>true</code> 则冒泡，顺序相反</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="keyword">class</span>=<span class="string">&quot;super&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sub&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sub-content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">const</span> superBox = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.super&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> sub = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.sub&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Document clicked&#x27;</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">superBox.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Super-box clicked&#x27;</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br><span class="line">sub.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Sub-content clicked&#x27;</span>)</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>阻止冒泡</strong>：避免影响父级元素</p>
+<p>修改子类 <code>.stopPropagation</code> 后，仅有Sub-content事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sub.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;Sub-content clicked&#x27;</span>)</span><br><span class="line">    e.<span class="title function_">stopPropagation</span>()   <span class="comment">// stop event bubbling</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>.preventDefault()</code> 阻止默认行为</p>
+<p><strong>解除绑定</strong></p>
+<ul>
+<li><code>on-click = null</code> </li>
+<li><code>removeEventListener(event, func)</code> 不能是匿名函数</li>
+</ul>
+<p><strong>委托</strong></p>
+<p>冒泡到父元素，减少注册次数</p>
+<p>真正的触发元素：<code>e.target</code> 事件对象</p>
+<p><strong>页面事件</strong></p>
+<p>页面动作，执行回调函数</p>
+<ul>
+<li><code>load</code>：页面加载</li>
+<li><code>scroll</code>：滚动</li>
+<li><code>resize</code>：窗口尺寸变化</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;load&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Page loaded&#x27;</span>)          <span class="comment">// window load event</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;DOM content loaded&#x27;</span>)   <span class="comment">// DOM fully loaded</span></span><br><span class="line">&#125;)                              <span class="comment">//faster than window.onload</span></span><br><span class="line"></span><br><span class="line">img.<span class="title function_">addEventListener</span>(<span class="string">&#x27;load&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Image loaded&#x27;</span>)        <span class="comment">// 等待图片加载完成</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Window scrollX <span class="subst">$&#123;<span class="variable language_">window</span>.scrollX&#125;</span> scrollY <span class="subst">$&#123;<span class="variable language_">window</span>.scrollY&#125;</span>`</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Document scrollX <span class="subst">$&#123;<span class="variable language_">document</span>.documentElement.scrollLeft&#125;</span> scrollY <span class="subst">$&#123;<span class="variable language_">document</span>.documentElement.scrollTop&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<p>获取元素尺寸</p>
+<ul>
+<li><code>clientWidth</code> 和 <code>clientHeight</code>：border之内的宽高 可更改</li>
+<li><code>offsetHeight</code> 包括border 只读</li>
+</ul>
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><p>节点：&lt;元素&gt;</p>
+<p><strong>基于关系查找节点</strong></p>
+<ul>
+<li>父节点：<code>.parentNode</code></li>
+<li>子节点：<code>.children</code> 包含所有节点的伪数组</li>
+<li>姐妹节点<ul>
+<li><code>.previousElementSibling</code> 上一个</li>
+<li><code>.nextElementSibling</code>下一个</li>
+</ul>
+</li>
+</ul>
+<p><strong>创建、追加节点</strong> <code>createElement()</code></p>
+<pre><code>const dd = document.createElement(&#39;div&#39;);
+dd.innerHTML = &#39;dd&#39;;
+superDiv.appendChild(dd);      //到最后的子元素
+superDiv.insertBefore(dd, superDiv.children[1]);
+</code></pre>
+<p><strong>克隆节点</strong> <code>.cloneNode(true)</code> 深&#x2F;浅克隆（是否包含后代元素）</p>
+<p><strong>删除节点</strong> 经过父元素</p>
+<pre><code>superDiv.removeChild(superDiv.children[0]); // remove first child
+</code></pre>
+<h3 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h3><ul>
+<li><code>location</code>：URL地址<ul>
+<li><code>search</code> 参数，<code>?</code>后面部分</li>
+<li><code>hash</code> 哈希，<code>#</code>后面部分</li>
+<li><code>reload()</code> 刷新</li>
+</ul>
+</li>
+<li><code>navigator</code>：浏览器平台信息</li>
+<li><code>history</code>：历史操作<ul>
+<li><code>back()</code>：后退</li>
+<li><code>forward()</code>：前进</li>
+<li><code>go(n)</code>：进&#x2F;退n步</li>
+</ul>
+</li>
+</ul>
+<p><strong>localStorage</strong>本地存储</p>
+<p>键值对；仅字符串</p>
+<p>对象转换成JSON：<code>JSON.stringify(obj)</code></p>
+<ul>
+<li><code>setItem()</code>：增&#x2F;改</li>
+<li><code>removeItem()</code>：删</li>
+<li><code>log()</code>：查</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>); <span class="comment">// https://www.example.com/path/to/page.html</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;value&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;name&#x27;</span>)); <span class="comment">// value</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;name&#x27;</span>); <span class="comment">// remove ite</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">sayHello</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello, my name is &#x27;</span>+ <span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;person&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj));</span><br><span class="line"><span class="keyword">const</span> person = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;person&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>); <span class="comment">// Alex</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>Asynchronous JavaScript and XML 局部更新</p>
+<ul>
+<li><code>fetch()</code>：异步请求，返回Promise对象</li>
+<li><code>XMLHttpRequest</code>：同步&#x2F;异步请求</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;</span>);</span><br><span class="line">xhr.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">status</span> === <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Request failed.  Returned status of&#x27;</span>+ xhr.<span class="property">status</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.<span class="title function_">send</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><p>基于Promise的HTTP客户端，支持浏览器和Node.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;</span>)</span><br><span class="line">   .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">   .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>异步操作的完成状态，不可变</p>
+<ul>
+<li>待定：（初始状态）<code>pending</code></li>
+<li>成功：<code>resolve(value)</code></li>
+<li>失败：<code>reject(error)</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;    <span class="comment">// promise对象</span></span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="comment">/* success */</span>) &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(value);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">reject</span>(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// success</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// failure</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><p><code>.then()</code> 返回一个新的Promise对象，串联下一环任务，避免嵌套</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">p.<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> value + <span class="number">1</span>;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>简洁的Promise异步：<code>async</code> 关键字，可以用 <code>await</code> 等待结果：会阻塞后面的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fetchData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchData</span>();</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h4><ul>
+<li><code>Promise.all()</code>：等待所有Promise都成功</li>
+<li><code>Promise.race()</code>：等待第一个Promise成功</li>
+<li><code>Promise.resolve()</code>：将现有值转换为Promise</li>
+<li><code>Promise.reject()</code>：创建失败的Promise</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h3><p>阻止频繁触发函数，禁用一段时间，延迟执行</p>
+<p>loDash库实现：<code>_.debounce(func, wait, [options])</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">func, wait</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> timeout;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">        timeout = <span class="built_in">setTimeout</span>(func , wait);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><p>单位时间执行一次</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timeout;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">throttle</span>(<span class="params">func, wait</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!timeout) &#123;</span><br><span class="line">            timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                timeout = <span class="literal">null</span>;</span><br><span class="line">                func.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">            &#125;, wait);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="title function_">throttle</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Button clicked&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">500</span>));</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/05/30/JavaScript%E7%AC%94%E8%AE%B0/" data-id="cm5l95lmm00030kvzfntwaj4z" data-title="JavaScript 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/05/18/Python%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-05-18T12:29:55.000Z" itemprop="datePublished">2024-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">代码基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/05/18/Python%E7%AC%94%E8%AE%B0/">Python笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>解释器</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;hello, python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li>int</li>
+<li>float</li>
+<li>string</li>
+</ul>
+<p>查看类型：<code>type(8963) = int_type</code></p>
+<p><code>round(x, n)</code> 方法返回浮点数x保留<code>n</code>位小数的四舍五入值</p>
+<p><strong>注解</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a: <span class="built_in">int</span> = <span class="number">1</span></span><br><span class="line">b: <span class="type">Union</span>[<span class="built_in">int</span>, <span class="built_in">float</span>] = <span class="number">1.2</span></span><br></pre></td></tr></table></figure>
+
+<p>联合类型注解：int 或 float</p>
+<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><p>命名只能出现：</p>
+<ol>
+<li>英文</li>
+<li>中文（不推荐）</li>
+<li>数字（不位于开头）</li>
+<li>下划线</li>
+</ol>
+<ul>
+<li>不能是关键字</li>
+<li><strong>大小写敏感</strong></li>
+</ul>
+<p>规范：<br>下划线_小写英文</p>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li>&#x2F;&#x2F; ：整除 <code>11/2 == 5</code></li>
+<li>** ：指数 <code>2**3 == 8</code></li>
+<li>可使用<code>a+=b</code>简写</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>定义方式： 单引号，双引号，三引号（支持换行）</p>
+<p><strong>转义字符：</strong> <code>\&quot;</code> 引号解除引用</p>
+<p>拼接：<code>+</code> 号</p>
+<p><strong>格式化</strong> <code>%s</code> 占位符</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">114514</span></span><br><span class="line">name = <span class="string">&quot;Tim&quot;</span></span><br><span class="line">message = <span class="string">&quot;Today I am %d years elder than %s&quot;</span> %(age, name)<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>快速写法 <code>f&quot;内容&#123;变量&#125;&quot;</code>：不限数据类型，不控制精度<br> <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Alex&quot;</span></span><br><span class="line">year = <span class="number">1789</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;我是<span class="subst">&#123;name&#125;</span>, 出生于<span class="subst">&#123;year&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>ord()</code> 字符转数字</li>
+<li><code>chr()</code> 数字转字符</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="number">97</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">chr</span>(<span class="number">97</span>)</span><br><span class="line"><span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p><code>re</code> 模块</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&quot;pytpyppyyyppy&quot;</span></span><br><span class="line">res = re.findall(<span class="string">&quot;py&quot;</span>, s)</span><br><span class="line"><span class="built_in">print</span>(res, <span class="built_in">len</span>(res))         <span class="comment"># [&#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;] 4</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(<span class="string">&quot;py&quot;</span>, s))     <span class="comment"># &lt;re.Match object; span=(0, 2), match=&#x27;py&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line">r = <span class="string">&#x27;^[0-9a-zA-Z]&#123;6,10&#125;$&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;12345666&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(re.findall(r, s))      <span class="comment"># [&#x27;123456&#x27;]</span></span><br><span class="line"></span><br><span class="line">r_mail = <span class="string">r&#x27;(^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$)&#x27;</span>    <span class="comment"># 匹配邮箱</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;xxx@sb.com&#x27;</span>))     <span class="comment"># &lt;re.Match object; span=(0, 10), match=&#x27;xxx@sb.com&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;abc@com&#x27;</span>))        <span class="comment"># None</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>re.match(pattern, string)</code> 匹配开头，成功返回匹配对象，否则返回None</li>
+<li><code>re.search(pattern, string)</code> 匹配第一个</li>
+<li><code>re.findall(pattern, string)</code> 匹配所有，返回列表</li>
+<li><code>re.split(pattern, string)</code> 按pattern分割，返回列表</li>
+<li><code>re.sub(pattern, repl, string)</code> 替换</li>
+</ul>
+<h2 id="输入-输出"><a href="#输入-输出" class="headerlink" title="输入&#x2F;输出"></a>输入&#x2F;输出</h2><p>中断，从键盘输入： <code>name = input(&quot;Enter your name:&quot;)</code></p>
+<h4 id="精度控制"><a href="#精度控制" class="headerlink" title="精度控制"></a>精度控制</h4><p><code>%m.nf</code> m：控制宽度；n控制小数精度，<strong>四舍五入</strong>。</p>
+<h2 id="条件-循环"><a href="#条件-循环" class="headerlink" title="条件&#x2F;循环"></a>条件&#x2F;循环</h2><p>bool数据类型：True&#x2F;False</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b1 = <span class="literal">True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b1))     <span class="comment"># &lt;class &#x27;bool&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>比较运算符：&#x3D;&#x3D;, !&#x3D;, &lt;, &gt;&#x3D;</p>
+<p>逻辑否定: <code>if not A:</code></p>
+<h4 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h4><p>格式（缩进）：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a1 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;Enter your age&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> a1 &gt;= <span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Adult only:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(a1-<span class="number">18</span>)</span><br><span class="line"><span class="keyword">elif</span> a1 &gt; <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Your are too old&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Your are too young&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>多个组合：<code>elif</code></p>
+<h4 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i: <span class="built_in">int</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">6</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slogan = <span class="string">&quot;Free China&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> slogan:</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<p>range语句：</p>
+<ul>
+<li><code>range(num)</code>: 序列, 从0到num-1的整数</li>
+<li><code>range(num1, num2, step)</code>: 该序列从num1开始，到num2结束（不包括num2），步长为step．</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">15</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"><span class="comment"># 7</span></span><br><span class="line"><span class="comment"># 11</span></span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure>
+<p><strong>临时变量作用域</strong>: 循环外部也可以用, 有warning</p>
+<h4 id="跳过-中断"><a href="#跳过-中断" class="headerlink" title="跳过&#x2F;中断"></a>跳过&#x2F;中断</h4><ul>
+<li><code>continue</code> 中断, 进入下一次循环</li>
+<li><code>break</code> 结束循环</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">15</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">9</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h4 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">function</span>(<span class="params">x, y</span>):</span><br><span class="line">    body</span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">one = function(a, b)</span><br></pre></td></tr></table></figure>
+<p>默认返回值: None, 类型: <code>&lt;class &#39;NoneType&#39;&gt;</code> <strong>假</strong></p>
+<p>例子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_len</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    求字符串长度的函数</span></span><br><span class="line"><span class="string">    :param data: 传入参数字符串</span></span><br><span class="line"><span class="string">    :return: 返回结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> data:</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;We have <span class="subst">&#123;n&#125;</span> letter(s) in <span class="subst">&#123;data&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_len(<span class="string">&quot;eraser&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(my_len(<span class="string">&quot;administration&quot;</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>说明文档 <strong>docstrings</strong>: 多行注释,自动生成: <code>:param data:</code> <code>:return: </code></p>
+<p>函数内全局变量赋值: 用<code>globa</code>关键字</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(): </span><br><span class="line">    <span class="keyword">global</span> num</span><br><span class="line">    num = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>多返回值</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func_test</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func_test())</span><br><span class="line"><span class="comment"># (1, 2)</span></span><br></pre></td></tr></table></figure>
+
+<p>类型： <code>&lt;class &#39;tuple&#39;&gt;</code></p>
+<h2 id="多参数"><a href="#多参数" class="headerlink" title="多参数"></a>多参数</h2><ul>
+<li>位置参数：根据定义的参数个数、位置一致</li>
+<li>关键字参数：key&#x3D;value 无顺序 *args</li>
+<li>参数缺省：定义默认值，<strong>位置在最后</strong></li>
+<li>不定长参数：<ul>
+<li><code>*args</code>  一个元组</li>
+<li><code>**kwarg</code> 键值对 参数组成字典</li>
+</ul>
+</li>
+<li>调用时：<ul>
+<li><code>*容器</code> unpack成位置参数</li>
+<li><code>**容器</code> 字典 -&gt; 关键字参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func_test2</span>(<span class="params">name, num, isTrue=<span class="literal">True</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>, the num is <span class="subst">&#123;num&#125;</span> and it&#x27;s <span class="subst">&#123;isTrue&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func_test2(<span class="string">&quot;Tom&quot;</span>, isTrue=<span class="literal">False</span>, num=<span class="number">114154</span>)</span><br><span class="line"></span><br><span class="line">func_test2(<span class="string">&quot;Jey&quot;</span>, <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func_test3</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;The args is <span class="subst">&#123;args&#125;</span>, the K-W args is <span class="subst">&#123;kwargs&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func_test3(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, stu_name=<span class="string">&quot;Alex&quot;</span>, age=<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">Aniki</span>(<span class="params">a, *b, **c</span>):</span><br><span class="line">    z = [a, b, c]</span><br><span class="line">    <span class="built_in">print</span>(z)</span><br><span class="line"><span class="comment"># a:一个位置参数 b:元组 c:所有键值对</span></span><br><span class="line"></span><br><span class="line">Aniki(<span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;b&quot;</span>, x=<span class="string">&quot;123&quot;</span>, y=<span class="string">&quot;456&quot;</span>)</span><br><span class="line"><span class="comment"># [1, (2, &#x27;b&#x27;), &#123;&#x27;x&#x27;: &#x27;123&#x27;, &#x27;y&#x27;: &#x27;456&#x27;&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="强制位参数"><a href="#强制位参数" class="headerlink" title="强制位参数"></a>强制位参数</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b, /, c, d, *, e, f</span>):</span><br><span class="line">    <span class="built_in">print</span>(a, b, c, d, e, f)</span><br></pre></td></tr></table></figure>
+<p>形参 a 和 b 必须使用指定位置参数，c 或 d 可以是位置形参或关键字形参，而 e 和 f 要求为关键字形参</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>关键字 lambda <strong>临时使用一次</strong></p>
+<p><code>引用 = lambda 参数列表:表达式</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x*x, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])))</span><br><span class="line"><span class="comment"># [1, 4, 9, 16, 25]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(reduce(<span class="keyword">lambda</span> x, y: x + y, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]))</span><br><span class="line"><span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>在一个函数内部定义另外一个函数，并且把这个函数对象作为返回值</p>
+<p><strong>需要使用外层函数的变量（包括参数）</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">increment</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x:x+n</span><br><span class="line"></span><br><span class="line">f=increment(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">10</span>))    <span class="comment"># 14</span></span><br></pre></td></tr></table></figure>
+
+<p><code>nonlocal</code> 外部变量</p>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>给函数增加新功能，不改变原函数</p>
+<p>目标函数前 <code>@outer_decorator</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator</span>(<span class="params">func</span>):    <span class="comment"># 装饰器函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):    <span class="comment"># 装饰器包裹函数</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before function call&quot;</span>)</span><br><span class="line">        result = func(*args, **kwargs)    <span class="comment"># 调用被装饰函数</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After function call&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator    </span><span class="comment"># 装饰器调用</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_function(<span class="string">&quot;Tom&quot;</span>)    <span class="comment"># 输出 Before function call Hello Tom After function call</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>多个装饰器</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before function call&quot;</span>)</span><br><span class="line">        result = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After function call&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator2</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before function call 2&quot;</span>)</span><br><span class="line">        result = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After function call 2&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="meta">@my_decorator2</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_function(<span class="string">&quot;Tom&quot;</span>)    <span class="comment"># 输出 Before function call 2 Before function call Hello Tom After function call 2 After function call 2</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据容器"><a href="#数据容器" class="headerlink" title="数据容器"></a>数据容器</h2><p>各种数据结构</p>
+<h4 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list)"></a>列表(list)</h4><p><code>my_list = [&#39;Alex&#39;, &#39;Bob&#39;, True, [1, 2, 3]]</code></p>
+<ul>
+<li>元素可以<strong>异类型</strong>, 支持嵌套, <strong>可重复</strong></li>
+<li><strong>有序</strong>: 下标索引 0, 1, 2, 3……</li>
+<li>下标索引(反向) ……-3, -2, -1</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(my_list[<span class="number">1</span>], my_list[-<span class="number">1</span>][<span class="number">0</span>])</span><br><span class="line"><span class="comment"># Bob 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法</strong></p>
+<ol>
+<li><strong>查询下标</strong>: 返回索引, 不存在则报错</li>
+<li><strong>修改元素</strong>: 指定下标</li>
+<li><strong>插入元素</strong>: 指定下标, 指定元素</li>
+<li><strong>追加</strong>: 元素(容器)放到尾部 extend([29, 11])</li>
+<li><strong>删除</strong>: <ul>
+<li>del</li>
+<li>pop() 默认最后一个元素</li>
+<li>remove(a) 从前到后, 仅删一个</li>
+</ul>
+</li>
+<li><strong>统计</strong>: count(元素)</li>
+<li><strong>统计总数</strong>: len(my_list)</li>
+<li><strong>清空</strong>: clear()</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">index = my_list.index(<span class="string">&quot;Alex&quot;</span>)     <span class="comment"># 0</span></span><br><span class="line"></span><br><span class="line">my_list[<span class="number">0</span>] = <span class="string">&quot;Alice&quot;</span></span><br><span class="line"></span><br><span class="line">my_list.insert(<span class="number">2</span>, <span class="string">&quot;Charlie&quot;</span>)</span><br><span class="line"></span><br><span class="line">my_list.append(<span class="string">&#x27;final&#x27;</span>)</span><br><span class="line">my_list.extend(list2)</span><br><span class="line"><span class="comment"># [&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;, 2022, True, [1, 2, 3], &#x27;final&#x27;, 1949, 1989, 2019]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> list2[<span class="number">2</span>]    <span class="comment"># [1949, 1989]</span></span><br><span class="line"></span><br><span class="line">elem = my_list.pop(<span class="number">3</span>)    <span class="comment"># 2022</span></span><br><span class="line"></span><br><span class="line">my_list.remove(<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># [&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Charlie&#x27;, [1, 2, 3], &#x27;final&#x27;, 1949, 1989, 2019]</span></span><br><span class="line"></span><br><span class="line">list2.insert(<span class="number">1</span>, <span class="number">1989</span>)</span><br><span class="line">dup = list2.count(<span class="number">1989</span>)    <span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line">num = <span class="built_in">len</span>(my_list)    <span class="comment"># 8</span></span><br><span class="line"></span><br><span class="line">my_list.clear()</span><br><span class="line"><span class="comment"># my_list == []</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>迭代</strong></p>
+<p>while循环:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="built_in">len</span>(my_list):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span>: <span class="subst">&#123;my_list[i]&#125;</span>&quot;</span>)</span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>for循环(依次序): </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ele <span class="keyword">in</span> my_list:</span><br><span class="line">    <span class="built_in">print</span>(ele)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组(tuple)"></a>元组(tuple)</h4><p><strong>不可修改</strong>的list</p>
+<p><code>my_tuple = (1, &quot;Hello&quot;, True)</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1 = <span class="built_in">tuple</span>()</span><br><span class="line">t2 = ((), )</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>但其中有list可以对内容赋值</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t3 = (<span class="number">1</span>, <span class="string">&quot;NM$L&quot;</span>, [<span class="string">&quot;Alex&quot;</span>, <span class="string">&quot;Bob&quot;</span>])</span><br><span class="line">t3[-<span class="number">1</span>][<span class="number">0</span>] = <span class="string">&quot;Alice&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t3)</span><br><span class="line"><span class="comment"># (1, &#x27;NM$L&#x27;, [&#x27;Alice&#x27;, &#x27;Bob&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串-string"><a href="#字符串-string" class="headerlink" title="字符串(string)"></a>字符串(string)</h4><p>任意数量的字符 <strong>不可修改</strong></p>
+<p><code>my_str = &quot;fight for freedom&quot; </code></p>
+<ol>
+<li><strong>替换</strong>: replace(“s0”, “s1”)   s0替换为s1，得到新字符串</li>
+<li><strong>分隔</strong>: split(“s2”) 以s2为间隔切分，装入list中</li>
+<li><strong>规整</strong>: strip(“ “) 去除首尾空格&#x2F;指定字符串</li>
+<li>查找子串出现次数</li>
+<li>获取长度</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">my_str = <span class="string">&quot;fight for freedom&quot;</span></span><br><span class="line"></span><br><span class="line">new_slogan = my_str.replace(<span class="string">&quot;for&quot;</span>, <span class="string">&quot;with&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(new_slogan)</span><br><span class="line"><span class="comment"># fight with freedom 替换内容</span></span><br><span class="line"></span><br><span class="line">str_list = my_str.split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(str_list)</span><br><span class="line"><span class="comment"># [&#x27;fight&#x27;, &#x27;for&#x27;, &#x27;freedom&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(my_str.strip(<span class="string">&#x27;dom&#x27;</span>))</span><br><span class="line"><span class="comment"># fight with free</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="序列-切片"><a href="#序列-切片" class="headerlink" title="序列-切片"></a>序列-切片</h4><p>取出子序列：<code>序列[起始下标:结束下标:步长]</code></p>
+<p>步长为负：反向取</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str9 = <span class="string">&quot;cdefgab&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str9[::<span class="number">2</span>])</span><br><span class="line"><span class="comment"># cegb</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="集合-set"><a href="#集合-set" class="headerlink" title="集合(set)"></a>集合(set)</h4><p>多个数据：无序 <strong>去重</strong> 可修改</p>
+<p><code>my_set = &#123;&quot;Alex&quot;, &quot;Bob&quot;, &quot;Alex&quot;&#125;</code></p>
+<ol>
+<li><strong>添加元素</strong> add(el)</li>
+<li><strong>移除</strong> remove(el)</li>
+<li><strong>随机取出</strong> pop()</li>
+<li><strong>清空</strong> clear()</li>
+<li><strong>取差集</strong> set1.difference(set2) 得到新集合，为set1有 set2没有的</li>
+<li><strong>交集</strong> set1.union(set2)</li>
+<li>元素数量 len(my_set)</li>
+<li>for 遍历</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">my_set = &#123;<span class="string">&quot;Alex&quot;</span>, <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Alex&quot;</span>&#125;</span><br><span class="line">set2 = &#123;<span class="string">&quot;Alex&quot;</span>, <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Charlie&quot;</span>&#125;</span><br><span class="line">my_set.add(<span class="number">564</span>)</span><br><span class="line"><span class="built_in">print</span>(my_set)</span><br><span class="line"></span><br><span class="line"><span class="comment"># element = my_set.pop()</span></span><br><span class="line"><span class="comment"># print(element)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(my_set.difference(set2))</span><br><span class="line"></span><br><span class="line"><span class="comment"># my_set.difference_update(set2)</span></span><br><span class="line"><span class="comment"># print(my_set)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(my_set.union(set2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_set.clear()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="字典-dict"><a href="#字典-dict" class="headerlink" title="字典(dict)"></a>字典(dict)</h4><p>key-value <strong>键值对</strong> </p>
+<p>原生：通过key值找value <strong>key唯一</strong> </p>
+<p><code>my_dict = &#123;&quot;Alex&quot;: 564, &quot;Bob&quot;: 8963, &quot;Charlie&quot;: 1918&#125;</code></p>
+<p>value可嵌套</p>
+<ol>
+<li><strong>新增&#x2F;更新</strong> dict[‘A’] &#x3D; 123</li>
+<li><strong>删除</strong> pop(‘B’)</li>
+<li><strong>清空</strong> clear()</li>
+<li><strong>取全部key</strong> keys() 是list</li>
+<li><strong>遍历</strong> for</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&quot;Alex&quot;</span>: <span class="number">564</span>, <span class="string">&quot;Bob&quot;</span>: <span class="number">8963</span>, <span class="string">&quot;Charlie&quot;</span>: <span class="number">1918</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(my_dict[<span class="string">&quot;Alex&quot;</span>])</span><br><span class="line"><span class="comment"># 564</span></span><br><span class="line"></span><br><span class="line">stu_dict = &#123;<span class="string">&quot;Alex&quot;</span>: &#123;<span class="string">&quot;ch&quot;</span>: <span class="number">99</span>, <span class="string">&quot;Math&quot;</span>: <span class="number">101</span>, <span class="string">&quot;English&quot;</span>: <span class="number">120</span>&#125;, <span class="string">&quot;Bob&quot;</span>: &#123;<span class="string">&quot;ch&quot;</span>: <span class="number">101</span>, <span class="string">&quot;Math&quot;</span>: <span class="number">111</span>, <span class="string">&quot;English&quot;</span>: <span class="number">121</span>&#125;&#125;</span><br><span class="line"><span class="built_in">print</span>(stu_dict[<span class="string">&quot;Alex&quot;</span>][<span class="string">&quot;ch&quot;</span>])</span><br><span class="line"><span class="comment"># 99</span></span><br><span class="line"></span><br><span class="line">my_dict[<span class="string">&quot;Daniel&quot;</span>] = <span class="number">116</span></span><br><span class="line"><span class="built_in">print</span>(my_dict)</span><br><span class="line"><span class="built_in">print</span>(my_dict.pop(<span class="string">&quot;Alex&quot;</span>))</span><br><span class="line"><span class="comment"># 564</span></span><br><span class="line"></span><br><span class="line">keys = <span class="built_in">list</span>(my_dict.keys())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历字典</span></span><br><span class="line"><span class="built_in">print</span>(keys)</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> my_dict:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;k&#125;</span>: <span class="subst">&#123;my_dict[k]&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="容器通用操作"><a href="#容器通用操作" class="headerlink" title="容器通用操作"></a>容器通用操作</h4><ul>
+<li><strong>元素个数</strong> len(my_list)</li>
+<li><strong>最大&#x2F;小元素</strong> max(my_dict)</li>
+<li><strong>类型转换</strong> 不能转换成字典 list(my_set)</li>
+<li><strong>排序</strong> sorted(my_list, [顺序])<ul>
+<li>返回list</li>
+<li>降序 <code>reverse=True</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>zip() 函数</strong></p>
+<p>将可迭代的对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表，长度与最短的对象相同。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">c = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">zip</span>(a, b, c):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="comment"># (1, 4, 7)</span></span><br><span class="line"><span class="comment"># (2, 5, 8)</span></span><br><span class="line"><span class="comment"># (3, 6, 9)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>二分查找</strong></p>
+<ul>
+<li><code>bisect.bisect()</code> </li>
+<li><code>bisect.bisect_right()</code> 返回大于x的第一个下标(相当于C++中的 <code>upper_bound</code>)</li>
+<li><code>bisect.bisect_left()</code> 返回大于等于x的第一个下标(相当于C++中的 <code>lower_bound</code>)</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect  </span><br><span class="line"></span><br><span class="line">sorted_list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">17</span>]</span><br><span class="line"><span class="built_in">print</span>(bisect.bisect(sorted_list, <span class="number">9</span>))    <span class="comment"># 5</span></span><br><span class="line"><span class="built_in">print</span>(bisect.bisect_right(sorted_list, <span class="number">9</span>))  <span class="comment"># 5</span></span><br><span class="line"><span class="built_in">print</span>(bisect.bisect_left(sorted_list, <span class="number">9</span>))   <span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h4 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h4><p>open函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;file_test&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数mode:</p>
+<ul>
+<li>‘r’: 只读，指针在文件开头</li>
+<li>‘w’: （创建）并写入，若文件不存在则覆盖</li>
+<li>‘a’: 追加，文件不存则创建</li>
+</ul>
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = f.read(<span class="number">10</span>)</span><br><span class="line">content = f.readlines() <span class="comment"># 读取全部内容；一个列表，元素为每行内容</span></span><br></pre></td></tr></table></figure>
+<p>read()参数：</p>
+<ul>
+<li>数据长度（字节）</li>
+<li>缺省为全部读取</li>
+</ul>
+<p>readlines()：</p>
+<ol>
+<li>读取全部内容</li>
+<li>一个列表，元素为每行内容</li>
+</ol>
+<p>readline()</p>
+<ul>
+<li>一次仅读一行</li>
+</ul>
+<p><strong>for 循环读取</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;./file_test&#x27;</span>, <span class="string">&#x27;r&#x27;</span>):</span><br><span class="line">    <span class="built_in">print</span>(l)</span><br></pre></td></tr></table></figure>
+<p>临时变量 <code>l</code></p>
+<h4 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h4><p>flush 刷新缓冲区：主存-&gt;磁盘</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># f = open(&#x27;./file_test&#x27;, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># for i in range(10):</span></span><br><span class="line"><span class="comment">#     f.write(f&#x27;hello world &#123; i &#125;\n&#x27;)</span></span><br><span class="line"><span class="comment"># f.flush()</span></span><br><span class="line"><span class="comment"># f.close()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./file_test&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        f.write(<span class="string">f&#x27;hello world <span class="subst">&#123;i&#125;</span>\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><p>解除占用</p>
+<p><code>f.close()</code></p>
+<p><strong>with open 语法</strong></p>
+<p>执行完自动关闭</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./file_test&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">    f2.readlines()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h2><p>try&#x2F;except 语句</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;执行的代码&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;处理异常的代码&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;没有异常&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>多个&#x2F;特定异常：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;执行的代码&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;处理异常的代码&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;没有异常&quot;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;finished, goodbye&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>顶级异常: <strong>Exception</strong></p>
+<p>从内向外传递，每层都可捕获</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p> <code>import</code> 模块名</p>
+<p>模块的名称：<code>__name__</code>内置变量</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>限制可被 import * 的内容</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__all__ = [<span class="string">&quot;mun&quot;</span>, <span class="string">&quot;b&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>package.module</p>
+<p>具有__init__.py 的文件</p>
+<h4 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h4><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/collections.html#module-collections">文档</a></p>
+<ul>
+<li>Counter 计数器</li>
+<li>defaultdict 默认字典</li>
+<li>deque 双端队列</li>
+<li>OrderedDict 有序字典</li>
+</ul>
+<h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><ul>
+<li>成员变量</li>
+<li>成员方法 (self, )</li>
+</ul>
+<p><strong>私有成员</strong>：<code>__private_method</code> 两个下划线开头</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>内置的方法：魔术方法</p>
+<p>赋值：自动执行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, </span>):</span><br><span class="line">    self.data = []</span><br><span class="line">    self.name = name</span><br></pre></td></tr></table></figure>
+
+<p>重写str：一个对象成为<code>print()</code>函数参数输出的内容</p>
+<p>print 输出的默认是内存地址</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">     <span class="keyword">return</span> <span class="string">f&quot;This is a xxx object!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>重写对象之比较大小</p>
+<ul>
+<li><code>__lt__</code>：&lt;</li>
+<li><code>__le__</code>：&lt;&#x3D;</li>
+<li><code>__eq__</code>：&#x3D;&#x3D;</li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>可多继承</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span>(BaseClass1, BaseClass2):</span><br><span class="line"><span class="comment"># 父类方法名：左边最优先</span></span><br></pre></td></tr></table></figure>
+
+<p><code>pass</code> 补全 空的代码块</p>
+<p>可在子类中复写</p>
+<p>调用父类成员：<code>super().method()</code> 或 <code>BaseClass.method(self)</code></p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>父类引用子类对象，调用子类方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cm5l95lmu00080kvzbbat826h" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-My-New-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/05/14/My-New-Post/" class="article-date">
+  <time class="dt-published" datetime="2024-05-14T04:24:07.000Z" itemprop="datePublished">2024-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/05/14/My-New-Post/">My New Post</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="This-is-my-new-post"><a href="#This-is-my-new-post" class="headerlink" title="This is my new post"></a>This is my new post</h3><p>This is the content of my new post.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/05/14/My-New-Post/" data-id="cm5l95lmr00060kvzcs1sgh7t" data-title="My New Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/05/12/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2024-05-12T04:58:31.517Z" itemprop="datePublished">2024-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/05/12/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/05/12/hello-world/" data-id="cm5l95ln1000g0kvz6osd8spm" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-闲笔" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/12/27/%E9%97%B2%E7%AC%94/" class="article-date">
+  <time class="dt-published" datetime="2014-12-26T18:38:40.000Z" itemprop="datePublished">2014-12-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/12/27/%E9%97%B2%E7%AC%94/">闲笔</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>删</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2014/12/27/%E9%97%B2%E7%AC%94/" data-id="cm5l95ln5000q0kvz1tz7c4k7" data-title="闲笔" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">代码基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/06/lc/t0/">题解</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">数据库系统</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/">使用LangChain构建LLMs应用</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/">理解与使用CSS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Alexiang<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
-<!-- jQuery -->
-
-<script src="/js/jquery.min.js"></script>
-
-
-<!-- Bootstrap Core JavaScript -->
-
-<script src="/js/bootstrap.min.js"></script>
-
-
-<!-- Custom Theme JavaScript -->
-
-<script src="/js/blog.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://example.com/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
+<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
-<!-- Google Analytics -->
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
-<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
 
 
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-  _st('install','','2.0.0');
-</script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!--wechat title img-->
-<img class="wechat-title-img" src="">
+  </div>
 </body>
-
 </html>

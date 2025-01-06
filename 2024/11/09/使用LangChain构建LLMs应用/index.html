@@ -1,185 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="I love to share my thoughts and experiences about technology, programming and life.">
-    <meta name="keyword" content="">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
-    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
-    <link rel="alternate" type="application/atom+xml" title="Alexiang" href="/atom.xml">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
-    <title>
+  <meta charset="utf-8">
+  
+  
+  <title>使用LangChain构建LLMs应用 | Alexiang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="LangChain功能总结 Model I&#x2F;O  RAG Agent Chain (LCEL) Memory Callbacks  使用 LCEL 构造链 LangChain Expression Language 声明式表达方式，轻松组合多个步骤 12chain &#x3D; prompt | model | output_parserresult &#x3D; chain.invoke(&#123;&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用LangChain构建LLMs应用">
+<meta property="og:url" content="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Alexiang&#39;s Blog">
+<meta property="og:description" content="LangChain功能总结 Model I&#x2F;O  RAG Agent Chain (LCEL) Memory Callbacks  使用 LCEL 构造链 LangChain Expression Language 声明式表达方式，轻松组合多个步骤 12chain &#x3D; prompt | model | output_parserresult &#x3D; chain.invoke(&#123;&amp;q">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://alexiangyu.github.io/image/ff.webp">
+<meta property="og:image" content="https://alexiangyu.github.io/image/357e9ca0ce2b4699a24e3fe512c047ca.webp">
+<meta property="og:image" content="https://alexiangyu.github.io/image/c56yyd7eb61637687de448512yy426ea.webp">
+<meta property="og:image" content="https://alexiangyu.github.io/image/56fbe79e086052895f301383c27f4a0c.webp">
+<meta property="og:image" content="https://alexiangyu.github.io/image/07cbca8cfff33ffa231830eff145556c.webp">
+<meta property="article:published_time" content="2024-11-09T07:37:33.000Z">
+<meta property="article:modified_time" content="2025-01-06T06:34:55.072Z">
+<meta property="article:author" content="Alexiang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alexiangyu.github.io/image/ff.webp">
+  
+    <link rel="alternate" href="/atom.xml" title="Alexiang's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alexiang&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A little bit of everything</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
-        使用LangChain构建LLMs应用｜undefined
+          <a class="main-nav-link" href="/">Home</a>
         
-    </title>
-
-    <link rel="canonical" href="http://example.com/2024/11/09/使用LangChain构建LLMs应用/">
-
-    <!-- Bootstrap Core CSS -->
-    
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/blog-style.css">
-
-
-    <!-- Pygments Github CSS -->
-    
-<link rel="stylesheet" href="/css/syntax.css">
-
-<meta name="generator" content="Hexo 7.2.0"></head>
-
-<style>
-
-    header.intro-header {
-        background-image: url('')
-    }
-</style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
-" data-ishome = "false" >
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated pulse" href="/">
-                <span class="brand-logo">
-                    Alexiang
-                </span>
-                's Blog
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-					
-                    
-                        
-							
-                        <li>
-                            <a href="/categories/">categories</a>
-                        </li>
-							
-						
-                    
-					
-					
-                </ul>
-            </div>
-        </div>
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://alexiangyu.github.io"></form>
+      </div>
     </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-//    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-<!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img"
-     src="">
-
-
-<style>
-    
-    header.intro-header {
-        background-image: url('')
-    }
-
-    
-</style>
-
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>使用LangChain构建LLMs应用</h1>
-                    
-                    <span class="meta">
-                         作者 Alexiang
-                        <span>
-                          日期 2024-11-09
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="post-title-haojen">
-        <span>
-            使用LangChain构建LLMs应用
-        </span>
-    </div>
+  </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="LangChain功能总结"><a href="#LangChain功能总结" class="headerlink" title="LangChain功能总结"></a>LangChain功能总结</h2><ol>
+      <div class="outer">
+        <section id="main"><article id="post-使用LangChain构建LLMs应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2024-11-09T07:37:33.000Z" itemprop="datePublished">2024-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用LangChain构建LLMs应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="LangChain功能总结"><a href="#LangChain功能总结" class="headerlink" title="LangChain功能总结"></a>LangChain功能总结</h2><ol>
 <li>Model I&#x2F;O </li>
 <li>RAG</li>
 <li>Agent</li>
@@ -195,7 +121,7 @@
 <blockquote>
 <p>LangChain是一个基于大语言模型（LLMs）用于构建端到端语言模型应用的框架，它可以让开发者使用语言模型来实现各种复杂的任务，例如文本到图像的生成、文档问答、聊天机器人等。LangChain提供了一系列工具、套件和接口，可以简化创建由LLMs和聊天模型提供支持的应用程序的过程。</p>
 </blockquote>
-<p><img src="/ffb488f5f695467bb994245df8d947c1~tplv-k3u1fbpfcp-jj-mark_3024_0_0_0_q75.webp" alt="alt text"></p>
+<p><img src="/image/ff.webp" alt="alt text"></p>
 <h2 id="Model-I-O-过程"><a href="#Model-I-O-过程" class="headerlink" title="Model I&#x2F;O 过程"></a>Model I&#x2F;O 过程</h2><p>输入提示（Format）-&gt; 调用模型（Predict）-&gt; 输出解析（Parse）</p>
 <ol>
 <li>提示模板：使用模型的第一个环节是把提示信息输入到模型中，你可以创建LangChain模板，根据实际需求动态选择不同的输入，针对特定的任务和应用调整输入。</li>
@@ -231,7 +157,7 @@
 </blockquote>
 <p>提示框架：指令 + 上下文 + 提示输入 + 输出指示器</p>
 <p>GPT-3模型，作为一个大型的自我监督学习模型，通过提升模型规模，实现了出色的<strong>Few-Shot</strong>学习性能。</p>
-<p><img src="/357e9ca0ce2b4699a24e3fe512c047ca.webp" alt="alt text"></p>
+<p><img src="/image/357e9ca0ce2b4699a24e3fe512c047ca.webp" alt="alt text"></p>
 <h4 id="使用-Chain-of-Thought"><a href="#使用-Chain-of-Thought" class="headerlink" title="使用 Chain of Thought"></a>使用 Chain of Thought</h4><p>《自我一致性提升了语言模型中的思维链推理能力》：如果生成一系列的中间推理步骤，就能够显著提高大型语言模型进行复杂推理的能力。</p>
 <blockquote>
 <p>Few-Shot CoT 简单的在提示中提供了一些链式思考示例（Chain-of-Thought Prompting），足够大的语言模型的推理能力就能够被增强。简单说，就是给出一两个示例，然后在示例中写清楚推导的过程。</p>
@@ -329,7 +255,7 @@
 <li><code>ConversationSummaryMemory</code>：使用LLM将对话历史进行汇总，然后再传递给 {history} 参数。这种方法旨在通过对之前的对话进行汇总来避免长对话过度使用Token。</li>
 <li><code>ConversationSummaryBufferMemory</code>：混合记忆模型，当最新的对话文字长度在300字之内的时候，LangChain会记忆原始对话内容；当对话文字超出了这个参数的长度，那么模型就会把所有超过预设长度的内容进行总结。</li>
 </ul>
-<p><img src="/c56yyd7eb61637687de448512yy426ea.webp" alt="alt text"></p>
+<p><img src="/image/c56yyd7eb61637687de448512yy426ea.webp" alt="alt text"></p>
 <h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>与外部环境交互，将额外信息合并到推理中。</p>
 <ul>
 <li>大模型：提供逻辑的引擎，负责生成预测和处理输入。</li>
@@ -342,7 +268,7 @@
 <blockquote>
 <p>大语言模型可以通过生成推理痕迹和任务特定行动来实现更大的协同作用。<br>Reasoning包括了对当前环境和状态的观察，并生成推理轨迹。这使模型能够诱导、跟踪和更新操作计划，甚至处理异常情况。Acting在于指导大模型采取下一步的行动，比如与外部源（如知识库或环境）进行交互并且收集信息，或者给出最终答案。</p>
 </blockquote>
-<p><img src="/56fbe79e086052895f301383c27f4a0c.webp" alt="ReAct 思维链条"></p>
+<p><img src="/image/56fbe79e086052895f301383c27f4a0c.webp" alt="ReAct 思维链条"></p>
 <blockquote>
 <p>在链中，一系列操作被硬编码（在代码中）。在代理中，LLM被用作推理引擎来确定要采取哪些操作以及按什么顺序执行这些操作。</p>
 </blockquote>
@@ -459,7 +385,7 @@
 <blockquote>
 <p>向系统提出一个目标之后，它将不断优先考虑需要实现或完成的任务，以实现该目标。具体来说，系统将形成任务列表，从任务列表中拉出优先级最高的第一个任务，使用 OpenAI API 根据上下文将任务发送到执行代理并完成任务，一旦这些任务完成，它们就会被存储在内存（或者Pinecone这类向量数据库）中，然后，根据目标和上一个任务的结果创建新任务并确定优先级。 </p>
 </blockquote>
-<p><img src="/07cbca8cfff33ffa231830eff145556c.webp" alt="alt text"></p>
+<p><img src="/image/07cbca8cfff33ffa231830eff145556c.webp" alt="alt text"></p>
 <p>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face</p>
 <p>使其能够根据用户请求自动生成计划，并使用外部模型，从而整合多模态感知能力，并处理多个复杂的AI任务。此外，这种流程还允许HuggingGPT持续从任务特定的专家模型中吸收能力，从而实现可增长和可扩展的AI能力。</p>
 <h2 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h2><ul>
@@ -491,174 +417,155 @@
 </li>
 </ul>
 
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2024/11/17/数据库系统/" data-toggle="tooltip" data-placement="top"
-                           title="数据库系统">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2024/11/08/理解与使用CSS/" data-toggle="tooltip" data-placement="top"
-                           title="理解与使用CSS">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-
-
-                <!--加入新的评论系统-->
-                
-
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LangChain%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93"><span class="toc-text">LangChain功能总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model-I-O-%E8%BF%87%E7%A8%8B"><span class="toc-text">Model I&#x2F;O 过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B"><span class="toc-text">提示工程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Chain-of-Thought"><span class="toc-text">使用 Chain of Thought</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8-OpenAI-API"><span class="toc-text">调用 OpenAI API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%A7%A3%E6%9E%90"><span class="toc-text">输出解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chain"><span class="toc-text">Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ConversationChain"><span class="toc-text">ConversationChain</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86"><span class="toc-text">代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ReAct%E6%A1%86%E6%9E%B6"><span class="toc-text">ReAct框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-arXiv-%E5%B7%A5%E5%85%B7"><span class="toc-text">使用 arXiv 工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAG-%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">RAG 应用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%B5%8C%E5%85%A5"><span class="toc-text">存储嵌入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0"><span class="toc-text">性能评估</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agent-%E6%A1%86%E6%9E%B6"><span class="toc-text">Agent 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E4%BB%A3%E7%90%86"><span class="toc-text">模拟代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E4%B8%BB%E4%BB%A3%E7%90%86"><span class="toc-text">自主代理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87"><span class="toc-text">论文</span></a></li></ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
-
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" data-id="cm5l95ln5000o0kvz51bp3g7b" data-title="使用LangChain构建LLMs应用" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据库系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">理解与使用CSS</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-
-
-
-
-
-<!-- Footer -->
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <br>
-                <ul class="list-inline text-center">
-                
-                
-                
-
-                
-
-                
-
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Alexiang 2025
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
-                </p>
-
-            </div>
-        </div>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">代码基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/06/lc/t0/">题解</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">数据库系统</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/">使用LangChain构建LLMs应用</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/">理解与使用CSS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Alexiang<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
 
-<!-- jQuery -->
-
-<script src="/js/jquery.min.js"></script>
-
-
-<!-- Bootstrap Core JavaScript -->
-
-<script src="/js/bootstrap.min.js"></script>
-
-
-<!-- Custom Theme JavaScript -->
-
-<script src="/js/blog.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://example.com/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
+<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
-<!-- Google Analytics -->
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
-<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
 
 
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-  _st('install','','2.0.0');
-</script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!--wechat title img-->
-<img class="wechat-title-img" src="">
+  </div>
 </body>
-
 </html>
