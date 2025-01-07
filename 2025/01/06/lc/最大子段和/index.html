@@ -14,7 +14,7 @@
 <meta property="og:description" content="在洛谷做的第一道题qwq 题目描述给出一个长度为 $n$ 的序列 $a$，选出其中连续且非空的一段使得这段和最大。 输入格式第一行是一个整数，表示序列的长度 $n$。 第二行有 $n$ 个整数，第 $i$ 个整数表示序列的第 $i$ 个数字 $a_i$。 输出格式输出一行一个整数表示答案。 样例 #1样例输入 #11272 -4 3 -1 2 -4 3  样例输出 #114  提示样例 1 解释选">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-06T15:59:26.000Z">
-<meta property="article:modified_time" content="2025-01-06T16:22:10.632Z">
+<meta property="article:modified_time" content="2025-01-07T06:52:40.859Z">
 <meta property="article:author" content="Alexiang">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="前缀和">
@@ -121,13 +121,26 @@
 <li>对于 $100%$ 的数据，保证 $1 \leq n \leq 2 \times 10^5$，$-10^4 \leq a_i \leq 10^4$。</li>
 </ul>
 <hr>
-<h2 id="我的答案"><a href="#我的答案" class="headerlink" title="我的答案"></a>我的答案</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="type">int</span> n, j, sum, maxx;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;maxx);</span><br><span class="line">	sum=maxx;</span><br><span class="line">    <span class="keyword">while</span>(--n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;j);</span><br><span class="line">		sum=sum&gt;<span class="number">0</span>?sum:<span class="number">0</span>;</span><br><span class="line">		sum+=j;</span><br><span class="line">		maxx=maxx&gt;sum?maxx:sum;</span><br><span class="line">	&#125;   <span class="comment">//贪心，如果负了就舍去 </span></span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,maxx))&amp;<span class="number">0</span>;<span class="comment">//输出并return 0 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>这是一个经典的动态规划问题，但也可以直接用前缀和+贪心解决。我们的思路：</p>
+<p>可以把目标串视为连续的前后两个次子串相加，both of them should have a summation which is positive number. Otherwise it can be intercepted to increase the target string. 次子段和都要为正数，否则截掉会更优。即首末位都为正（长为1的次子串），而外边界为不大于零。这种情况下遍历一遍即可求解。</p>
+<ol>
+<li><p>维护两个变量：</p>
+<ul>
+<li><code>sum</code>: 当前累积的子段和</li>
+<li><code>maxx</code>: 已经找到的最大子段和</li>
+</ul>
+</li>
+<li><p>贪心策略：</p>
+<ul>
+<li>如果当前累积和 <code>sum</code> 为负数，那么抛弃之前的子段</li>
+<li>将当前数字加入 <code>sum</code></li>
+<li>若 <code>sum</code> 更大的话，更新 <code>maxx</code></li>
+</ul>
+</li>
+<li><p>时间复杂度：O(n)，只需要遍历一遍数组</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="type">int</span> n, j, sum, maxx;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;maxx);</span><br><span class="line">	sum=maxx;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(--n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;j);</span><br><span class="line">		sum = sum&gt;<span class="number">0</span> ? sum: <span class="number">0</span>;   <span class="comment">//贪心，如果负了就舍去 </span></span><br><span class="line">		sum += j;</span><br><span class="line">		maxx = maxx&gt;sum ? maxx: sum;    <span class="comment">// 维护最大值</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, maxx)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -148,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cm5l95ln8000u0kvzae9xg7qq" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cm5mvecsn000u2wvz28i4arg7" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -159,6 +172,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          验证构造回文字符串
+        
+      </div>
+    </a>
   
   
     <a href="/2025/01/06/lc/t0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -190,7 +212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
     </div>
   </div>
 
@@ -200,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a>
     </div>
   </div>
 
@@ -222,6 +244,10 @@
       <ul>
         
           <li>
+            <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
           </li>
         
@@ -235,10 +261,6 @@
         
           <li>
             <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/">使用LangChain构建LLMs应用</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/">理解与使用CSS</a>
           </li>
         
       </ul>
