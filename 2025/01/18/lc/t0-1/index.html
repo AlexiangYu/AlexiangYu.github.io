@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>优质章节连续选择 | Alexiang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题描述在番茄小说的书籍中，编辑小S正在寻找精彩的连续章节以进行特色展示。每个章节都有各自的文字数量，编辑希望选出的连续章节总字数不超过 k。在这些连续章节中，除了第一章和最后一章，任何字数多于前后章节的章节都被视为优质章节。编辑的目标是挑选出尽可能多的优质章节，同时满足总字数限制。如果有多个答案优质章节数相同，请输出总字数最少的答案。优质章节数和总字数均相同，则输出区间下标最小的答案。 例如，假">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优质章节连续选择">
+<meta property="og:url" content="https://alexiangyu.github.io/2025/01/18/lc/t0-1/index.html">
+<meta property="og:site_name" content="Alexiang&#39;s Blog">
+<meta property="og:description" content="问题描述在番茄小说的书籍中，编辑小S正在寻找精彩的连续章节以进行特色展示。每个章节都有各自的文字数量，编辑希望选出的连续章节总字数不超过 k。在这些连续章节中，除了第一章和最后一章，任何字数多于前后章节的章节都被视为优质章节。编辑的目标是挑选出尽可能多的优质章节，同时满足总字数限制。如果有多个答案优质章节数相同，请输出总字数最少的答案。优质章节数和总字数均相同，则输出区间下标最小的答案。 例如，假">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-18T06:54:23.000Z">
+<meta property="article:modified_time" content="2025-01-18T07:58:44.077Z">
+<meta property="article:author" content="Alexiang">
+<meta property="article:tag" content="滑动窗口">
+<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Alexiang's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alexiang&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A little bit of everything</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://alexiangyu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-lc/t0-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/18/lc/t0-1/" class="article-date">
+  <time class="dt-published" datetime="2025-01-18T06:54:23.000Z" itemprop="datePublished">2025-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      优质章节连续选择
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在番茄小说的书籍中，编辑小S正在寻找精彩的连续章节以进行特色展示。每个章节都有各自的文字数量，编辑希望选出的连续章节总字数不超过 k。在这些连续章节中，除了第一章和最后一章，任何字数多于前后章节的章节都被视为优质章节。编辑的目标是挑选出尽可能多的优质章节，同时满足总字数限制。如果有多个答案优质章节数相同，请输出总字数最少的答案。优质章节数和总字数均相同，则输出区间下标最小的答案。</p>
+<p>例如，假设章节字数为 [1000, 3000, 2000, 4000, 3000, 2000, 4000, 2000]，给定的字数上限 k 为 15000。一种优选方案是选择从第1章到第5章，其中第2章和第4章是优质章节。</p>
+<h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><p>n：章节数目<br>k：总字数上限<br>array_a：各个章节的字数</p>
+<h2 id="返回规则如下："><a href="#返回规则如下：" class="headerlink" title="返回规则如下："></a>返回规则如下：</h2><p>返回一个字符串，格式为”优质章节数,优质章节数最多的区间左下标,优质章节数最多的区间右下标”</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心 + 非典型的双指针</p>
+<p>用 <code>flag</code> 数组标记优质章节，如 <code>[1000, 3000, 2000, 4000, 3000, 2000, 4000, 2000]</code> 对应为 <code>flag = [0, 1, 0, 1, 0, 0, 1, 0]</code> 。<br>由于要找总字数最少的答案，仅需考虑子章节 <code>l</code> 点在优质章节的左边，<code>r</code> 点在优质章节的右边之情况。<br>初始时区间放在第一个优质章节两侧，之后逐个平移左指针到下一节点，移动右指针到最大的 <code>current_sum</code> 字数时记录更新答案。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solution</span>(<span class="params">n, k, array_a</span>):</span><br><span class="line">    flag = [<span class="number">0</span>] * n  <span class="comment"># 优质章节标志</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> array_a[i] &gt; array_a[i - <span class="number">1</span>] <span class="keyword">and</span> array_a[i] &gt; array_a[i + <span class="number">1</span>]:</span><br><span class="line">            flag[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始移动指针到优秀节点前后</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> flag[i]:</span><br><span class="line">            l, r = i - <span class="number">1</span>, i + <span class="number">1</span></span><br><span class="line">            current_sum = <span class="built_in">sum</span>(array_a[l: r+<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    min_current_sum = k             <span class="comment"># 总字数</span></span><br><span class="line">    max_quality_count, quality_count = <span class="number">0</span>, <span class="number">1</span>    <span class="comment"># 优质章节数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 先移左指针</span></span><br><span class="line">    <span class="keyword">while</span> l &lt; n-<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> flag[l+<span class="number">1</span>]:   <span class="comment"># 右指针到达相应位置</span></span><br><span class="line">            <span class="keyword">while</span> current_sum &lt;= k <span class="keyword">and</span> r &lt; n:</span><br><span class="line">                <span class="keyword">if</span> flag[r-<span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">if</span> quality_count &gt; max_quality_count <span class="keyword">or</span> current_sum &lt; min_current_sum <span class="keyword">and</span> quality_count == max_quality_count:   <span class="comment"># 更新答案的条件</span></span><br><span class="line">                        max_quality_count = quality_count</span><br><span class="line">                        min_current_sum = current_sum</span><br><span class="line">                        best_l, best_r = l, r</span><br><span class="line">                r += <span class="number">1</span>  <span class="comment"># 右移并更新</span></span><br><span class="line">                <span class="keyword">if</span>  r &lt; n:</span><br><span class="line">                    quality_count += flag[r]</span><br><span class="line">                    current_sum += array_a[r]</span><br><span class="line">        </span><br><span class="line">        quality_count -= flag[l]    <span class="comment"># 左指针前进</span></span><br><span class="line">        current_sum -= array_a[l]</span><br><span class="line">        l += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;max_quality_count&#125;</span>,<span class="subst">&#123;best_l + <span class="number">1</span>&#125;</span>,<span class="subst">&#123;best_r + <span class="number">1</span>&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#  You can add more test cases here</span></span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">8</span>, <span class="number">15000</span>, [<span class="number">1000</span>, <span class="number">3000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">3000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">2000</span>]) == <span class="string">&quot;2,1,5&quot;</span> )</span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">8</span>, <span class="number">15000</span>, [<span class="number">2000</span>, <span class="number">5000</span>, <span class="number">2000</span>, <span class="number">1000</span>, <span class="number">4000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">3000</span>]) == <span class="string">&quot;2,4,8&quot;</span> )</span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">10</span>, <span class="number">5000</span>, [<span class="number">500</span>,<span class="number">1000</span>,<span class="number">1500</span>,<span class="number">500</span>,<span class="number">500</span>,<span class="number">1000</span>,<span class="number">1500</span>,<span class="number">500</span>,<span class="number">500</span>,<span class="number">1000</span>]) == <span class="string">&quot;1,2,4&quot;</span> )</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/01/18/lc/t0-1/" data-id="cm61wdewg000wskvz9dyr4lj3" data-title="优质章节连续选择" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">最小覆盖子串</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">代码基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 20px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/06/lc/t0/">题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Alexiang<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

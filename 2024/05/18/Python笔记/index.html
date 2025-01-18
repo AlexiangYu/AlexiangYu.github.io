@@ -14,7 +14,7 @@
 <meta property="og:description" content="基础解释器 12s &#x3D; &quot;hello, python&quot;print(s)  数据类型 int float string  查看类型：type(8963) &#x3D; int_type round(x, n) 方法返回浮点数x保留n位小数的四舍五入值 注解 12a: int &#x3D; 1b: Union[int, float] &#x3D; 1.2  联合类型注解：int 或 float 标识符命名只能出">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-18T12:29:55.000Z">
-<meta property="article:modified_time" content="2025-01-06T06:52:23.526Z">
+<meta property="article:modified_time" content="2025-01-10T15:39:32.552Z">
 <meta property="article:author" content="Alexiang">
 <meta name="twitter:card" content="summary">
   
@@ -409,11 +409,17 @@
 <p>具有__init__.py 的文件</p>
 <h4 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h4><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/collections.html#module-collections">文档</a></p>
 <ul>
-<li>Counter 计数器</li>
-<li>defaultdict 默认字典</li>
-<li>deque 双端队列</li>
+<li>Counter 计数器<ul>
+<li>dict的子类，可哈希对象的计数：从高到低的次数。</li>
+</ul>
+</li>
+<li>defaultdict 默认字典：访问未定义的键时自动为其提供默认值。</li>
+<li>deque 双端队列：可以快速的在队列头部和尾部添加、删除元素。</li>
 <li>OrderedDict 有序字典</li>
 </ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">my_list = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>]  </span><br><span class="line">counter = Counter(my_list)  </span><br><span class="line"><span class="built_in">print</span>(counter)  <span class="comment"># 输出: Counter(&#123;&#x27;apple&#x27;: 2, &#x27;banana&#x27;: 1, &#x27;orange&#x27;: 1&#125;)  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 int 的 defaultdict，默认值为 0  </span></span><br><span class="line">int_dict = defaultdict(<span class="built_in">int</span>)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 list 的 defaultdict，默认值为空列表 []  </span></span><br><span class="line">list_dict = defaultdict(<span class="built_in">list</span>)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 set 的 defaultdict，默认值为空集合 set()  </span></span><br><span class="line">set_dict = defaultdict(<span class="built_in">set</span>) </span><br><span class="line"></span><br><span class="line">list_dict[<span class="string">&#x27;fruits&#x27;</span>].append(<span class="string">&#x27;apple&#x27;</span>)  <span class="comment"># 添加到列表中  </span></span><br><span class="line"><span class="built_in">print</span>(list_dict)       <span class="comment"># 输出: defaultdict(&lt;class &#x27;list&#x27;&gt;, &#123;&#x27;fruits&#x27;: [&#x27;apple&#x27;]&#125;)  </span></span><br><span class="line"></span><br><span class="line">set_dict[<span class="string">&#x27;colors&#x27;</span>].add(<span class="string">&#x27;red&#x27;</span>)  <span class="comment"># 添加到集合中  </span></span><br><span class="line"><span class="built_in">print</span>(set_dict)       <span class="comment"># 输出: defaultdict(&lt;class &#x27;set&#x27;&gt;, &#123;&#x27;colors&#x27;: &#123;&#x27;red&#x27;&#125;&#125;)</span></span><br><span class="line"></span><br><span class="line">d = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">d.rotate(<span class="number">2</span>)            <span class="comment"># 向右旋转 2 步  </span></span><br><span class="line"><span class="comment"># deque([5, 6, 0, 1, 2, 3, 4])</span></span><br><span class="line"></span><br><span class="line">d2 = deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], maxlen=<span class="number">3</span>)  <span class="comment"># 添加元素，超过最大长度会自动删除最左边的元素  </span></span><br><span class="line"></span><br><span class="line">d2.append(<span class="number">4</span>)  <span class="comment"># 添加 4  </span></span><br><span class="line"><span class="built_in">print</span>(d2)     <span class="comment"># 输出: deque([2, 3, 4])，1 被删除</span></span><br></pre></td></tr></table></figure>
+
+
 <h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><ul>
 <li>成员变量</li>
 <li>成员方法 (self, )</li>
@@ -444,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cm5mvecs800072wvzde2ocxvb" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cm61wdevu0003skvz7hyc7ivq" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -493,7 +499,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
     </div>
   </div>
 
@@ -503,7 +509,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 20px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
     </div>
   </div>
 
@@ -525,6 +531,14 @@
       <ul>
         
           <li>
+            <a href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
           </li>
         
@@ -534,14 +548,6 @@
         
           <li>
             <a href="/2025/01/06/lc/t0/">题解</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">数据库系统</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/">使用LangChain构建LLMs应用</a>
           </li>
         
       </ul>

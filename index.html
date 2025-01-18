@@ -77,6 +77,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-lc/t0-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/18/lc/t0-1/" class="article-date">
+  <time class="dt-published" datetime="2025-01-18T06:54:23.000Z" itemprop="datePublished">2025-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在番茄小说的书籍中，编辑小S正在寻找精彩的连续章节以进行特色展示。每个章节都有各自的文字数量，编辑希望选出的连续章节总字数不超过 k。在这些连续章节中，除了第一章和最后一章，任何字数多于前后章节的章节都被视为优质章节。编辑的目标是挑选出尽可能多的优质章节，同时满足总字数限制。如果有多个答案优质章节数相同，请输出总字数最少的答案。优质章节数和总字数均相同，则输出区间下标最小的答案。</p>
+<p>例如，假设章节字数为 [1000, 3000, 2000, 4000, 3000, 2000, 4000, 2000]，给定的字数上限 k 为 15000。一种优选方案是选择从第1章到第5章，其中第2章和第4章是优质章节。</p>
+<h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><p>n：章节数目<br>k：总字数上限<br>array_a：各个章节的字数</p>
+<h2 id="返回规则如下："><a href="#返回规则如下：" class="headerlink" title="返回规则如下："></a>返回规则如下：</h2><p>返回一个字符串，格式为”优质章节数,优质章节数最多的区间左下标,优质章节数最多的区间右下标”</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心 + 非典型的双指针</p>
+<p>用 <code>flag</code> 数组标记优质章节，如 <code>[1000, 3000, 2000, 4000, 3000, 2000, 4000, 2000]</code> 对应为 <code>flag = [0, 1, 0, 1, 0, 0, 1, 0]</code> 。<br>由于要找总字数最少的答案，仅需考虑子章节 <code>l</code> 点在优质章节的左边，<code>r</code> 点在优质章节的右边之情况。<br>初始时区间放在第一个优质章节两侧，之后逐个平移左指针到下一节点，移动右指针到最大的 <code>current_sum</code> 字数时记录更新答案。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solution</span>(<span class="params">n, k, array_a</span>):</span><br><span class="line">    flag = [<span class="number">0</span>] * n  <span class="comment"># 优质章节标志</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> array_a[i] &gt; array_a[i - <span class="number">1</span>] <span class="keyword">and</span> array_a[i] &gt; array_a[i + <span class="number">1</span>]:</span><br><span class="line">            flag[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始移动指针到优秀节点前后</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> flag[i]:</span><br><span class="line">            l, r = i - <span class="number">1</span>, i + <span class="number">1</span></span><br><span class="line">            current_sum = <span class="built_in">sum</span>(array_a[l: r+<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    min_current_sum = k             <span class="comment"># 总字数</span></span><br><span class="line">    max_quality_count, quality_count = <span class="number">0</span>, <span class="number">1</span>    <span class="comment"># 优质章节数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 先移左指针</span></span><br><span class="line">    <span class="keyword">while</span> l &lt; n-<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> flag[l+<span class="number">1</span>]:   <span class="comment"># 右指针到达相应位置</span></span><br><span class="line">            <span class="keyword">while</span> current_sum &lt;= k <span class="keyword">and</span> r &lt; n:</span><br><span class="line">                <span class="keyword">if</span> flag[r-<span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">if</span> quality_count &gt; max_quality_count <span class="keyword">or</span> current_sum &lt; min_current_sum <span class="keyword">and</span> quality_count == max_quality_count:   <span class="comment"># 更新答案的条件</span></span><br><span class="line">                        max_quality_count = quality_count</span><br><span class="line">                        min_current_sum = current_sum</span><br><span class="line">                        best_l, best_r = l, r</span><br><span class="line">                r += <span class="number">1</span>  <span class="comment"># 右移并更新</span></span><br><span class="line">                <span class="keyword">if</span>  r &lt; n:</span><br><span class="line">                    quality_count += flag[r]</span><br><span class="line">                    current_sum += array_a[r]</span><br><span class="line">        </span><br><span class="line">        quality_count -= flag[l]    <span class="comment"># 左指针前进</span></span><br><span class="line">        current_sum -= array_a[l]</span><br><span class="line">        l += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;max_quality_count&#125;</span>,<span class="subst">&#123;best_l + <span class="number">1</span>&#125;</span>,<span class="subst">&#123;best_r + <span class="number">1</span>&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment">#  You can add more test cases here</span></span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">8</span>, <span class="number">15000</span>, [<span class="number">1000</span>, <span class="number">3000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">3000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">2000</span>]) == <span class="string">&quot;2,1,5&quot;</span> )</span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">8</span>, <span class="number">15000</span>, [<span class="number">2000</span>, <span class="number">5000</span>, <span class="number">2000</span>, <span class="number">1000</span>, <span class="number">4000</span>, <span class="number">2000</span>, <span class="number">4000</span>, <span class="number">3000</span>]) == <span class="string">&quot;2,4,8&quot;</span> )</span><br><span class="line">    <span class="built_in">print</span>(solution(<span class="number">10</span>, <span class="number">5000</span>, [<span class="number">500</span>,<span class="number">1000</span>,<span class="number">1500</span>,<span class="number">500</span>,<span class="number">500</span>,<span class="number">1000</span>,<span class="number">1500</span>,<span class="number">500</span>,<span class="number">500</span>,<span class="number">1000</span>]) == <span class="string">&quot;1,2,4&quot;</span> )</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/01/18/lc/t0-1/" data-id="cm61wdewg000wskvz9dyr4lj3" data-title="优质章节连续选择" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-lc/76最小覆盖子串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" class="article-date">
+  <time class="dt-published" datetime="2025-01-11T14:17:04.000Z" itemprop="datePublished">2025-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 “” 。</p>
+<ul>
+<li>对于 <code>t</code> 中重复字符，我们寻找的子字符串中该字符数量必须不少于 <code>t</code> 中该字符数量。</li>
+<li>如果 <code>s</code> 中存在这样的子串，我们保证它是唯一的答案。</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “ADOBECODEBANC”, t &#x3D; “ABC”<br>输出：”BANC”<br>解释：最小覆盖子串 “BANC” 包含来自字符串 t 的 ‘A’、’B’ 和 ‘C’。</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “a”, t &#x3D; “a”<br>输出：”a”<br>解释：整个字符串 s 是最小覆盖子串。</p>
+<p>示例 3:</p>
+<p>输入: s &#x3D; “a”, t &#x3D; “aa”<br>输出: “”<br>解释: t 中两个字符 ‘a’ 均应包含在 s 的子串中，<br>因此没有符合条件的子字符串，返回空字符串。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>要确定一个滑动窗口，使用记录一个哈希表 <code>gap</code> 记录 <code>t</code>中与目标字母数出现次数之差距，<code>gap</code> 为其总数。<br>向右移动 r 端点，对当前字符加入计数，直到 <code>gap == 0</code> 时窗口中字符已覆盖 <code>t</code>。此时记录更短的子串，并向右移动 l 端点缩小窗口，循环判定是否涵盖。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minWindow</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line"></span><br><span class="line">        cnt = defaultdict(<span class="built_in">int</span>)  <span class="comment"># t 中出现的字母计数</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> t:</span><br><span class="line">            cnt[c] += <span class="number">1</span></span><br><span class="line">        gap = <span class="built_in">len</span>(cnt)  <span class="comment"># t 中的字母出现次数 - 窗口中字母数</span></span><br><span class="line"></span><br><span class="line">        ans_l, ans_r = -<span class="number">1</span>, <span class="built_in">len</span>(s)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> r, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):  <span class="comment"># 子串右端点移动</span></span><br><span class="line">            cnt[c] -= <span class="number">1</span>     <span class="comment"># c 的出现次数差 - 1</span></span><br><span class="line">            <span class="keyword">if</span> cnt[c] == <span class="number">0</span>:     <span class="comment"># 已达成 t 中 c 的次数</span></span><br><span class="line">                gap -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> gap == <span class="number">0</span>:  <span class="comment"># 涵盖</span></span><br><span class="line">                <span class="keyword">if</span> r - l &lt; ans_r - ans_l:  <span class="comment"># 找到更短的子串</span></span><br><span class="line">                    ans_l, ans_r = l, r</span><br><span class="line">                <span class="keyword">if</span> cnt[s[l]] == <span class="number">0</span>:  <span class="comment"># 左端点移出窗口之前，检查出现次数</span></span><br><span class="line">                    gap += <span class="number">1</span></span><br><span class="line">                cnt[s[l]] += <span class="number">1</span>  <span class="comment"># 左端点字母移出子串</span></span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span> <span class="keyword">if</span> ans_l &lt; <span class="number">0</span> <span class="keyword">else</span> s[ans_l: ans_r + <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>想到可开一个栈保存右侧超过 <code>t</code> 串的字符，之后缩小窗口时可以眺移 l 端点。但需要更多内存开销并无益将 <code>O(n)</code> 的时间复杂度降低更多，故不采用。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" data-id="cm61wdewf000uskvzgl1qgbhj" data-title="最小覆盖子串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-lc/验证构造回文字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
@@ -116,11 +221,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cm5mvecsr00162wvz0hv2anux" data-title="验证构造回文字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cm61wdewi000zskvzbo7g87fq" data-title="验证构造回文字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
 
     </footer>
   </div>
@@ -211,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cm5mvecsn000u2wvz28i4arg7" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cm61wdewo001hskvz3vc94f0z" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -251,12 +356,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>testaaaa</p>
+        <p>test…</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/t0/" data-id="cm5mvecsn000t2wvzfere1rih" data-title="题解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/t0/" data-id="cm61wdewh000yskvz6vfa5twi" data-title="题解" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -310,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" data-id="cm5mvecsk000n2wvzdiat7tdc" data-title="数据库系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" data-id="cm61wdewb000mskvz8vwj1ij9" data-title="数据库系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -659,7 +764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" data-id="cm5mvecsk000l2wvzd8wd6id0" data-title="使用LangChain构建LLMs应用" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" data-id="cm61wdewb000kskvzc3oehnl0" data-title="使用LangChain构建LLMs应用" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -954,7 +1059,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/" data-id="cm5mvecsm000r2wvz4kvu2zu3" data-title="理解与使用CSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/" data-id="cm61wdewc000oskvz0n2277pc" data-title="理解与使用CSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1111,7 +1216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/" data-id="cm5mvecsi000h2wvzbc8x23i2" data-title="代码杂谈" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/" data-id="cm61wdew9000iskvz7sak99so" data-title="代码杂谈" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1185,7 +1290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" data-id="cm5mvecry00012wvzbp5d5vxj" data-title="CRDT协同方案分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" data-id="cm61wdevp0001skvz6etl5l4x" data-title="CRDT协同方案分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1505,7 +1610,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/09/12/TS%E4%B8%8EES6/" data-id="cm5mvecsb00092wvz5nvaf1ru" data-title="TS与ES6+" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/09/12/TS%E4%B8%8EES6/" data-id="cm61wdew20008skvz0gofhlxs" data-title="TS与ES6+" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1600,419 +1705,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/08/23/Web%E5%8E%9F%E7%94%9F/" data-id="cm5mvecsg000c2wvz512v2wx5" data-title="Web原生" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-React笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/08/21/React%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-08-21T14:43:01.000Z" itemprop="datePublished">2024-08-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/08/21/React%E7%AC%94%E8%AE%B0/">React 笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>Thinking in React</strong></p>
-<p>声明式+组件化+跨平台</p>
-<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>语法扩展：js代码中编写HTML模板。可以被编译成JavaScript函数。</p>
-<ul>
-<li><code>&#123; &#125;</code> 表达式插值</li>
-<li>外层仅识别一对标签: 引入<code>Fragment</code></li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> list = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;apple&quot;</span>, <span class="attr">price</span>: <span class="number">10</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;banana&quot;</span>, <span class="attr">price</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;orange&quot;</span>, <span class="attr">price</span>: <span class="number">30</span> &#125;,</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;list.id&#125;</span>&gt;</span> &#123; list.map((item, index) =&gt; <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item.name&#125; - &#123;item.price&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span>) &#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Babel 转译</strong>： React.createElement() 函数调用</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="title class_">React</span>.<span class="title function_">createElement</span>(</span><br><span class="line">  <span class="string">&#x27;h1&#x27;</span>,</span><br><span class="line">  &#123;<span class="attr">className</span>: <span class="string">&#x27;greeting&#x27;</span>&#125;,</span><br><span class="line">  <span class="string">&#x27;Hello, world!&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 得到的 React元素</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: &#x27;h1&#x27;,</span></span><br><span class="line"><span class="comment">//   props: &#123;</span></span><br><span class="line"><span class="comment">//     className: &#x27;greeting&#x27;,</span></span><br><span class="line"><span class="comment">//     children: &#x27;Hello, world!&#x27;</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h4><p>命名：<code>on</code> + 事件类型，如 <code>onClick</code> </p>
-<p>可以传递参数、事件对象</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params">e, name</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;clicked&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;(e)</span> =&gt;</span> handleClick(e, &quot;apple&quot;)&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><p>class类名控制：<code>className</code> 需导入</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import &#x27;./foo.css&#x27;;</span></span><br><span class="line">&lt;span className=<span class="string">&quot;foo&quot;</span>&gt;<span class="title class_">This</span> is a span&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-
-<p>支持 CSS Modules 语法：<code>import styles from &#39;./foo.module.css&#39;;</code></p>
-<p>CSS in JS：<code>style=&#123;&#123; backgroundColor: 'red' &#125;&#125;</code></p>
-<h4 id="获取DOM节点"><a href="#获取DOM节点" class="headerlink" title="获取DOM节点"></a>获取DOM节点</h4><ul>
-<li><code>useRef()</code>：获取ref的引用</li>
-<li><code>ref</code> 属性：组件实例的 DOM 节点</li>
-<li><code>inputRef.current</code>：在js中DOM节点的引用</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputRef = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    inputRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>Focus<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>hook函数：<code>useState()</code></p>
-<p>为组件添加状态：<code>const [count, setCount] = useState(0);</code> </p>
-<ul>
-<li><code>count</code> 只读的状态变量</li>
-<li><code>setCount</code> 更新状态的函数</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleIncrement</span> = (<span class="params"></span>) =&gt; &#123; <span class="title function_">setCount</span>(count + <span class="number">1</span>) &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleDecrement</span> = (<span class="params"></span>) =&gt; &#123; <span class="title function_">setCount</span>(count - <span class="number">1</span>) &#125;;</span><br><span class="line">  <span class="comment">// 计数器组件</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleIncrement&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleDecrement&#125;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对象类型状态修改：展开+赋值</p>
-<p>表单双向绑定：<code>value</code> + <code>onChange</code></p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [value, setValue] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setValue(e.target.value)&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>使用函数的定义，首字母大写</p>
-<p>返回一个 JSX 元素 （最终渲染的结果）。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Greeting</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">name</span>=<span class="string">&quot;World&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">name</span>=<span class="string">&quot;React&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>类组件：</p>
-<ul>
-<li><code>constructor(props)</code>：构造函数，接收 props</li>
-<li><code>render()</code>：返回 JSX 元素</li>
-</ul>
-<p>属性</p>
-<ul>
-<li><code>props</code>：父组件传递给子组件的属性</li>
-<li><code>state</code>：组件自身的状态，可通过 <code>this.setState()</code> 更新</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Greeting</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">name</span>: props.<span class="property">name</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;this.state.name&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">name</span>=<span class="string">&quot;World&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Greeting</span> <span class="attr">name</span>=<span class="string">&quot;React&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><ul>
-<li><code>props</code>：父组件 -&gt; 子组件<ul>
-<li><code>props.children</code>: 接收插槽内容: jsx</li>
-</ul>
-</li>
-<li>回调函数：子组件 -&gt; 父组件</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">MsgContext</span> = <span class="title function_">createContext</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Parent</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [name, setName] = <span class="title function_">useState</span>(<span class="string">&quot;John&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="title function_">setName</span>(<span class="string">&quot;Mike&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Child</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>From Parent<span class="tag">&lt;/<span class="name">Child</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params">&#123; name, onClick, children &#125;</span>) &#123;   <span class="comment">// 解构接收 props</span></span><br><span class="line">  <span class="keyword">const</span> msg = <span class="title function_">useContext</span>(<span class="title class_">MsgContext</span>)     <span class="comment">// 接收 context 上下文内容</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;name&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClick&#125;</span>&gt;</span>Change name<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;msg&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MsgContext.Provider</span> <span class="attr">value</span>=<span class="string">&quot;YzxNmsl&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">Parent</span>/&gt;</span> <span class="tag">&lt;/<span class="name">MsgContext.Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="context机制"><a href="#context机制" class="headerlink" title="context机制"></a>context机制</h4><p>共享状态，向后代传递数据，通过 <code>context</code> 接收。</p>
-<p>多级穿透</p>
-<ul>
-<li><code>const Ctx = createContext()</code>：创建上下文对象</li>
-<li><code>&lt;Ctx.Provider value=&quot;xxx&quot;&gt; &lt;/Ctx.Provider&gt;</code>：祖代 提供上下文</li>
-<li><code>const msg = useContext(Ctx)</code>: 后代 获取上下文</li>
-</ul>
-<p><strong>向子组件批量添加属性</strong></p>
-<p>通过 <code>React.cloneElement</code> 方法复制该子组件，添加共享属性并返回</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">SizeWrapper</span> = (<span class="params">&#123; commonProps &#125;</span>) =&gt; &#123;  </span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">      &#123;  </span></span><br><span class="line"><span class="language-xml">        React.Children.map(children, (child) =&gt; &#123;  </span></span><br><span class="line"><span class="language-xml">          if (child &amp;&amp; child.props) &#123;  </span></span><br><span class="line"><span class="language-xml">            return React.cloneElement(child, commonProps);  </span></span><br><span class="line"><span class="language-xml">          &#125;  </span></span><br><span class="line"><span class="language-xml">          return child;  </span></span><br><span class="line"><span class="language-xml">        &#125;)  </span></span><br><span class="line"><span class="language-xml">      &#125;  </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>等价于所有子组件都添加了 <code>size=&#123;props.size&#125;</code> 属性</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">SizeWrapper</span> size=&#123;props.<span class="property">size</span>&#125;&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Input</span> <span class="attr">value</span>=<span class="string">&quot;input&quot;</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">InputTag</span> <span class="attr">value</span>=<span class="string">&#123;[</span>&#x27;<span class="attr">input-tag</span>&#x27;]&#125; /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">InputNumber</span> <span class="attr">value</span>=<span class="string">&#123;100&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>Primary<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">SizeWrapper</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="ref转发"><a href="#ref转发" class="headerlink" title="ref转发"></a>ref转发</h4><p>通过 <code>forwardRef</code> 转发ref，让外部组件能够访问 <code>FormComponent</code> 中的方法。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">FormComponentWithRef</span> = <span class="title class_">React</span>.<span class="title function_">forwardRef</span>(<span class="function">(<span class="params">props, ref</span>) =&gt;</span> &#123;     <span class="comment">// 转发 ref  </span></span><br><span class="line">    <span class="keyword">const</span> [formInstance] = <span class="title class_">Form</span>.<span class="title function_">useForm</span>();    <span class="comment">// Antd Form</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 给 ref 添加 change, clear 方法</span></span><br><span class="line">    <span class="title function_">useImperativeHandle</span>(ref, <span class="function">() =&gt;</span> (&#123;  </span><br><span class="line">        <span class="attr">change</span>: <span class="function">() =&gt;</span> formInstance.<span class="title function_">setFieldsValue</span>(newValue),  </span><br><span class="line">        <span class="attr">clear</span>: <span class="function">() =&gt;</span> formInstance.<span class="title function_">clearFields</span>([<span class="string">&#x27;username&#x27;</span>, <span class="string">&#x27;email&#x27;</span>]),  </span><br><span class="line">    &#125;));  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (  </span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">Form</span> <span class="attr">form</span>=<span class="string">&#123;formInstance&#125;</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">FormItem</span> <span class="attr">label</span>=<span class="string">&quot;Username&quot;</span> <span class="attr">field</span>=<span class="string">&quot;username&quot;</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Input</span> <span class="attr">placeholder</span>=<span class="string">&quot;please enter your username...&quot;</span> /&gt;</span>  </span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">FormItem</span> <span class="attr">label</span>=<span class="string">&quot;Email&quot;</span> <span class="attr">field</span>=<span class="string">&quot;email&quot;</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Input</span> <span class="attr">placeholder</span>=<span class="string">&quot;please enter your email...&quot;</span> /&gt;</span>  </span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Form</span>&gt;</span></span>  </span><br><span class="line">    )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>外层组件中可调用 <code>change</code>, <code>clear</code> 方法</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">FormWrapper</span> = (<span class="params"></span>) =&gt; &#123;  </span><br><span class="line">    <span class="keyword">const</span> formRef = <span class="title function_">useRef</span>(<span class="literal">null</span>);  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">b</span>&gt;</span>Wrapper Operations:<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> formRef.current?.change()&#125;&gt;</span></span><br><span class="line"><span class="language-xml">                    Change</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> formRef.current?.clear()&#125;&gt;</span></span><br><span class="line"><span class="language-xml">                    Clear</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">FormComponentWithRef</span> <span class="attr">ref</span>=<span class="string">&#123;formRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>关于组件挂载位置</strong></p>
-<p>如果传入 <code>container</code>，则渲染到指定容器中，否则渲染到组件树中。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createPortal &#125; <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CustomButton</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; container, color &#125; = props</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">DemoButton</span> = <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>&#123;color&#125; - 按钮<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> containerElem = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> container?.()</span><br><span class="line">    &#125;, [container])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (containerElem) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">createPortal</span>(<span class="title class_">DemoButton</span>, containerElem)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">DemoButton</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>React-DOM 提供了 <code>createPortal</code> 方法，可以将子组件渲染到指定 DOM 节点中。</p>
-<p>portal 内触发的事件，会冒泡到 React 组件树的祖先，而不是实际 DOM 树上。</p>
-<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li><code>componentDidMount()</code>：组件挂载后执行</li>
-<li><code>componentWillUnmount()</code>：组件卸载前执行</li>
-<li><code>componentDidUpdate(prevProps, prevState)</code>：组件更新后执行</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;componentDidMount&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;componentWillUnmount&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentDidUpdate</span>(<span class="params">prevProps, prevState</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;componentDidUpdate&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleIncrement = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">count</span>: <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span> + <span class="number">1</span> &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  handleDecrement = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">count</span>: <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span> - <span class="number">1</span> &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleIncrement&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleDecrement&#125;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-<h2 id="钩子"><a href="#钩子" class="headerlink" title="钩子"></a>钩子</h2><ul>
-<li><code>useState()</code>：状态钩子</li>
-<li><code>useEffect()</code>：副作用钩子</li>
-<li><code>useContext()</code>：上下文钩子</li>
-<li><code>useReducer()</code>：自定义 reducer 钩子</li>
-<li><code>useCallback()</code>：回调钩子</li>
-<li><code>useMemo()</code>：缓存钩子</li>
-<li><code>useRef()</code>：ref 钩子</li>
-<li><code>useImperativeHandle()</code>：自定义暴露钩子</li>
-<li><code>useLayoutEffect()</code>：布局钩子</li>
-</ul>
-<p>仅保存，不需要重渲染的数据可用 <code>useRef()</code></p>
-<h4 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h4><p>副作用钩子，仅在特定条件下执行：</p>
-<ol>
-<li>接收一个函数，创建副作用操作，函数中可以有异步操作（发送AJAX请求，更改DOM等），可以返回一个清除副作用的函数。</li>
-<li>传入依赖项指定执行时机：</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th><strong>依赖项</strong></th>
-<th><strong>副作用功函数的执行时机</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>没有依赖项</td>
-<td>组件初始渲染 + 组件更新时执行</td>
-</tr>
-<tr>
-<td><code>[]</code></td>
-<td>只在初始渲染时执行一次</td>
-</tr>
-<tr>
-<td><code>[prop1, prop2]</code></td>
-<td>组件初始渲染 + 当 <code>prop1</code> 或 <code>prop2</code> 变化时执行</td>
-</tr>
-</tbody></table>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;useEffect&quot;</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleIncrement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleDecrement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(count - <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleIncrement&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleDecrement&#125;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h4><ul>
-<li>自定义 reducer 钩子</li>
-<li>接收 reducer 函数和初始状态</li>
-<li>返回当前状态和 dispatch 方法</li>
-<li>可以通过 dispatch 方法触发 reducer 函数，更新状态</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> state.<span class="property">count</span> + <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;decrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> state.<span class="property">count</span> - <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;update&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> action.<span class="property">payload</span></span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;state.count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> <span class="attr">-</span>&gt;</span> dispatch(&#123; type: &quot;increment&quot; &#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> <span class="attr">-</span>&gt;</span> dispatch(&#123; type: &quot;decrement&quot; &#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> <span class="attr">-</span>&gt;</span> dispatch(&#123; type: &quot;set&quot;, payload: 10 &#125;)&#125;&gt;update to 10<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p><strong>自定义Hook</strong></p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useToggle</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [isToggled, setIsToggled] = <span class="title function_">useState</span>(<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">toggle</span> = (<span class="params"></span>) =&gt; <span class="title function_">setIsToggled</span>(<span class="function"><span class="params">prev</span> =&gt;</span>!prev)</span><br><span class="line">    <span class="keyword">return</span> [isToggled, toggle]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [isToggled, toggle] = <span class="title function_">useToggle</span>()</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;isToggled ? &quot;ON&quot; : &quot;OFF&quot;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;toggle&#125;</span>&gt;</span>Toggle<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><p>集中状态管理工具</p>
-<ol>
-<li>定义 <code>reducer</code> 函数，接收 <code>state</code> 和 <code>action</code> 对象，返回新的 <code>state</code> 变化规则</li>
-<li>创建 <code>store</code> 对象：使用 <code>createStore()</code>，传入 <code>reducer</code> 函数</li>
-<li>使用 <code>store.subscribe()</code> 订阅 <code>state</code> 数据：变化时得到通知</li>
-<li>使用 <code>store.dispatch()</code> 提交 <code>action</code> 对象，触发 <code>reducer</code> 函数更新 <code>state</code></li>
-<li>使用 <code>store.getState()</code> 获取 <code>state</code></li>
-</ol>
-<p>使用 <code>React Toolkit</code>：<code>react-redux</code></p>
-<ul>
-<li><code>xxStore</code> 模块：<ol>
-<li><code>createSlice()</code> 传入<code>name</code>, <code>initialState</code>, <code>reducers</code> 参数，创建 <code>xxStore</code> 对象</li>
-<li>异步操作：导出单独封装的函数，返回相应异步操作，即 <code>action</code></li>
-<li>导出 从 <code>xxStore.actions</code> 解构出来的actionCreater函数</li>
-<li>默认导出 reducer <code>xxStore.reducer</code></li>
-</ol>
-</li>
-<li>store的 <code>index</code> 入口文件：<ol>
-<li><code>configureStore</code> 将所有模块的 <code>reducer</code> 合并成根<code>store</code>，统一导出</li>
-</ol>
-</li>
-<li>在项目 <code>index.js</code> 中，将<code>store</code>注入React：<ol>
-<li>导入 <code>Provider</code>, <code>store</code></li>
-<li><code>&lt;Provider store=&#123;store&#125;&gt; &lt;App /&gt; &lt;/Provider&gt;</code>：为所有组件提供 <code>Redux store</code></li>
-</ol>
-</li>
-<li>组件中使用<ol>
-<li><code>useSelector()</code> ：从 <code>store</code> 中获取 <code>state</code></li>
-<li><code>useDispatch()</code> ：获取 <code>dispatch</code> 函数，用于提交 <code>action</code></li>
-</ol>
-</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state = initialState, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;decrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(reducer)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useStore</span>(store);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleIncrement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;increment&quot;</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleDecrement</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;decrement&quot;</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;state.count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleIncrement&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleDecrement&#125;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span>      </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>reducer 为纯函数 -&gt; 处理 action 副作用</p>
-<p>中间件，使用 thunk 实现异步操作</p>
-<h2 id="ReactRouter"><a href="#ReactRouter" class="headerlink" title="ReactRouter"></a>ReactRouter</h2><blockquote>
-<p><code>react-router</code>: 核心库，适用于多种环境，自定义路由的基础功能。而<br><code>react-router-dom</code> 是扩展库，专为浏览器环境设计，提供了许多网址导航功能，适合 Web 应用程序使用。</p>
-</blockquote>
-<ul>
-<li>声明式导航：<code>&lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;</code> 组件</li>
-<li>编程式导航：<code>const navigate = useNavigate()</code> 钩子，得到导航方法</li>
-</ul>
-<h4 id="路由模式"><a href="#路由模式" class="headerlink" title="路由模式"></a>路由模式</h4><ul>
-<li><code>BrowserRouter</code>：浏览器历史记录模式</li>
-<li><code>HashRouter</code>：hash 路由模式</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>路由模式</th>
-<th>url表现</th>
-<th>底层原理</th>
-<th>创建函数</th>
-<th>是否需要后端支持</th>
-<th>使用场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>history</td>
-<td>url&#x2F;login</td>
-<td>HTML的History接口，关于会话历史记录</td>
-<td><code>createBrowserHistory()</code></td>
-<td>需要</td>
-<td>现代 SPA 应用</td>
-</tr>
-<tr>
-<td>hash</td>
-<td>url&#x2F;#&#x2F;login</td>
-<td>监听hashChange事件</td>
-<td><code>createHashHistory()</code></td>
-<td>不需要</td>
-<td>静态页面如 GitHub Pages</td>
-</tr>
-</tbody></table>
-<h4 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h4><ol>
-<li>使用 <code>children</code> 属性配置路由嵌套关系  </li>
-<li>二级路由渲染位置: <code>&lt;Outlet/&gt;</code> 组件</li>
-</ol>
-<p>微前端？</p>
-<h2 id="架构解析"><a href="#架构解析" class="headerlink" title="架构解析"></a>架构解析</h2><h3 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h3><p>React 16版本对虚拟DOM的升级，解决DOM树更新效率问题。</p>
-<p>拆分渲染任务，将渲染任务分解成更小的任务，并将任务存储在一个队列中，React可以根据优先级和时间分配资源，最大限度地提高渲染效率。</p>
-<p>每个Fiber都代表了一个工作单元，React可以在处理任何Fiber之前判断是否有足够的时间完成该工作，并在必要时中断和恢复工作。</p>
-<h4 id="工作单元"><a href="#工作单元" class="headerlink" title="工作单元"></a>工作单元</h4><ul>
-<li>任务：渲染一个组件</li>
-<li>工作单元：包含一个任务，包括组件类型、props、状态、子节点等信息</li>
-<li>工作单元队列：包含多个工作单元，React会按顺序执行每个工作单元</li>
-</ul>
-<h3 id="更新流程"><a href="#更新流程" class="headerlink" title="更新流程"></a>更新流程</h3><ul>
-<li>Scheduler：调度器，维护时间切片，管理工作单元队列，根据优先级和时间分配资源</li>
-<li>Reconciler：协调器，负责对比新旧虚拟DOM树，计算出最小更新范围，并根据更新范围更新DOM树</li>
-<li>Renderer：渲染器，负责将虚拟DOM渲染成真实DOM树</li>
-</ul>
-<p>比较 <code>current Tree</code> 和 <code>workInProgres Tree</code>：</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/08/21/React%E7%AC%94%E8%AE%B0/" data-id="cm5mvecsa00082wvz9ic6hz85" data-title="React 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Node-js相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" class="article-date">
-  <time class="dt-published" datetime="2024-07-28T12:33:26.000Z" itemprop="datePublished">2024-07-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/">Node.js相关知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>早期JS: 全局污染和依赖管理混乱</p>
-<h3 id="Commonjs标准"><a href="#Commonjs标准" class="headerlink" title="Commonjs标准"></a>Commonjs标准</h3><p>主要在Node.js中实现模块化，在浏览器中需要用webpack编译打包处理（或Browserify实现）</p>
-<ul>
-<li>每一个 <code>.js</code> 文件都是一个单独的模块</li>
-<li>核心变量: module、exports、require</li>
-<li>对代码用函数包装</li>
-<li>运行时同步加载</li>
-</ul>
-<h4 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h4><p>为<code>module.exports</code>赋值，可以只导出一个类或函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> <span class="title function_">sayName</span> () &#123;</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>传入形参exports，添加属性和方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">name</span> = <span class="string">`《Node.js实践》`</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">author</span> = <span class="string">&#x27;AlexYu&#x27;</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">say</span> = <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">666</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// exports是传入到当前模块内的一个对象，不能直接赋值</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>require 加载文件：dfs，缓存避免重复加载、循环引用</p>
-<p>顺序：当前目录node_modules -&gt; 上级目录的node_modules -&gt; index.js ，index.json ，index.node</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sayName = <span class="built_in">require</span>(<span class="string">&#x27;./hello.js&#x27;</span>)</span><br><span class="line"><span class="title function_">sayName</span>()</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="ES6标准"><a href="#ES6标准" class="headerlink" title="ES6标准"></a>ES6标准</h3><ul>
-<li>静态模块化，提前在编译时加载</li>
-<li>命令 <code>export</code> 用于暴露接口， <code>import</code> 用于引入模块</li>
-<li>运行时异步加载</li>
-<li>代码中直接导入导出模块</li>
-</ul>
-<h4 id="命名导出-导入"><a href="#命名导出-导入" class="headerlink" title="命名导出&#x2F;导入"></a>命名导出&#x2F;导入</h4><ul>
-<li>import { } 内部的变量名称，要与 export { } 完全匹配</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">sayName</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Node.js实践&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; a, b &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; sayName, a, b &#125; <span class="keyword">from</span> <span class="string">&#x27;./hello.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">sayName</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a+<span class="number">1</span>, b);</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="默认导出-导入"><a href="#默认导出-导入" class="headerlink" title="默认导出&#x2F;导入"></a>默认导出&#x2F;导入</h4><ul>
-<li>export default 导出模块的默认接口，import 导入时可以省略接口名称</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;New York&quot;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> obj <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)    <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn] &#125;</span></span><br><span class="line">obj.<span class="title function_">fn</span>()           <span class="comment">// Hello John</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="混合导出-导入"><a href="#混合导出-导入" class="headerlink" title="混合导出&#x2F;导入"></a>混合导出&#x2F;导入</h4><ul>
-<li>同时使用 export default 和 export 导入多个属性</li>
-<li>重命名导入</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> c = <span class="number">110</span>;</span><br><span class="line"><span class="keyword">let</span> d = <span class="number">120</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;c, d&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&quot;New York&quot;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> obj, &#123;c, d&#125; <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)    <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn] &#125;</span></span><br><span class="line">obj.<span class="title function_">fn</span>()           <span class="comment">// Hello John</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c, d)   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// as 重命名</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> O <span class="keyword">from</span> <span class="string">&#x27;./exp_defualt.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(O) <span class="comment">// &#123; name: &#x27;John&#x27;, age: 30, city: &#x27;New York&#x27;, fn: [Function: fn], c: 110, d: 120 &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h4><p>语法：<code>import(module)</code></p>
-<ul>
-<li>运行时动态导入模块，避免打包体积过大</li>
-<li>返回 Promise 对象，可以使用 then() 方法获取模块的接口</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">module</span> === <span class="string">&#x27;object&#x27;</span> &amp;&amp; <span class="variable language_">module</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&#x27;./hello.js&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Accepting the updated module!&#x27;</span>);</span><br><span class="line">    <span class="comment">// 重新导入模块</span></span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./hello.js&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">module</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;The updated module:&#x27;</span>, <span class="variable language_">module</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Thunk-是什么"><a href="#Thunk-是什么" class="headerlink" title="Thunk 是什么"></a>Thunk 是什么</h2><p>Thunk函数，它接受一个函数作为参数，返回一个函数，这个函数可以接受另一个参数，并返回一个值。主要用于延迟执行，可以将一些计算推迟到运行时执行，比如读取文件、网络请求等。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">readFile</span>(<span class="params">filename</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">callback</span>) &#123;</span><br><span class="line">    fs.<span class="title function_">readFile</span>(filename, <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span>(<span class="params">err, data</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">callback</span>(err);</span><br><span class="line">      <span class="title function_">callback</span>(<span class="literal">null</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">readFile</span>(<span class="string">&#x27;hello.txt&#x27;</span>)(<span class="keyword">function</span>(<span class="params">err, data</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>在redux中，Thunk用来处理异步任务，它可以让 action 处理函数返回一个函数。</p>
-<p>Thunk middleware自动将返回的函数包裹在 dispatch 函数中，这样就可以在 action 处理函数中执行异步操作。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetchUser</span>(<span class="params">id</span>) &#123;</span><br><span class="line">  <span class="comment">// 返回的这个异步函数是一个 Thunk, 或者叫 ThunkAction</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> (&#123; dispatch &#125;) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 额外的异步API调用</span></span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> api.<span class="title function_">getUser</span>(id);</span><br><span class="line">    <span class="comment">// 此时才真正dispatch action</span></span><br><span class="line">    <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;UPDATE_USER&#x27;</span>, <span class="attr">payload</span>: user &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" data-id="cm5mvecs600052wvz5xq1gkhn" data-title="Node.js相关知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/08/23/Web%E5%8E%9F%E7%94%9F/" data-id="cm61wdew4000bskvzegmtdi7b" data-title="Web原生" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -2049,7 +1742,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
     </div>
   </div>
 
@@ -2059,7 +1752,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 20px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
     </div>
   </div>
 
@@ -2081,6 +1774,14 @@
       <ul>
         
           <li>
+            <a href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
           </li>
         
@@ -2090,14 +1791,6 @@
         
           <li>
             <a href="/2025/01/06/lc/t0/">题解</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/">数据库系统</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/">使用LangChain构建LLMs应用</a>
           </li>
         
       </ul>
