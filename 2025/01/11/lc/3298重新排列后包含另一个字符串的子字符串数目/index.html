@@ -14,10 +14,10 @@
 <meta property="og:description" content="3298. 统计重新排列后包含另一个字符串的子字符串数目 II 题目描述给你两个字符串 word1 和 word2 ，都只包含小写英文字母。 如果一个字符串 x 重新排列后，word2 是重排字符串的 前缀 ，那么我们称字符串 x 是 合法的 。请你返回 word1 中 合法 子字符串 的数目。 实现一个线性复杂度的解法。 示例 1： 输入：word1 &#x3D; &quot;bcca&quot;, wo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-11T14:17:04.000Z">
-<meta property="article:modified_time" content="2025-06-17T08:42:24.878Z">
+<meta property="article:modified_time" content="2025-06-17T20:32:37.656Z">
 <meta property="article:author" content="Alexiang">
-<meta property="article:tag" content="滑动窗口">
 <meta property="article:tag" content="字符串">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Alexiang's Blog" type="application/atom+xml">
@@ -128,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/" data-id="cmc0gbw3q000t2svzf2up3ah9" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/" data-id="cmc10233f001ac0vz2nll7zua" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -140,19 +140,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          优质章节连续选择
+          76最小覆盖子串
         
       </div>
     </a>
   
   
-    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">最小覆盖子串</div>
+      <div class="article-nav-title">验证构造回文字符串</div>
     </a>
   
 </nav>
@@ -179,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
     </div>
   </div>
 
@@ -189,7 +189,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 20px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 20px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15px;">字符串</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 15px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 15px;">贪心</a>
     </div>
   </div>
 
@@ -211,6 +211,14 @@
       <ul>
         
           <li>
+            <a href="/2025/06/18/lc/11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">11盛最多水的容器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/18/lc/42%E6%8E%A5%E9%9B%A8%E6%B0%B4/">42接雨水</a>
+          </li>
+        
+          <li>
             <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
           </li>
         
@@ -219,15 +227,7 @@
           </li>
         
           <li>
-            <a href="/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
+            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">76最小覆盖子串</a>
           </li>
         
       </ul>

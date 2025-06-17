@@ -77,6 +77,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-lc/11盛最多水的容器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/18/lc/11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T16:00:00.000Z" itemprop="datePublished">2025-06-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/18/lc/11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">11盛最多水的容器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个长度为 <code>n</code> 的整数数组 <code>height</code> 。有 <code>n</code> 条垂线，第 <code>i</code> 条线的两个端点是 <code>(i, 0)</code> 和 <code>(i, height[i])</code> 。<br>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。<br>返回容器可以储存的最大水量。</p>
+<p>说明：你不能倾斜容器。</p>
+<p>示例 1：</p>
+<p>输入：[1,8,6,2,5,4,8,3,7]<br>输出：49<br>解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
+<p>示例 2：</p>
+<p>输入：height &#x3D; [1,1]<br>输出：1</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>这道题的思路是使用双指针，分别指向数组的左右两端，然后计算这两个指针所指向的两条线的面积，取最大值，然后移动指针指向较短的那条线，直到两指针相遇。</p>
+<p>每次移动对应数字较小的那个指针，才能保证容器有可能变大。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>, j=height.<span class="built_in">size</span>()<span class="number">-1</span>, res=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">            res= height[i]&lt;height[j]? <span class="built_in">max</span>(res, (j-i)*height[i++]):<span class="built_in">max</span>(res, (j-i)*height[j--]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/06/18/lc/11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" data-id="cmc102336000sc0vzbnq1hzl9" data-title="11盛最多水的容器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-lc/42接雨水" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/18/lc/42%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T16:00:00.000Z" itemprop="datePublished">2025-06-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/18/lc/42%E6%8E%A5%E9%9B%A8%E6%B0%B4/">42接雨水</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+<p>示例 1：</p>
+<p>输入：height &#x3D; [0,1,0,2,1,0,1,3,2,1,2,1]<br>输出：6<br>解释：上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 </p>
+<p>示例 2：</p>
+<p>输入：height &#x3D; [4,2,0,3,2,5]<br>输出：9</p>
+<p>提示：</p>
+<p>n &#x3D;&#x3D; height.length<br>1 &lt;&#x3D; n &lt;&#x3D; 2 * 104<br>0 &lt;&#x3D; height[i] &lt;&#x3D; 105</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>双指针解法，将空间复杂度降到 <code>O(1)</code>：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">trap</span>(<span class="params">self, height: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        l, r = <span class="number">0</span>, <span class="built_in">len</span>(height) - <span class="number">1</span></span><br><span class="line">        ans = l_val = r_val = <span class="number">0</span>     <span class="comment"># 左右两侧最大高度确定降水量</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            l_val, r_val = <span class="built_in">max</span>(l_val, height[l]), <span class="built_in">max</span>(r_val, height[r]) <span class="comment"># 移动后更新</span></span><br><span class="line">            <span class="keyword">if</span> height[l] &lt; height[r]:   <span class="comment"># 移动较低的一侧</span></span><br><span class="line">                ans += l_val - height[l]</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans += r_val - height[r]</span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/06/18/lc/42%E6%8E%A5%E9%9B%A8%E6%B0%B4/" data-id="cmc102339000xc0vzg7l45vtz" data-title="42接雨水" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-lc/3170删除星号以后字典序最小的字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
@@ -130,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmc0gbw3r000u2svzclao22of" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmc102337000tc0vz25ah9xzv" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -180,11 +284,74 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/" data-id="cmc0gbw3s000y2svzfx03cow2" data-title="优质章节连续选择" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/" data-id="cmc10233a000zc0vz2m010kt9" data-title="优质章节连续选择" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-lc/76最小覆盖子串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" class="article-date">
+  <time class="dt-published" datetime="2025-01-11T14:17:04.000Z" itemprop="datePublished">2025-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">76最小覆盖子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 “” 。</p>
+<ul>
+<li>对于 <code>t</code> 中重复字符，我们寻找的子字符串中该字符数量必须不少于 <code>t</code> 中该字符数量。</li>
+<li>如果 <code>s</code> 中存在这样的子串，我们保证它是唯一的答案。</li>
+</ul>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “ADOBECODEBANC”, t &#x3D; “ABC”<br>输出：”BANC”<br>解释：最小覆盖子串 “BANC” 包含来自字符串 t 的 ‘A’、’B’ 和 ‘C’。</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “a”, t &#x3D; “a”<br>输出：”a”<br>解释：整个字符串 s 是最小覆盖子串。</p>
+<p>示例 3:</p>
+<p>输入: s &#x3D; “a”, t &#x3D; “aa”<br>输出: “”<br>解释: t 中两个字符 ‘a’ 均应包含在 s 的子串中，<br>因此没有符合条件的子字符串，返回空字符串。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>要确定一个滑动窗口，使用记录一个哈希表 <code>gap</code> 记录 <code>t</code> 中与目标字母数出现次数之差距，<code>gap</code> 为其总数。<br>向右移动 r 端点，对当前字符加入计数，直到 <code>gap == 0</code> 时窗口中字符已覆盖 <code>t</code>。此时记录更短的子串，并向右移动 l 端点缩小窗口，循环判定是否涵盖。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minWindow</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line"></span><br><span class="line">        cnt = defaultdict(<span class="built_in">int</span>)  <span class="comment"># t 中出现的字母计数</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> t:</span><br><span class="line">            cnt[c] += <span class="number">1</span></span><br><span class="line">        gap = <span class="built_in">len</span>(cnt)  <span class="comment"># t 中的字母出现次数 - 窗口中字母数</span></span><br><span class="line"></span><br><span class="line">        ans_l, ans_r = -<span class="number">1</span>, <span class="built_in">len</span>(s)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> r, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):  <span class="comment"># 子串右端点移动</span></span><br><span class="line">            cnt[c] -= <span class="number">1</span>     <span class="comment"># c 的出现次数差 - 1</span></span><br><span class="line">            <span class="keyword">if</span> cnt[c] == <span class="number">0</span>:     <span class="comment"># 已达成 t 中 c 的次数</span></span><br><span class="line">                gap -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> gap == <span class="number">0</span>:  <span class="comment"># 涵盖</span></span><br><span class="line">                <span class="keyword">if</span> r - l &lt; ans_r - ans_l:  <span class="comment"># 找到更短的子串</span></span><br><span class="line">                    ans_l, ans_r = l, r</span><br><span class="line">                <span class="keyword">if</span> cnt[s[l]] == <span class="number">0</span>:  <span class="comment"># 左端点移出窗口之前，检查出现次数</span></span><br><span class="line">                    gap += <span class="number">1</span></span><br><span class="line">                cnt[s[l]] += <span class="number">1</span>  <span class="comment"># 左端点字母移出子串</span></span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span> <span class="keyword">if</span> ans_l &lt; <span class="number">0</span> <span class="keyword">else</span> s[ans_l: ans_r + <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>想到可开一个栈保存右侧超过 <code>t</code> 串的字符，之后缩小窗口时可以眺移 l 端点。但需要更多内存开销并无益将 <code>O(n)</code> 的时间复杂度降低更多，故不采用。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" data-id="cmc10233d0014c0vzb0jy45gb" data-title="76最小覆盖子串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li></ul>
 
     </footer>
   </div>
@@ -243,74 +410,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/" data-id="cmc0gbw3q000t2svzf2up3ah9" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/" data-id="cmc10233f001ac0vz2nll7zua" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-lc/76最小覆盖子串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" class="article-date">
-  <time class="dt-published" datetime="2025-01-11T14:17:04.000Z" itemprop="datePublished">2025-01-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 “” 。</p>
-<ul>
-<li>对于 <code>t</code> 中重复字符，我们寻找的子字符串中该字符数量必须不少于 <code>t</code> 中该字符数量。</li>
-<li>如果 <code>s</code> 中存在这样的子串，我们保证它是唯一的答案。</li>
-</ul>
-<p>示例 1：</p>
-<p>输入：s &#x3D; “ADOBECODEBANC”, t &#x3D; “ABC”<br>输出：”BANC”<br>解释：最小覆盖子串 “BANC” 包含来自字符串 t 的 ‘A’、’B’ 和 ‘C’。</p>
-<p>示例 2：</p>
-<p>输入：s &#x3D; “a”, t &#x3D; “a”<br>输出：”a”<br>解释：整个字符串 s 是最小覆盖子串。</p>
-<p>示例 3:</p>
-<p>输入: s &#x3D; “a”, t &#x3D; “aa”<br>输出: “”<br>解释: t 中两个字符 ‘a’ 均应包含在 s 的子串中，<br>因此没有符合条件的子字符串，返回空字符串。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>要确定一个滑动窗口，使用记录一个哈希表 <code>gap</code> 记录 <code>t</code> 中与目标字母数出现次数之差距，<code>gap</code> 为其总数。<br>向右移动 r 端点，对当前字符加入计数，直到 <code>gap == 0</code> 时窗口中字符已覆盖 <code>t</code>。此时记录更短的子串，并向右移动 l 端点缩小窗口，循环判定是否涵盖。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minWindow</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line"></span><br><span class="line">        cnt = defaultdict(<span class="built_in">int</span>)  <span class="comment"># t 中出现的字母计数</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> t:</span><br><span class="line">            cnt[c] += <span class="number">1</span></span><br><span class="line">        gap = <span class="built_in">len</span>(cnt)  <span class="comment"># t 中的字母出现次数 - 窗口中字母数</span></span><br><span class="line"></span><br><span class="line">        ans_l, ans_r = -<span class="number">1</span>, <span class="built_in">len</span>(s)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> r, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):  <span class="comment"># 子串右端点移动</span></span><br><span class="line">            cnt[c] -= <span class="number">1</span>     <span class="comment"># c 的出现次数差 - 1</span></span><br><span class="line">            <span class="keyword">if</span> cnt[c] == <span class="number">0</span>:     <span class="comment"># 已达成 t 中 c 的次数</span></span><br><span class="line">                gap -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> gap == <span class="number">0</span>:  <span class="comment"># 涵盖</span></span><br><span class="line">                <span class="keyword">if</span> r - l &lt; ans_r - ans_l:  <span class="comment"># 找到更短的子串</span></span><br><span class="line">                    ans_l, ans_r = l, r</span><br><span class="line">                <span class="keyword">if</span> cnt[s[l]] == <span class="number">0</span>:  <span class="comment"># 左端点移出窗口之前，检查出现次数</span></span><br><span class="line">                    gap += <span class="number">1</span></span><br><span class="line">                cnt[s[l]] += <span class="number">1</span>  <span class="comment"># 左端点字母移出子串</span></span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span> <span class="keyword">if</span> ans_l &lt; <span class="number">0</span> <span class="keyword">else</span> s[ans_l: ans_r + <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>想到可开一个栈保存右侧超过 <code>t</code> 串的字符，之后缩小窗口时可以眺移 l 端点。但需要更多内存开销并无益将 <code>O(n)</code> 的时间复杂度降低更多，故不采用。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" data-id="cmc0gbw3u000z2svz6nc7accm" data-title="最小覆盖子串" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li></ul>
 
     </footer>
   </div>
@@ -326,6 +430,10 @@
   <time class="dt-published" datetime="2025-01-07T18:43:02.000Z" itemprop="datePublished">2025-01-08</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -359,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmc0gbw3w00142svzb8p68ufh" data-title="验证构造回文字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmc10233e0018c0vzgrat9by7" data-title="验证构造回文字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -454,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cmc0gbw3w00132svz7gy66jqw" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/" data-id="cmc10233c0013c0vz37vfcbo8" data-title="最大子段和" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -499,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/t0/" data-id="cmc0gbw3u00102svzgigkhylh" data-title="题解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/01/06/lc/t0/" data-id="cmc102339000yc0vz1qt91kui" data-title="题解" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -553,7 +661,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" data-id="cmc0gbw3n000o2svz1j1kh7rb" data-title="数据库系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" data-id="cmc102335000nc0vz7sp2fh0s" data-title="数据库系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -902,7 +1010,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" data-id="cmc0gbw3l000k2svz66u4gjpf" data-title="使用LangChain构建LLMs应用" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/09/%E4%BD%BF%E7%94%A8LangChain%E6%9E%84%E5%BB%BALLMs%E5%BA%94%E7%94%A8/" data-id="cmc102333000jc0vz9fcngjmf" data-title="使用LangChain构建LLMs应用" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1197,238 +1305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/" data-id="cmc0gbw3o000q2svzf2tp0239" data-title="理解与使用CSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-代码杂谈" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/" class="article-date">
-  <time class="dt-published" datetime="2024-11-06T04:03:14.000Z" itemprop="datePublished">2024-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">代码基础</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/">代码杂谈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="编程范式"><a href="#编程范式" class="headerlink" title="编程范式"></a>编程范式</h2><ul>
-<li>命令式编程：语句为基本单位，执行指令的步骤。<ul>
-<li>面向过程：自顶向下、过程结构化。以函数、过程、模块为基本特征。</li>
-<li>面向对象：便于修改和扩展，以类、继承、多态、依赖注入为基本特征。（五大原则）</li>
-</ul>
-</li>
-<li>声明式编程：以数据为中心，以表达式为基本单位，以声明式的方式描述程序。<ul>
-<li>函数式：函数是第一公民，使用纯函数、闭包、Factor、柯里化等。</li>
-<li>响应式：以数据流为中心。以异步、事件驱动、数据流驱动的方式编程。</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>e.g. 把运算过程定义为不同的函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> res = <span class="title function_">subtract</span>(<span class="title function_">multiply</span>(<span class="title function_">add</span>(<span class="number">1</span>,<span class="number">2</span>), <span class="number">3</span>), <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>函数被视为一等公民</li>
-<li>只使用表达式、把I&#x2F;O限制到最小</li>
-<li>不可变性、无状态</li>
-<li>纯函数</li>
-<li>引用透明</li>
-</ol>
-<h3 id="函子（Functor）"><a href="#函子（Functor）" class="headerlink" title="函子（Functor）"></a>函子（Functor）</h3><p>定义：一个函子是一个容器，里面封装了一个值，并提供一个映射函数。可以把一个函数作用到容器里面的值上，得到一个新的容器。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Num</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span> (v) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span> = v</span><br><span class="line">    &#125;      </span><br><span class="line"><span class="comment">//    add5 () &#123;</span></span><br><span class="line"><span class="comment">//        return  new Num( this.value + 5)</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    map (fn) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(<span class="title function_">fn</span>(<span class="variable language_">this</span>.<span class="property">value</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">add5</span> = x =&gt; x + <span class="number">5</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">double</span> = x =&gt; x * <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="title class_">Num</span>(<span class="number">2</span>)</span><br><span class="line">num.<span class="title function_">map</span>(add5).<span class="title function_">map</span>(double)   <span class="comment">// 14</span></span><br></pre></td></tr></table></figure>
-
-<p>封住了一个方法 <code>Functor.of</code> 用来创建 <code>Functor</code> 实例。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Functor</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span> (value) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span> = value ;</span><br><span class="line">    &#125;      </span><br><span class="line">    map (fn) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="title function_">fn</span>(<span class="variable language_">this</span>.<span class="property">value</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Functor</span>.<span class="property">of</span> = <span class="keyword">function</span> (<span class="params">val</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Functor</span>(val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Functor</span>.<span class="title function_">of</span>(<span class="number">5</span>).<span class="title function_">map</span>(add5).<span class="title function_">map</span>(double)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="编译与解释"><a href="#编译与解释" class="headerlink" title="编译与解释"></a>编译与解释</h2><p>指令 -&gt; 机器语言</p>
-<p><code>x+y</code> -&gt; 词法分析(lexer) -&gt; Token: <code>[x, +, y]</code> -&gt; 语法分析(parser) -&gt; AST: <code>[+, [x, y]]</code> -&gt; 语义分析(semantic analysis) -&gt; <code>[+, [Num(2), Num(3)]]</code> -&gt; 解释&#x2F;代码生成 -&gt; <code>Num(5)</code> -&gt; 运行</p>
-<ul>
-<li>Parser_LL(1)：左递归下降解析器</li>
-<li>Parser_LR(1)：线性规约解析器</li>
-<li>Parser_LALR：预测分析表法</li>
-</ul>
-<h2 id="前端设计"><a href="#前端设计" class="headerlink" title="前端设计"></a>前端设计</h2><p>明暗模式切换：less 变量，设定全局属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (newTheme === <span class="string">&#x27;dark&#x27;</span>) </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">setAttribute</span>(<span class="string">&#x27;arco-theme&#x27;</span>, <span class="string">&#x27;dark&#x27;</span>);</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeAttribute</span>(<span class="string">&#x27;arco-theme&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-
-<p><code>ConfigProvider</code> 组件：全局默认配置，包括主题、国际语言、尺寸等。</p>
-<h4 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h4><ul>
-<li>工具函数库</li>
-<li>集合处理</li>
-<li>数组处理</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>匹配字符串模式的工具，可以用来查找、替换、验证和拆分文本。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&quot;pytpyppyyyppy&quot;</span></span><br><span class="line">res = re.findall(<span class="string">&quot;py&quot;</span>, s)</span><br><span class="line"><span class="built_in">print</span>(res, <span class="built_in">len</span>(res))         <span class="comment"># [&#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;, &#x27;py&#x27;] 4</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(<span class="string">&quot;py&quot;</span>, s))     <span class="comment"># &lt;re.Match object; span=(0, 2), match=&#x27;py&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line">r = <span class="string">&#x27;^[0-9a-zA-Z]&#123;6,10&#125;$&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;12345666&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(re.findall(r, s))      <span class="comment"># [&#x27;123456&#x27;]</span></span><br><span class="line"></span><br><span class="line">r_mail = <span class="string">r&#x27;(^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$)&#x27;</span>    <span class="comment"># 匹配邮箱</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;xxx@sb.com&#x27;</span>))     <span class="comment"># &lt;re.Match object; span=(0, 10), match=&#x27;xxx@sb.com&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(re.<span class="keyword">match</span>(r_mail, <span class="string">&#x27;abc@com&#x27;</span>))        <span class="comment"># None</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>元字符</strong></p>
-<p>单字符：</p>
-<ul>
-<li><code>.</code>：匹配任何单个字符，除了 <code>\n</code>。</li>
-<li><code>[]</code>：括号中的任何单个字符。例如，<code>[abc]</code> 匹配 <code>a</code>、<code>b</code> 或 <code>c</code>。</li>
-<li><code>^</code>：脱字号，表示其以外的字符。例如，<code>[^abc]</code> 匹配除了 <code>a</code>、<code>b</code> 和 <code>c</code> 以外的任何字符。</li>
-<li><code>\d</code>：任意数字，等价于 <code>[0-9]</code>。</li>
-<li><code>\D</code>：任意非数字字符，等价于 <code>[^0-9]</code>。</li>
-<li><code>\s</code>：任意空白字符，等价于 <code>[\t\n\r\f\v]</code>。</li>
-<li><code>\S</code>：任意非空白字符，等价于 <code>[^\t\n\r\f\v]</code>。</li>
-<li><code>\w</code>：任意字母、数字或下划线，等价于 <code>[a-zA-Z0-9_]</code>。</li>
-<li><code>\W</code>：任意非字母、数字或下划线字符，等价于 <code>[^a-zA-Z0-9_]</code>。</li>
-</ul>
-<p>边界匹配：</p>
-<ul>
-<li><code>\b</code>：单词边界，<code>\w</code> 和 <code>\W</code> 之间的位置。</li>
-<li><code>\B</code>：非单词边界。</li>
-<li><code>^</code>：行首。</li>
-<li><code>$</code>：行尾。</li>
-</ul>
-<p>分组匹配：</p>
-<ul>
-<li><code>|</code>：或。</li>
-<li><code>(...)</code>：捕获组。</li>
-<li><code>(?:...)</code>：非捕获组。</li>
-<li><code>(?P&lt;name&gt;...)</code>：命名组。</li>
-<li><code>(?#...)</code>：注释。</li>
-<li><code>(?=...)</code>：肯定预测先行断言。</li>
-<li><code>(?!...)</code>：否定预测先行断言。</li>
-<li><code>(?&lt;=...)</code>：正向肯定回顾预测。</li>
-<li><code>(?&lt;!...)</code>：正向否定回顾预测。</li>
-<li><code>(?imx)</code>：设置匹配模式，<code>i</code> 忽略大小写，<code>m</code> 多行模式，<code>x</code> 忽略空白。</li>
-<li><code>(?-imx)</code>：取消匹配模式。</li>
-<li><code>(?#...)</code>：注释。</li>
-</ul>
-<p>数量匹配：</p>
-<ul>
-<li><code>*</code>：匹配零个或多个。</li>
-<li><code>+</code>：一个或多个。</li>
-<li><code>?</code>：零个或一个。</li>
-<li><code>&#123;m&#125;</code>：出现m次。</li>
-<li><code>&#123;m,&#125;</code>：至少出现m次。</li>
-<li><code>&#123;m,n&#125;</code>：m到n个。</li>
-<li><code>&#123;m,n&#125;?</code>：m到n个，非贪婪模式。</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(re.findall(<span class="string">r&#x27;g[a-z]+d&#x27;</span>, <span class="built_in">str</span>))     <span class="comment"># [&#x27;gadxxgodwwgeed&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(re.findall(<span class="string">r&#x27;g[a-z]+?d&#x27;</span>, <span class="built_in">str</span>))    <span class="comment"># [&#x27;gad&#x27;, &#x27;god&#x27;, &#x27;geed&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p>非贪婪匹配：<code>[a-z]+?</code>，限定符后面加上问号 <code>?</code>，表示匹配尽可能少的字符。</p>
-<p>修饰符：</p>
-<ul>
-<li><code>re.I</code>：忽略大小写。</li>
-<li><code>re.M</code>：多行模式。</li>
-<li><code>re.S</code>：匹配任意字符，包括换行符。</li>
-<li><code>re.X</code>：使用更加精细的语法。</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配数字</span></span><br><span class="line">pattern = <span class="string">r&#x27;\d+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;123 456 789&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;123&#x27;, &#x27;456&#x27;, &#x27;789&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配中文</span></span><br><span class="line">pattern = <span class="string">r&#x27;[\u4e00-\u9fa5]+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;你好，世界！&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;你好&#x27;, &#x27;世界&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配邮箱</span></span><br><span class="line">pattern = <span class="string">r&#x27;\w+@\w+\.\w+&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;abc@123.com def@456.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;abc@123.com&#x27;, &#x27;def@456.com&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配日期</span></span><br><span class="line">pattern = <span class="string">r&#x27;\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;&#x27;</span></span><br><span class="line">result = re.findall(pattern, <span class="string">&#x27;2021-10-10 2022-01-01&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># [&#x27;2021-10-10&#x27;, &#x27;2022-01-01&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/" data-id="cmc0gbw3k000i2svz9i296982" data-title="代码杂谈" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CRDT协同方案分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2024-10-11T13:04:09.000Z" itemprop="datePublished">2024-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/">CRDT协同方案分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>convergent or commutative replicated data type：用于在分布式系统中实现一致性数据结构。</p>
-<ul>
-<li>无锁并发控制，后端解决冲突</li>
-<li>支持离线编辑</li>
-<li>无需中心化服务器，P2P 即可实现多端协同</li>
-<li>达成最终强一致性，但不保证实时一致</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://pages.lip6.fr/Marc.Shapiro/papers/RR-7687.pdf">CRDT定义、证明 2011</a></p>
-<p><a target="_blank" rel="noopener" href="https://inria.hal.science/inria-00555588/document">CRDT的原理与实现</a></p>
-<ul>
-<li><p>CRDT 通过数据结构来保证最终一致性</p>
-<ul>
-<li>Operation-based</li>
-<li>State-based</li>
-</ul>
-</li>
-<li><p>OT 的基本策略则是协商，动态调整</p>
-</li>
-<li><p>op1 &#x3D; moveRow(0, 1)</p>
-</li>
-<li><p>op2 &#x3D; updateCell(0, 0, ‘xxxx’)</p>
-</li>
-<li><p>op2’ &#x3D; updateCell(0, 1, ‘xxxx’) &#x3D; transform(op1, op2)</p>
-</li>
-</ul>
-<h2 id="协同编辑"><a href="#协同编辑" class="headerlink" title="协同编辑"></a>协同编辑</h2><ul>
-<li>状态&#x2F;操作</li>
-</ul>
-<p>op: insert, delete, update</p>
-<p>indexedDB 过程数据</p>
-<ul>
-<li>冲突解决：同一内容，追加&#x2F;副本</li>
-<li>弱网：数据初始化，同步</li>
-</ul>
-<p>OT(Operational Transformation)：获取操作 -&gt; 加入队列 -&gt; 同步 -&gt; 冲突解决 -&gt; 应用操作</p>
-<p>CRDT(Conflict-free Replicated Data Types)：去中心化，离线编辑<br>定义op队列，确定每个副本的状态</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" data-id="cmc0gbw3300012svzhk7l17it" data-title="CRDT协同方案分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/11/08/%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8CSS/" data-id="cmc102335000pc0vz1804hr55" data-title="理解与使用CSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1444,7 +1321,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1465,7 +1342,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
     </div>
   </div>
 
@@ -1475,7 +1352,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 20px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 20px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15px;">字符串</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 15px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 15px;">贪心</a>
     </div>
   </div>
 
@@ -1497,6 +1374,14 @@
       <ul>
         
           <li>
+            <a href="/2025/06/18/lc/11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">11盛最多水的容器</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/18/lc/42%E6%8E%A5%E9%9B%A8%E6%B0%B4/">42接雨水</a>
+          </li>
+        
+          <li>
             <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
           </li>
         
@@ -1505,15 +1390,7 @@
           </li>
         
           <li>
-            <a href="/2025/01/11/lc/3298%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">最小覆盖子串</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
+            <a href="/2025/01/11/lc/76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/">76最小覆盖子串</a>
           </li>
         
       </ul>
