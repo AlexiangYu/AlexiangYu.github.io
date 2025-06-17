@@ -14,7 +14,7 @@
 <meta property="og:description" content="基础解释器 12s &#x3D; &quot;hello, python&quot;print(s)  数据类型 int float string  查看类型：type(8963) &#x3D; int_type round(x, n) 方法返回浮点数x保留n位小数的四舍五入值 注解 12a: int &#x3D; 1b: Union[int, float] &#x3D; 1.2  联合类型注解：int 或 float 标识符命名只能出">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-18T12:29:55.000Z">
-<meta property="article:modified_time" content="2025-01-10T15:39:32.552Z">
+<meta property="article:modified_time" content="2025-03-02T18:33:54.479Z">
 <meta property="article:author" content="Alexiang">
 <meta name="twitter:card" content="summary">
   
@@ -196,6 +196,11 @@
 <p><strong>多返回值</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func_test</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func_test())</span><br><span class="line"><span class="comment"># (1, 2)</span></span><br></pre></td></tr></table></figure>
 
+<p><strong>生成器</strong></p>
+<p>yield: 惰性求值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">count_up_to</span>(<span class="params">n</span>):  </span><br><span class="line">    count = <span class="number">1</span>  </span><br><span class="line">    <span class="keyword">while</span> count &lt;= n:  </span><br><span class="line">        <span class="keyword">yield</span> count  <span class="comment"># 使用 yield 返回当前值  </span></span><br><span class="line">        count += <span class="number">1</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用生成器  </span></span><br><span class="line">counter = count_up_to(<span class="number">5</span>)  </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> counter:  </span><br><span class="line">    <span class="built_in">print</span>(number)</span><br></pre></td></tr></table></figure>
+
+<p>暂停并记住执行的状态，直到下一次迭代。</p>
 <p>类型： <code>&lt;class &#39;tuple&#39;&gt;</code></p>
 <h2 id="多参数"><a href="#多参数" class="headerlink" title="多参数"></a>多参数</h2><ul>
 <li>位置参数：根据定义的参数个数、位置一致</li>
@@ -450,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cm6am3e6x000710vzbhyy9th9" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cmc0gbw3e00072svz3dqo95bm" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -509,7 +514,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 15px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 20px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
     </div>
   </div>
 
@@ -518,7 +523,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
     </div>
   </div>
 
@@ -531,7 +536,11 @@
       <ul>
         
           <li>
-            <a href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+            <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/">优质章节连续选择</a>
           </li>
         
           <li>
@@ -544,10 +553,6 @@
         
           <li>
             <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
           </li>
         
       </ul>

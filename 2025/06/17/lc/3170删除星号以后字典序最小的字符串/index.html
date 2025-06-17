@@ -4,18 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>CRDT协同方案分析 | Alexiang&#39;s Blog</title>
+  <title>3298统计重新排列后包含另一个字符串的子字符串数目 | Alexiang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="convergent or commutative replicated data type：用于在分布式系统中实现一致性数据结构。  无锁并发控制，后端解决冲突 支持离线编辑 无需中心化服务器，P2P 即可实现多端协同 达成最终强一致性，但不保证实时一致  CRDT定义、证明 2011 CRDT的原理与实现  CRDT 通过数据结构来保证最终一致性  Operation-based State-">
+  <meta name="description" content="3298. 统计重新排列后包含另一个字符串的子字符串数目 题目描述给你一个字符串 s 。它可能包含任意数量的 ‘‘ 字符。你的任务是删除所有的 ‘‘ 字符。 当字符串还存在至少一个 ‘*’ 字符时，你可以执行以下操作： 删除最左边的 ‘‘ 字符，同时删除该星号字符左边一个字典序 最小 的字符。如果有多个字典序最小的字符，你可以删除它们中的任意一个。请你返回删除所有 ‘‘ 字符以后，剩余字符连接而成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CRDT协同方案分析">
-<meta property="og:url" content="https://alexiangyu.github.io/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="3298统计重新排列后包含另一个字符串的子字符串数目">
+<meta property="og:url" content="https://alexiangyu.github.io/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Alexiang&#39;s Blog">
-<meta property="og:description" content="convergent or commutative replicated data type：用于在分布式系统中实现一致性数据结构。  无锁并发控制，后端解决冲突 支持离线编辑 无需中心化服务器，P2P 即可实现多端协同 达成最终强一致性，但不保证实时一致  CRDT定义、证明 2011 CRDT的原理与实现  CRDT 通过数据结构来保证最终一致性  Operation-based State-">
+<meta property="og:description" content="3298. 统计重新排列后包含另一个字符串的子字符串数目 题目描述给你一个字符串 s 。它可能包含任意数量的 ‘‘ 字符。你的任务是删除所有的 ‘‘ 字符。 当字符串还存在至少一个 ‘*’ 字符时，你可以执行以下操作： 删除最左边的 ‘‘ 字符，同时删除该星号字符左边一个字典序 最小 的字符。如果有多个字典序最小的字符，你可以删除它们中的任意一个。请你返回删除所有 ‘‘ 字符以后，剩余字符连接而成">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-11T13:04:09.000Z">
-<meta property="article:modified_time" content="2024-11-24T12:35:31.539Z">
+<meta property="article:published_time" content="2025-06-17T07:48:03.000Z">
+<meta property="article:modified_time" content="2025-06-17T11:39:04.163Z">
 <meta property="article:author" content="Alexiang">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Alexiang's Blog" type="application/atom+xml">
@@ -77,12 +79,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-CRDT协同方案分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-lc/3170删除星号以后字典序最小的字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2024-10-11T13:04:09.000Z" itemprop="datePublished">2024-10-11</time>
+    <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
+  <time class="dt-published" datetime="2025-06-17T07:48:03.000Z" itemprop="datePublished">2025-06-17</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -91,7 +97,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      CRDT协同方案分析
+      3298统计重新排列后包含另一个字符串的子字符串数目
     </h1>
   
 
@@ -99,69 +105,49 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>convergent or commutative replicated data type：用于在分布式系统中实现一致性数据结构。</p>
-<ul>
-<li>无锁并发控制，后端解决冲突</li>
-<li>支持离线编辑</li>
-<li>无需中心化服务器，P2P 即可实现多端协同</li>
-<li>达成最终强一致性，但不保证实时一致</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://pages.lip6.fr/Marc.Shapiro/papers/RR-7687.pdf">CRDT定义、证明 2011</a></p>
-<p><a target="_blank" rel="noopener" href="https://inria.hal.science/inria-00555588/document">CRDT的原理与实现</a></p>
-<ul>
-<li><p>CRDT 通过数据结构来保证最终一致性</p>
-<ul>
-<li>Operation-based</li>
-<li>State-based</li>
-</ul>
-</li>
-<li><p>OT 的基本策略则是协商，动态调整</p>
-</li>
-<li><p>op1 &#x3D; moveRow(0, 1)</p>
-</li>
-<li><p>op2 &#x3D; updateCell(0, 0, ‘xxxx’)</p>
-</li>
-<li><p>op2’ &#x3D; updateCell(0, 1, ‘xxxx’) &#x3D; transform(op1, op2)</p>
-</li>
-</ul>
-<h2 id="协同编辑"><a href="#协同编辑" class="headerlink" title="协同编辑"></a>协同编辑</h2><ul>
-<li>状态&#x2F;操作</li>
-</ul>
-<p>op: insert, delete, update</p>
-<p>indexedDB 过程数据</p>
-<ul>
-<li>冲突解决：同一内容，追加&#x2F;副本</li>
-<li>弱网：数据初始化，同步</li>
-</ul>
-<p>OT(Operational Transformation)：获取操作 -&gt; 加入队列 -&gt; 同步 -&gt; 冲突解决 -&gt; 应用操作</p>
-<p>CRDT(Conflict-free Replicated Data Types)：去中心化，离线编辑<br>定义op队列，确定每个副本的状态</p>
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lexicographically-minimum-string-after-removing-stars/description/">3298. 统计重新排列后包含另一个字符串的子字符串数目</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串 s 。它可能包含任意数量的 ‘<em>‘ 字符。你的任务是删除所有的 ‘</em>‘ 字符。</p>
+<p>当字符串还存在至少一个 ‘*’ 字符时，你可以执行以下操作：</p>
+<p>删除最左边的 ‘<em>‘ 字符，同时删除该星号字符左边一个字典序 最小 的字符。如果有多个字典序最小的字符，你可以删除它们中的任意一个。<br>请你返回删除所有 ‘</em>‘ 字符以后，剩余字符连接而成的 字典序最小 的字符串。</p>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “aaba*”</p>
+<p>输出：”aab”</p>
+<p>解释：</p>
+<p>删除 ‘*’ 号和它左边的其中一个 ‘a’ 字符。如果我们选择删除 s[3] ，s 字典序最小。</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “abc”</p>
+<p>输出：”abc”</p>
+<p>解释：</p>
+<p>字符串中没有 ‘*’ 字符。</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; s.length &lt;&#x3D; 105<br>s 只含有小写英文字母和 ‘<em>‘ 字符。<br>输入保证操作可以删除所有的 ‘</em>‘ 字符。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>根据贪心原则，为了让左侧串字典序尽量小，应该删去最后面的字符。</p>
+<p>对字符串进行处理时，使用字典保存当前已遍历过的每种字符的索引，其中第 <code>k</code> 个栈维护第 <code>k</code> 个小写字母的索引。</p>
+<p>当遇到字符 ‘∗’ 时，找到非空且字典序最小的栈，在字符串 s 种标记栈顶元素对应的字符为 ‘∗’，并移除栈顶元素；<br>当遇到非字符 ‘∗’ 时，则将当前索引 i 压入到对应的栈。</p>
+<p>另外可用一个小根堆来维护出现的字符。最后，将堆中的字符按照出现的顺序连接起来，并按照字典序排序。</p>
+<p>时间复杂度：<code>O(n*|Σ|)</code>，<code>n</code> 是字符串的长度，<code>|Σ|</code> 为字符集合的大小，本题字符均为小写字母，所以 <code>|Σ| = 26</code>。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>: </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clearStars</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        chrHp = []</span><br><span class="line">        cnt = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">        <span class="keyword">for</span> i, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):</span><br><span class="line">            <span class="keyword">if</span> c == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                cnt[lc := chrHp[<span class="number">0</span>]].pop()</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> cnt[lc]:</span><br><span class="line">                    heappop(chrHp)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cnt[c].append(i)</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(cnt[c]) == <span class="number">1</span>:</span><br><span class="line">                    heappush(chrHp, c)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>.join(<span class="built_in">map</span>(s.__getitem__, <span class="built_in">sorted</span>(<span class="built_in">sum</span>(cnt.values(), []))))        </span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/10/11/CRDT%E5%8D%8F%E5%90%8C%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/" data-id="cmc0gbw3300012svzhk7l17it" data-title="CRDT协同方案分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmc0gbw3r000u2svzclao22of" data-title="3298统计重新排列后包含另一个字符串的子字符串数目" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2024/11/06/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          代码杂谈
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/09/12/TS%E4%B8%8EES6/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">TS与ES6+</div>
+      <div class="article-nav-title">优质章节连续选择</div>
     </a>
   
 </nav>

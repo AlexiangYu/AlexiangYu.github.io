@@ -77,6 +77,326 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TS与ES6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/09/12/TS%E4%B8%8EES6/" class="article-date">
+  <time class="dt-published" datetime="2024-09-12T08:16:26.000Z" itemprop="datePublished">2024-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/09/12/TS%E4%B8%8EES6/">TS与ES6+</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>JavaScript 的超集，<strong>面向对象</strong>、类型检测等</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Greeting</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> message: <span class="built_in">string</span></span>) &#123; &#125;</span><br><span class="line">    <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> g = <span class="keyword">new</span> <span class="title class_">Greeting</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">g.<span class="title function_">greet</span>();  <span class="comment">// Output: &quot;Hello, world!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsc hello.ts    <span class="comment"># 编译成js文件</span></span><br><span class="line">node hello.js   </span><br></pre></td></tr></table></figure>
+
+<p>在node中运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node hello.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>关键字</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>布尔值</td>
+<td>boolean</td>
+<td>true&#x2F;false</td>
+<td><code>let isDone: boolean = true</code></td>
+</tr>
+<tr>
+<td>数字</td>
+<td>number</td>
+<td>整数或双精度64位浮点数</td>
+<td><code>let decimal: number = 6;</code></td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>string</td>
+<td>文本</td>
+<td><code>let greeting: string = &quot;Hello, world!&quot;;</code></td>
+</tr>
+<tr>
+<td>任意值</td>
+<td>any</td>
+<td>可以赋予任意类型</td>
+<td><code>let variable: any = &quot;Hello, world!&quot;;</code></td>
+</tr>
+<tr>
+<td>空值</td>
+<td>void</td>
+<td>没有返回值的函数</td>
+<td></td>
+</tr>
+<tr>
+<td>Never</td>
+<td>never</td>
+<td>会抛出异常或死循环的函数返回值</td>
+<td></td>
+</tr>
+<tr>
+<td>Null</td>
+<td>null</td>
+<td>空对象引用</td>
+<td></td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>undefined</td>
+<td>未定义的值</td>
+<td></td>
+</tr>
+<tr>
+<td>复杂类型</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数组</td>
+<td>Array</td>
+<td>有序的集合，不限制长度、元素类型</td>
+<td><code>let numbers: number[] = [1, 2, 3];</code></td>
+</tr>
+<tr>
+<td>对象</td>
+<td>Object</td>
+<td>任意属性的集合</td>
+<td></td>
+</tr>
+<tr>
+<td>函数</td>
+<td>Function</td>
+<td>接受参数并返回值</td>
+<td></td>
+</tr>
+<tr>
+<td>元组</td>
+<td>Tuple</td>
+<td>相比数组，有固定对应位置类型和长度</td>
+<td><code>let tuple: [string, number] = [&quot;hello&quot;, 123];</code></td>
+</tr>
+<tr>
+<td>枚举</td>
+<td>enum</td>
+<td>定义数值集合</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>用 <code>type</code> 关键字，自定义一个（复杂）类型，方便重复使用。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Person</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Alex</span>: <span class="title class_">Person</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Alex&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">15</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Bob</span>: <span class="title class_">Person</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><blockquote>
+<p>字面量类型：右值，表示一组固定的值 <code>const str2: &#39;Hello TS&#39; = &#39;Hello TS&#39;</code> 更高效（无需编译转换）</p>
+</blockquote>
+<p>关键字 <code>enum</code>定义数值集合，可以用数字或字符串作为值</p>
+<ul>
+<li>原理：将枚举类型编译成对象，对象属性名为枚举值，属性值为对应值</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Direction</span> &#123; <span class="title class_">Up</span>, <span class="title class_">Down</span>, <span class="title class_">Left</span>, <span class="title class_">Right</span> &#125;    <span class="comment">// 定义枚举类型</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">changeDirection</span>(<span class="params">direction: Direction</span>) &#123;&#125;    <span class="comment">// 参数为枚举类型</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">changeDirection</span>(<span class="title class_">Direction</span>.<span class="property">Left</span>) <span class="comment">// call</span></span><br></pre></td></tr></table></figure>
+
+<p>编译后的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Direction</span>;</span><br><span class="line">(<span class="keyword">function</span> (<span class="params">Direction</span>) &#123;     <span class="comment">// 自调用函数</span></span><br><span class="line">    <span class="title class_">Direction</span>[<span class="string">&quot;Up&quot;</span>] = <span class="string">&quot;UP&quot;</span>;</span><br><span class="line">    <span class="title class_">Direction</span>[<span class="string">&quot;Down&quot;</span>] = <span class="string">&quot;DOWN&quot;</span>;</span><br><span class="line">    <span class="title class_">Direction</span>[<span class="string">&quot;Left&quot;</span>] = <span class="string">&quot;LEFT&quot;</span>;</span><br><span class="line">    <span class="title class_">Direction</span>[<span class="string">&quot;Right&quot;</span>] = <span class="string">&quot;RIGHT&quot;</span>;</span><br><span class="line">&#125;)(<span class="title class_">Direction</span> || (<span class="title class_">Direction</span> = &#123;&#125;));  <span class="comment">// Direction: &#123; Up: &#x27;UP&#x27;, Down: &#x27;DOWN&#x27;, Left: &#x27;LEFT&#x27;, Right: &#x27;RIGHT&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">changeDirection</span>(<span class="params">direction</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;方向：&quot;</span> + direction);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">changeDirection</span>(<span class="title class_">Direction</span>.<span class="property">Up</span>);  <span class="comment">// 方向：UP</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h4><p>通过管道 <code>|</code> 将变量设置多种类型，其中任意一种。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>: (<span class="built_in">string</span>|<span class="built_in">number</span>|<span class="built_in">boolean</span>)[] = [<span class="string">&quot;hello&quot;</span>, <span class="number">123</span>, <span class="literal">true</span>]</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="string">&quot;world&quot;</span>);  <span class="comment">// OK</span></span><br><span class="line">arr.<span class="title function_">push</span>(<span class="literal">null</span>);     <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h4><p>通过 <code>&amp;</code> 将变量设置多种类型，所有类型都必须满足。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">greetPerson</span>(<span class="params">person: Person &amp; &#123; gender: <span class="built_in">string</span> &#125;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;person.name&#125;</span>! You are <span class="subst">$&#123;person.age&#125;</span> years old. You are a <span class="subst">$&#123;person.gender&#125;</span>.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">john</span>: <span class="title class_">Person</span> &amp; &#123; <span class="attr">gender</span>: <span class="built_in">string</span> &#125; = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">gender</span>: <span class="string">&quot;male&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greetPerson</span>(john);</span><br></pre></td></tr></table></figure>
+
+<p>同名属性类型冲突处理：视为联合类型</p>
+<h4 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h4><p>若自动推断出来的类型是 <code>number|undefined</code>，可以自己断言明确变量类型</p>
+<p>将一个变量或表达式转换为另一种类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">someValue</span>: <span class="built_in">any</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">strLength</span>: <span class="built_in">number</span> = (someValue <span class="keyword">as</span> <span class="built_in">string</span>).<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换 HTMLElement | null，获得href属性</span></span><br><span class="line"><span class="keyword">const</span> aLink = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;link&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLAnchorElement</span></span><br><span class="line">consl.<span class="title function_">log</span>(aLink.<span class="property">href</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="类型保护"><a href="#类型保护" class="headerlink" title="类型保护"></a>类型保护</h4><p>通过 <code>typeof</code> 关键字，判断变量是否属于某种类型。</p>
+<p>在类型上下位中，引用变量的类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isNumber</span>(<span class="params">value: <span class="built_in">any</span></span>): value is <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">&quot;number&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">isNumber</span>(x) &amp;&amp; <span class="title function_">isNumber</span>(y)) &#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Both arguments must be numbers.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="类型兼容性"><a href="#类型兼容性" class="headerlink" title="类型兼容性"></a>类型兼容性</h3><p>一种类型的值是否可以被视为另一种类型的值？</p>
+<blockquote>
+<p>TS 属于Structural Type System（结构化类型系统）：<br>结构（属性和方法）相同的类型之间兼容</p>
+</blockquote>
+<p><strong>对象&#x2F;接口</strong>：X是Y的子集 -&gt; X兼容Y</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Point2D</span> &#123; <span class="attr">x</span>: <span class="built_in">number</span>; <span class="attr">y</span>: <span class="built_in">number</span> &#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point3D</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Point2D</span> &#123; <span class="attr">z</span>: <span class="built_in">number</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p1</span>: <span class="title class_">Point2D</span> = <span class="keyword">new</span> <span class="title class_">Point3D</span>()   <span class="comment">// 成员多的可以赋值给少的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> P2D &#123; <span class="attr">x</span>: <span class="built_in">number</span>; <span class="attr">y</span>: <span class="built_in">number</span> &#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">p2</span>: <span class="variable constant_">P2D</span> = <span class="keyword">new</span> <span class="title class_">Point3D</span>()   <span class="comment">// 接口同理</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>函数</strong>：类型相同</p>
+<ul>
+<li>X参数比Y多 -&gt; X兼容Y</li>
+<li>返回值：同 对象的兼容性</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="variable constant_">F1</span> = <span class="function">(<span class="params">a: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">F2</span> = <span class="function">(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">void</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">F3</span> = <span class="function">() =&gt;</span> &#123; <span class="attr">name</span>: <span class="built_in">string</span> &#125;</span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">F4</span> = <span class="function">() =&gt;</span> &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="built_in">number</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">f1</span>: <span class="variable constant_">F1</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">f2</span>: <span class="variable constant_">F2</span> = f1</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">f7</span>: <span class="variable constant_">F7</span> = <span class="attr">f8</span>: <span class="variable constant_">F8</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong>参数 + 返回值</strong> 的类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myAdd = (<span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span>): <span class="function"><span class="params">number</span> =&gt;</span> x+y;</span><br></pre></td></tr></table></figure>
+
+<h4 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h4><p>参数名后添加 <code>?</code>，表示参数可选。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">name: <span class="built_in">string</span>, age?: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (age) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>! You are <span class="subst">$&#123;age&#125;</span> years old.`</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">greet2</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span> = <span class="number">18</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>! You are <span class="subst">$&#123;age&#125;</span> years old.`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greet</span>(<span class="string">&quot;Alex&quot;</span>, <span class="number">30</span>); <span class="comment">// Hello, Alex! You are 30 years old.</span></span><br><span class="line"><span class="title function_">greet</span>(<span class="string">&quot;Ben&quot;</span>);     <span class="comment">// Hello, Ben!</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">greet2</span>(<span class="string">&quot;Chloe&quot;</span>); <span class="comment">// Hello, Chloe! You are 18 years old.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">...numbers: <span class="built_in">number</span>[]</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numbers.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        result += numbers[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sum</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)); <span class="comment">// Output: 6</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p><strong>属性 + 方法</strong> 的类型</p>
+<ul>
+<li>一行内写多个：加 <code>;</code> 分隔</li>
+<li>方法可用箭头函数形式</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">person</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="built_in">number</span>; <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> <span class="built_in">void</span>; <span class="title function_">greet</span>(<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">void</span> &#125; = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params">name</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可选属性</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myAxios</span>(<span class="params">config: &#123; url: <span class="built_in">string</span>; method?: <span class="built_in">string</span> &#125;</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>为了给对象指定类型，实现复用。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span> &#123; <span class="comment">// 定义接口</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">sayHi</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">person</span>: <span class="title class_">IPerson</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口和类型别名对比</strong></p>
+<ul>
+<li>接口仅为对象指定类型</li>
+<li>类型别名可以给任意（复杂）类型起别名</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">IPerson</span> = &#123;    <span class="comment">// 定义类型别名</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">  <span class="title function_">sayHi</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>抽象类和接口的区别</strong></p>
+<ul>
+<li>继承：一个类只能继承一个抽象类，可以实现多个接口。</li>
+<li>抽象类可以包含一些具体的方法（有实现），可以有构造函数和成员变量。接口（Interface）仅定义结构，不能包含任何实现。接口的所有属性和方法默认为抽象的，不能有构造函数。</li>
+<li>接口不能使用访问修饰符，所有属性和方法默认是 public</li>
+</ul>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>不仅是class, 还作为一种类型存在</p>
+<ul>
+<li><code>public</code> 默认，外部可访问</li>
+<li><code>private</code> 私有，外部不可访问</li>
+<li><code>protected</code> 受保护，外部不可访问，子类可访问</li>
+<li><code>readonly</code> 只读属性，仅在构造函数中初始化赋值<ul>
+<li>需供明确的类型</li>
+<li>接口中也能用</li>
+</ul>
+</li>
+<li><code>static</code> 静态属性，类中所有实例共享</li>
+<li><code>abstract</code> 抽象类，不能实例化，子类必须实现抽象方法</li>
+</ul>
+<p>声明成员方法： <code>sayHi (params) &#123;xxx&#125;</code> 不用关键字</p>
+<p>存取器: <code>get</code> 和 <code>set</code> 方法，用于访问和修改属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> <span class="comment">// 默认不加的为public</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">age</span>: <span class="built_in">number</span> <span class="comment">//私有成员，外部无法访问</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="attr">gender</span>: <span class="built_in">boolean</span> <span class="comment">// 外部无法访问，子类可以访问</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">rid</span>: <span class="built_in">number</span> <span class="comment">// 只能在构造函数中初始化</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span>, rid: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">gender</span> = <span class="literal">true</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">rid</span> = rid</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">sayHi</span>(<span class="attr">msg</span>: <span class="built_in">string</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`I am <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, <span class="subst">$&#123;msg&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="attr">identity</span>: <span class="built_in">string</span> = <span class="string">&#x27;student&#x27;</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span>, age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(name, age)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">gender</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&#x27;tom&#x27;</span>, <span class="number">15</span>, <span class="number">123</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tom)    <span class="comment">// &#123; name: &#x27;tom&#x27;, age: 15, gender: true, identity:&#x27;student&#x27;, rid: 123 &#125;</span></span><br><span class="line">tom.<span class="title function_">sayHi</span>(<span class="string">&#x27;hello&#x27;</span>)  <span class="comment">// Output: I am tom, hello</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> num = <span class="number">0</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="title class_">Animal</span>.<span class="property">num</span>++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">eat</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> is eating`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">abstract</span> <span class="title function_">sleep</span>(): <span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span> &#123;</span><br><span class="line">  <span class="title function_">sleep</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> is sleeping`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dog = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="string">&#x27;wangcai&#x27;</span>)</span><br><span class="line">dog.<span class="title function_">eat</span>()  <span class="comment">// Output: wangcai is eating</span></span><br><span class="line">dog.<span class="title function_">sleep</span>()  <span class="comment">// Output: wangcai is sleeping</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Animal</span>.<span class="property">num</span>)  <span class="comment">// Output: 1</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="继承与实现"><a href="#继承与实现" class="headerlink" title="继承与实现"></a>继承与实现</h4><ul>
+<li><code>extends</code> 继承父类</li>
+<li><code>implements</code> 实现接口</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Singale</span> &#123;</span><br><span class="line">  <span class="title function_">sing</span>(): <span class="built_in">void</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Prompt</span> <span class="keyword">implements</span> <span class="title class_">Singale</span> &#123;</span><br><span class="line">  name = <span class="string">&#x27;CNM&#x27;</span></span><br><span class="line">  <span class="title function_">sing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;阿米诺斯&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法拓展"><a href="#方法拓展" class="headerlink" title="方法拓展"></a>方法拓展</h4><ul>
+<li><code>Object.assign()</code> 合并对象</li>
+<li><code>Object.create()</code> 创建对象</li>
+<li><code>Object.getOwnPropertyDescriptor()</code> 获取属性描述符</li>
+<li><code>Object.getOwnPropertyNames()</code> 获取所有属性名</li>
+<li><code>Object.getOwnPropertySymbols()</code> 获取所有 Symbol 属性名</li>
+<li><code>Object.getPrototypeOf()</code> 获取原型对象</li>
+<li><code>Object.setPrototypeOf()</code> 设置原型对象</li>
+<li><code>Object.is()</code> 判断两个值是否相等</li>
+<li><code>Object.keys()</code> 获取对象所有可枚举属性名</li>
+<li><code>Object.values()</code> 获取对象所有可枚举属性值</li>
+<li><code>Object.entries()</code> 获取对象所有可枚举属性名和值</li>
+<li><code>Object.fromEntries()</code> 从键值对数组创建对象</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">grade</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">person</span>: <span class="title class_">Person</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">student</span>: <span class="title class_">Student</span> = <span class="title class_">Object</span>.<span class="title function_">assign</span>(person, &#123; <span class="attr">grade</span>: <span class="number">3</span> &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(student)  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27;, age: 18, grade: 3 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;Alex&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> desc = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(person, <span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(desc)  <span class="comment">// Output: &#123; value: &#x27;Alex&#x27;, writable: true, enumerable: true, configurable: true &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> names = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(person)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(names)  <span class="comment">// Output: [ &#x27;name&#x27;, &#x27;age&#x27; ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> symbols = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(person)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(symbols)  <span class="comment">// Output: []</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> proto = <span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(person)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proto)  <span class="comment">// Output: &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = &#123; <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">setPrototypeOf</span>(student, obj2)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(student))  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27;, age: 18 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="number">1</span>, <span class="number">1</span>))  <span class="comment">// Output: true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="number">1</span>, <span class="string">&#x27;1&#x27;</span>))  <span class="comment">// Output: false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3 = &#123; <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">gender</span>: <span class="string">&#x27;female&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">let</span> keys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj3)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(keys)  <span class="comment">// Output: [ &#x27;name&#x27;, &#x27;age&#x27;, &#x27;gender&#x27; ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> values = <span class="title class_">Object</span>.<span class="title function_">values</span>(obj3)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(values)  <span class="comment">// Output: [ &#x27;Alex&#x27;, 18, &#x27;female&#x27; ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> entries = <span class="title class_">Object</span>.<span class="title function_">entries</span>(obj3)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(entries)  <span class="comment">// Output: [ [ &#x27;name&#x27;, &#x27;Alex&#x27; ], [ &#x27;age&#x27;, 18 ], [ &#x27;gender&#x27;, &#x27;female&#x27; ] ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj4 = <span class="title class_">Object</span>.<span class="title function_">fromEntries</span>([[<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;Alex&#x27;</span>], [<span class="string">&#x27;age&#x27;</span>, <span class="number">18</span>]])</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj4)  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27;, age: 18 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Excluded</span> = <span class="string">&#x27;name&#x27;</span> | <span class="string">&#x27;age&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">OmitPerson</span> = <span class="title class_">Omit</span>&lt;<span class="title class_">Person</span>, <span class="title class_">Excluded</span>&gt;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">person2</span>: <span class="title class_">OmitPerson</span> = &#123;</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;female&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person2)  <span class="comment">// Output: &#123; gender: &#x27;female&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Extracted</span> = <span class="string">&#x27;name&#x27;</span> | <span class="string">&#x27;age&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ExtractPerson</span> = <span class="title class_">Extract</span>&lt;<span class="title class_">Person</span>, <span class="title class_">Extracted</span>&gt;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">person3</span>: <span class="title class_">ExtractPerson</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person3)  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27;, age: 18 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">NonNullablePerson</span> = <span class="title class_">NonNullable</span>&lt;<span class="title class_">Person</span>&gt;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">person4</span>: <span class="title class_">NonNullablePerson</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person4)  <span class="comment">// Output: &#123; name: &#x27;Alex&#x27;, age: 18 &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><blockquote>
+<p>允许函数、类、接口、类型别名，实现复用，在定义时使用类型参数。</p>
+</blockquote>
+<p><code>&lt;T&gt;</code> 定义一个类型变量，调用时指定类型（可自动推断）。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> output = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(output)   <span class="comment">// Output: hello</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Queue</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">data</span>: T[] = []</span><br><span class="line">  <span class="title function_">push</span>(<span class="params">item: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">push</span>(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">pop</span>(): T | <span class="literal">undefined</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">shift</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> queue = <span class="keyword">new</span> <span class="title class_">Queue</span>&lt;<span class="built_in">number</span>&gt;()</span><br><span class="line">queue.<span class="title function_">push</span>(<span class="number">1</span>)</span><br><span class="line">queue.<span class="title function_">push</span>(<span class="number">2</span>)</span><br><span class="line">queue.<span class="title function_">push</span>(<span class="number">3</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">pop</span>())  <span class="comment">// Output: 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">pop</span>())  <span class="comment">// Output: 2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">pop</span>())  <span class="comment">// Output: 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">pop</span>())  <span class="comment">// Output: undefined</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><ul>
+<li>创建具有 <code>length</code> 属性的约束接口 <code>ILength</code></li>
+<li>函数的参数类型使用 <code>extends</code> 关键字添加约束，要求<strong>返回类型 <code>T</code> 必须具有相应属性</strong></li>
+<li>第二个类型变量 <code>Key</code>，受 <code>T</code> 约束，即只能是 <code>Type</code> 所有键中的任意一个，或者说只能访问对象中存在的属性</li>
+</ul>
+<blockquote>
+<p><code>keyof</code> 关键字接收一个对象类型，生成其键名称（可能是字符串或数字）的联合类型</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ILength</span> &#123; <span class="attr">length</span>: <span class="built_in">number</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> getLength&lt;T <span class="keyword">extends</span> <span class="title class_">ILength</span>&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg.<span class="property">length</span>)</span><br><span class="line">  <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>(<span class="string">&#x27;hello&#x27;</span>))  <span class="comment">// Output: 5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]))  <span class="comment">// Output: 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>(&#123; <span class="attr">length</span>: <span class="number">4</span>, <span class="attr">name</span>: <span class="string">&#x27;Alex&#x27;</span> &#125;))  <span class="comment">// Output: 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getLength</span>(<span class="number">123</span>))  <span class="comment">// Error: Type &#x27;number&#x27; is not assignable to type &#x27;ILength&#x27;.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> getProp&lt;<span class="title class_">Type</span>, <span class="title class_">Key</span> <span class="keyword">extends</span> keyof <span class="title class_">Type</span>&gt;(<span class="attr">obj</span>: <span class="title class_">Type</span>, <span class="attr">key</span>: <span class="title class_">Key</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> obj[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getProp</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;jack&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, <span class="string">&#x27;age&#x27;</span>)  <span class="comment">// 18</span></span><br><span class="line"><span class="title function_">getProp</span>(<span class="number">18</span>, <span class="string">&#x27;toFixed&#x27;</span>)  <span class="comment">// [Function: toFixed]</span></span><br><span class="line"><span class="title function_">getProp</span>(<span class="string">&#x27;abc&#x27;</span>, <span class="number">1</span>)   <span class="comment">// b</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;object&#x27;</span>[<span class="number">1</span>]) <span class="comment">// Output: b</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><ul>
+<li>添加类型变量 <code>&lt;T&gt;</code>，接口中所有其他成员可以使用 <code>T</code></li>
+<li>使用时需要显式指定</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IArray</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">push</span>(<span class="attr">item</span>: T): <span class="built_in">void</span></span><br><span class="line">  <span class="title function_">pop</span>(): T | <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Array</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">IArray</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">data</span>: T[] = []</span><br><span class="line">  <span class="title function_">push</span>(<span class="params">item: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">push</span>(item)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">pop</span>(): T | <span class="literal">undefined</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>.<span class="title function_">shift</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt;()</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="number">1</span>)</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="number">2</span>)</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="number">3</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">pop</span>())  <span class="comment">// Output: 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">pop</span>())  <span class="comment">// Output: 2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">pop</span>())  <span class="comment">// Output: 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">pop</span>())  <span class="comment">// Output: undefined</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Box</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">data</span>: T</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">data: T</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">data</span> = data</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getData</span>(): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> box = <span class="keyword">new</span> <span class="title class_">Box</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(box.<span class="title function_">getData</span>())  <span class="comment">// Output: hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="工具类型"><a href="#工具类型" class="headerlink" title="工具类型"></a>工具类型</h3><ul>
+<li><code>Partial&lt;T&gt;</code> 所有属性可选</li>
+<li><code>Readonly&lt;T&gt;</code> 所有属性只读</li>
+<li><code>Required&lt;T&gt;</code> 所有属性必填</li>
+<li><code>Pick&lt;T, K&gt;</code> 选择属性 <code>K</code></li>
+<li><code>Omit&lt;T, K&gt;</code> 排除属性 <code>K</code></li>
+<li><code>Record&lt;K, T&gt;</code> 创建一个对象，其键为 <code>K</code>，值为 <code>T</code></li>
+<li><code>Exclude&lt;T, U&gt;</code> 从 <code>T</code> 中排除 <code>U</code></li>
+<li><code>Extract&lt;T, U&gt;</code> 提取 <code>T</code> 中存在于 <code>U</code> 的类型</li>
+<li><code>NonNullable&lt;T&gt;</code> 排除 <code>null</code> 和 <code>undefined</code></li>
+<li><code>Parameters&lt;T&gt;</code> 获取函数参数类型</li>
+<li><code>ConstructorParameters&lt;T&gt;</code> 获取构造函数参数类型</li>
+<li><code>ReturnType&lt;T&gt;</code> 获取函数返回值类型</li>
+<li><code>InstanceType&lt;T&gt;</code> 获取构造函数返回值类型</li>
+<li><code>ThisType&lt;T&gt;</code> 用于 <code>this</code> 类型推断</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Partial</span>&lt;T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T]?: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Readonly</span>&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Required</span>&lt;T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T]-?: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Pick</span>&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> K]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Omit</span>&lt;T, K <span class="keyword">extends</span> keyof T&gt; = <span class="title class_">Pick</span>&lt;T, <span class="title class_">Exclude</span>&lt;keyof T, K&gt;&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Record</span>&lt;K <span class="keyword">extends</span> keyof <span class="built_in">any</span>, T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> K]: T</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Exclude</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U? <span class="built_in">never</span> : T</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Extract</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? T : <span class="built_in">never</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">NonNullable</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="literal">null</span> | <span class="literal">undefined</span> ? <span class="built_in">never</span> : T</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Parameters</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: infer P) =&gt; <span class="built_in">any</span> ? P : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ConstructorParameters</span>&lt;T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: infer P) =&gt; <span class="built_in">any</span> ? P : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ReturnType</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; infer R ? R : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">InstanceType</span>&lt;T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; infer R ? R : <span class="built_in">never</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">ThisType</span>&lt;T&gt; = T <span class="keyword">extends</span> infer R ? <span class="title class_">ThisType</span>&lt;R&gt; : T</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>es6新增</p>
+<ul>
+<li>数据类型：Symbol</li>
+<li>两种数据结构：Set、Map</li>
+</ul>
+<p>symbol是为了标识唯一性</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://alexiangyu.github.io/2024/09/12/TS%E4%B8%8EES6/" data-id="cmc0gbw3g000a2svz5f0j44cn" data-title="TS与ES6+" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Web原生" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/08/23/Web%E5%8E%9F%E7%94%9F/" class="article-date">
@@ -160,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/08/23/Web%E5%8E%9F%E7%94%9F/" data-id="cm6am3e71000b10vzeoil9b8u" data-title="Web原生" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/08/23/Web%E5%8E%9F%E7%94%9F/" data-id="cmc0gbw3i000e2svzcgzs4unz" data-title="Web原生" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -466,7 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/08/21/React%E7%AC%94%E8%AE%B0/" data-id="cm6am3e6y000810vz0cwe39kx" data-title="React 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/08/21/React%E7%AC%94%E8%AE%B0/" data-id="cmc0gbw3e00082svz43u7dh8s" data-title="React 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -572,7 +892,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" data-id="cm6am3e6u000510vz9or80cat" data-title="Node.js相关知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/07/28/Node-js%E7%9B%B8%E5%85%B3/" data-id="cmc0gbw3d00062svz1ra27t58" data-title="Node.js相关知识" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -739,7 +1059,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/07/25/Vue%E7%94%A8%E6%B3%95/" data-id="cm6am3e6y000910vz143ldds4" data-title="Vue用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/07/25/Vue%E7%94%A8%E6%B3%95/" data-id="cmc0gbw3h000b2svzg6u356k2" data-title="Vue用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -773,7 +1093,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p><strong>1xx (Informational) 信息性状态码</strong></p>
+        <h2 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h2><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>基于 TCP, 它实现了浏览器与服务器的全双工通信，允许服务端主动向客户端推送数据。浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输</p>
+<ol>
+<li>与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
+<li>数据格式比较轻量，性能开销小，通信高效。</li>
+<li>可以发送文本，也可以发送二进制数据。</li>
+<li>没有同源限制，客户端可以与任意服务器通信。</li>
+<li>协议标识符是ws（如果加密，则为wss），服务器网址就是 URL。</li>
+</ol>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p><strong>1xx (Informational) 信息性状态码</strong></p>
 <ul>
 <li><strong>100 Continue</strong>: 客户端应该继续发送请求。</li>
 <li><strong>101 Switching Protocols</strong>: 服务器已切换协议。</li>
@@ -829,7 +1157,7 @@
 <li>需要登录的网站，但没有登录 <strong>401 Unauthorized</strong> 错误。</li>
 <li>上传一个文件，但文件太大 <strong>413 Request Entity Too Large</strong> 错误。</li>
 </ul>
-<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h4 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h4><p>一次请求&#x2F;响应完成后，一方主动关闭连接，客户端再次请求时，需要重新建立连接。</p>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><h4 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h4><p>一次请求&#x2F;响应完成后，一方主动关闭连接，客户端再次请求时，需要重新建立连接。</p>
 <p>长连接：建立一次连接后，保持连接状态，可以发送多个请求，直到客户端主动关闭连接。多个HTTP请求可以复用同一个TCP连接</p>
 <p>多用于操作频繁，点对点的通讯，而且连接数不能太多情况。对于服务端来说，长连接会耗费服务端的资源，如果有几十万，上百万的连接，服务端的压力会非常大，甚至会崩溃。所以对于并发量大，请求频率低的，建议使用短连接。</p>
 <p>数据库、远程服务调用、消息队列、等场景适合使用长连接。</p>
@@ -839,7 +1167,7 @@
 <h4 id="QUIC"><a href="#QUIC" class="headerlink" title="QUIC"></a>QUIC</h4><p>Google 开发的的传输层协议，基于UDP（用户数据报协议），并集成了TLS（传输层安全协议），从而实现较低的延迟和快速的数据传输。</p>
 <p>建立连接只需一次往返延迟（RTT）允许在一个连接中同时传输多个数据流，消除了队头阻塞的影响。适合移动设备</p>
 <h4 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP&#x2F;2"></a>HTTP&#x2F;2</h4><p>HTTP&#x2F;2 采用二进制格式，支持多路复用，头部压缩，服务器推送等特性，可以更有效地利用网络资源，提高传输速度。</p>
-<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>WebSocket 是 HTML5 开始提供的一种协议，它实现了浏览器与服务器的全双工通信，允许服务端主动向客户端推送数据。</p>
+<h4 id="WebSocket-1"><a href="#WebSocket-1" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>WebSocket 是 HTML5 开始提供的一种协议，它实现了浏览器与服务器的全双工通信，允许服务端主动向客户端推送数据。</p>
 <p>WebSocket 协议的优点：</p>
 <ul>
 <li>建立连接更快，延迟更低</li>
@@ -866,11 +1194,37 @@
 <li>自签名证书：自己制作证书，不受 CA 认证，适用于测试环境</li>
 <li>第三方证书：购买证书，由 CA 认证，适用于生产环境</li>
 </ul>
+<h2 id="JWT教程与使用"><a href="#JWT教程与使用" class="headerlink" title="JWT教程与使用"></a>JWT教程与使用</h2><p>JSON Web Token（JSON Web令牌）</p>
+<h4 id="传统的-Session"><a href="#传统的-Session" class="headerlink" title="传统的 Session :"></a>传统的 Session :</h4><p>由于 HTTP 协议是无状态的，服务器并不知道用户身份，只能在服务器存储─份用户登录的信息，这份登录信息会在响应时传递给浏览器，告诉其保存为 <code>cookie</code>, 以便下次请求时发送给我们用于识别请求来自哪个用户。</p>
+<p>问题：</p>
+<ol>
+<li>session都是保存在服务端的内存中，而随着认证用户的增多，服务端开销会明显增大。</li>
+<li>客户端下次请求，还必须还在这上一台保存 <code>session</code> 服务器上</li>
+<li>cookie如果被截获，用户很容易受到跨站伪造请求攻击</li>
+</ol>
+<h4 id="组成："><a href="#组成：" class="headerlink" title="组成："></a>组成：</h4><ul>
+<li>Header（头部）：声明类型，加密算法等信息</li>
+<li>Payload（负载）：包含用户信息，有效期等信息</li>
+<li>Signature（签名）：防止数据被篡改，签名是由头部和负载通过某种算法生成的，只有服务端才知道该算法，并使用私钥进行解密验证。</li>
+</ul>
+<h4 id="认证流程："><a href="#认证流程：" class="headerlink" title="认证流程："></a>认证流程：</h4><ol>
+<li>前端通过Web表单将自己的用户名和密码发送到后端的接口。</li>
+<li>服务器认证以后，将要传递的数据生成一个 <code>JSON</code> 对象，作为 Payload 进行Base64编码拼接后签名，形成一个JWT(Token)。</li>
+<li>发回给前端，可以将返回的结果保存在localStorage或sessionStorage上，退出登录时前端删除保存的JWT即可。</li>
+<li>前端在每次请求时将JWT放入HTTP的Header中的Authorization位，由后端进行验证。</li>
+</ol>
+<h3 id="NextAuth-js"><a href="#NextAuth-js" class="headerlink" title="NextAuth.js"></a>NextAuth.js</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">NextAuth</span> <span class="keyword">from</span> <span class="string">&quot;next-auth&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Providers</span> <span class="keyword">from</span> <span class="string">&quot;next-auth/providers&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NextAuth</span>(&#123;</span><br><span class="line">  <span class="attr">providers</span>: [</span><br><span class="line">    <span class="title class_">Providers</span>.<span class="title class_">GitHub</span>(&#123;</span><br><span class="line">      <span class="attr">clientId</span>: process.<span class="property">env</span>.<span class="property">GITHUB_ID</span>,  <span class="comment">// 你的客户端ID  </span></span><br><span class="line">      <span class="attr">clientSecret</span>: process.<span class="property">env</span>.<span class="property">GITHUB_SECRET</span>,  <span class="comment">// 你的客户端密钥</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 其他配置，例如数据库适配器</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Credentials 配置登录的用户名和密码规则，通常用于处理本地用户的身份验证</p>
+<p>使用：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; signIn, signOut, useSession &#125; <span class="keyword">from</span> <span class="string">&#x27;next-auth/react&#x27;</span>;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyComponent</span> = (<span class="params"></span>) =&gt; &#123;  </span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>: session &#125; = <span class="title function_">useSession</span>();  </span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (  </span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">      &#123;!session ? (  </span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;&gt;</span>  </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>未登录<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> signIn()&#125;&gt;登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span>  </span><br><span class="line">      ) : (  </span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span>  </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>欢迎，&#123;session.user.name&#125;!<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> signOut()&#125;&gt;登出<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span>  </span><br><span class="line">      )&#125;  </span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">  );  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>API 路由：目录 pages&#x2F;api&#x2F;auth&#x2F;[…nextauth].js</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" data-id="cm6am3e76000l10vz3p1q0qjx" data-title="基础-网络相关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/06/04/%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/" data-id="cmc0gbw3m000m2svzf0mo6vnc" data-title="基础-网络相关" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1373,7 +1727,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/30/JavaScript%E7%AC%94%E8%AE%B0/" data-id="cm6am3e6t000410vzbta09zav" data-title="JavaScript 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/30/JavaScript%E7%AC%94%E8%AE%B0/" data-id="cmc0gbw3800032svz7dvydjcn" data-title="JavaScript 笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1504,6 +1858,11 @@ superDiv.insertBefore(dd, superDiv.children[1]);
 <p><strong>多返回值</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func_test</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func_test())</span><br><span class="line"><span class="comment"># (1, 2)</span></span><br></pre></td></tr></table></figure>
 
+<p><strong>生成器</strong></p>
+<p>yield: 惰性求值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">count_up_to</span>(<span class="params">n</span>):  </span><br><span class="line">    count = <span class="number">1</span>  </span><br><span class="line">    <span class="keyword">while</span> count &lt;= n:  </span><br><span class="line">        <span class="keyword">yield</span> count  <span class="comment"># 使用 yield 返回当前值  </span></span><br><span class="line">        count += <span class="number">1</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用生成器  </span></span><br><span class="line">counter = count_up_to(<span class="number">5</span>)  </span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> counter:  </span><br><span class="line">    <span class="built_in">print</span>(number)</span><br></pre></td></tr></table></figure>
+
+<p>暂停并记住执行的状态，直到下一次迭代。</p>
 <p>类型： <code>&lt;class &#39;tuple&#39;&gt;</code></p>
 <h2 id="多参数"><a href="#多参数" class="headerlink" title="多参数"></a>多参数</h2><ul>
 <li>位置参数：根据定义的参数个数、位置一致</li>
@@ -1758,7 +2117,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cm6am3e6x000710vzbhyy9th9" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/18/Python%E7%AC%94%E8%AE%B0/" data-id="cmc0gbw3e00072svz3dqo95bm" data-title="Python笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1797,7 +2156,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/14/My-New-Post/" data-id="cm6am3e6n000110vz5bcj4s3w" data-title="My New Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/14/My-New-Post/" data-id="cmc0gbw3a00042svzafyjarmw" data-title="My New Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1848,7 +2207,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2024/05/12/hello-world/" data-id="cm6am3e74000f10vz263ecyhw" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2024/05/12/hello-world/" data-id="cmc0gbw3j000g2svz0atl9gf0" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1882,12 +2241,12 @@ superDiv.insertBefore(dd, superDiv.children[1]);
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>删</p>
+        <p>你要克服的是你的虚荣心，是你的炫耀欲，你要对付的是你时刻想要出风头的小聪明。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://alexiangyu.github.io/2014/12/27/%E9%97%B2%E7%AC%94/" data-id="cm6am3e78000r10vzgr4ma7f6" data-title="闲笔" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://alexiangyu.github.io/2014/12/27/%E9%97%B2%E7%AC%94/" data-id="cmc0gbw3p000s2svzhyqvhu1v" data-title="闲笔" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1934,7 +2293,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 15px;">贪心</a>
+      <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 10px;">分治</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15px;">双指针</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 20px;">字符串</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 20px;">滑动窗口</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 20px;">贪心</a>
     </div>
   </div>
 
@@ -1943,7 +2302,7 @@ superDiv.insertBefore(dd, superDiv.children[1]);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li></ul>
     </div>
   </div>
 
@@ -1956,7 +2315,11 @@ superDiv.insertBefore(dd, superDiv.children[1]);
       <ul>
         
           <li>
-            <a href="/2025/01/18/lc/t0-1/">优质章节连续选择</a>
+            <a href="/2025/06/17/lc/3170%E5%88%A0%E9%99%A4%E6%98%9F%E5%8F%B7%E4%BB%A5%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">3298统计重新排列后包含另一个字符串的子字符串数目</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/18/lc/%E4%BC%98%E8%B4%A8%E7%AB%A0%E8%8A%82%E8%BF%9E%E7%BB%AD%E9%80%89%E6%8B%A9/">优质章节连续选择</a>
           </li>
         
           <li>
@@ -1969,10 +2332,6 @@ superDiv.insertBefore(dd, superDiv.children[1]);
         
           <li>
             <a href="/2025/01/08/lc/%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">验证构造回文字符串</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/06/lc/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">最大子段和</a>
           </li>
         
       </ul>
